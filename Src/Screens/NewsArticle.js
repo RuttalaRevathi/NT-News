@@ -327,7 +327,7 @@ export default class CinemaDetailsScreen extends Component {
                     <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>
                             <TouchableOpacity onPress={() => {
-                               this.props.navigation.navigate.goBack()
+                               this.props.navigation.goBack()
                             }} style={{ zIndex: 999, }}>
                                 <Image  source={require('../Assets/Images/arrow.png')} style={{ width: 30, height: 30 ,left:10}} />
                                 {/* <MaterialIcons name="arrow-back" size={30} color={blackcolor} style={{  left: 10,zIndex: 999, }} /> */}

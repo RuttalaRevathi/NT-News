@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, StyleSheet, Alert, Dimensions } from 'react-native'
-import { commonstyles, appThemeColor, graycode } from '../Styles/CommonStyles'
+import { commonstyles, appThemeColor, graycode, blackcolor, whitecolor } from '../Styles/CommonStyles'
 import Header from '../Custom Components/Header/Header'
 import AutoHeightWebView from 'react-native-autoheight-webview'
 
@@ -100,13 +100,33 @@ export default class PhotoArticle extends Component {
                     this.props.navigation.openDrawer()
                 }} isNotif={true} />
                 <View >
-                    <SubHeader isMenu={false} isBook={false} isShare={true}
+                    {/* <SubHeader isMenu={false} isBook={false} isShare={true}
                         leftBtnClick={() => this.props.navigation.goBack(null)}
                         ShareClick={() => { this.share() }}
                         BookClick={() => { alert("BookMark   Clicked") }}
-                    />
+                    /> */}
+                        <View style={HeaderStyle.subHeadercustom}>
+                        <View style={{ flex: 0.3 }}>
+                            <TouchableOpacity onPress={() => {
+                               this.props.navigation.goBack()
+                            }} style={{ zIndex: 999, }}>
+                                <Image  source={require('../Assets/Images/arrow.png')} style={{ width: 30, height: 30 ,left:10}} />
+                                {/* <MaterialIcons name="arrow-back" size={30} color={blackcolor} style={{  left: 10,zIndex: 999, }} /> */}
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                            <Image resizeMode='contain' source={require('../Assets/Images/facebook_share.png')} style={{ width: 30, height: 30 }} />
+                            <Image resizeMode='contain' source={require('../Assets/Images/twitter_share.png')} style={{ width: 30, height: 30 }} />
+                            <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
+                            <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
+                            <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
+
+
+                        </View>
+
+                    </View>
                 </View>
-                <ScrollView ref='_scrollView'>
+                <ScrollView ref='_scrollView'style={{backgroundColor:blackcolor}}>
                     <View>
 
 
@@ -212,9 +232,9 @@ const styles = StyleSheet.create({
 
 })
 const headerStyles = StyleSheet.create({
-    p: { color: appThemeColor, fontSize: 26, fontFamily: 'JIMS', lineHeight: 37, }
+    p: { color: whitecolor, fontSize: 26, fontFamily: 'Mandali-Bold', lineHeight: 37, }
 
 })
 const RelatedTextStyles = StyleSheet.create({
-    p: { color: '#000', fontSize: 18, fontFamily: 'JIMS', lineHeight: 25, top: 10 }
+    p: { color: '#000', fontSize: 18, fontFamily: 'Mandali-Bold', lineHeight: 25, top: 10 }
 })

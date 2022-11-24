@@ -55,6 +55,19 @@ export const commonstyles = StyleSheet.create({
     borderRadius: 15,
 
   },
+  photocard: {
+    height: Dimensions.get('window').height * 0.32,
+    width: screenWidth - 50,
+    // width: '100%',
+    // flex: 1,
+    // margin: 5,
+    // marginLeft: 5,
+    // marginRight: 5,
+    resizeMode: "cover",
+    borderRadius: 5,
+    // padding:10
+
+  },
   slidertext: {
     color: whitecolor,
     fontFamily: 'Mandali-Bold',

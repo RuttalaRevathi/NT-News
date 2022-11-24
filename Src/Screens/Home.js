@@ -1,5 +1,5 @@
 import React, { Component, useRef } from 'react';
-import { Text, View, FlatList, ScrolView, TouchableOpacity, Image, ImageBackground, SafeAreaView, LogBox, RefreshControl, Dimensions } from 'react-native';
+import { Text, View, FlatList, ScrolView, TouchableOpacity, Image, ImageBackground, SafeAreaView, LogBox, RefreshControl, Dimensions, } from 'react-native';
 import { appThemeColor, browncode, commonstyles, videocolor, graycode, graycodelight, gallerycolor, light_blue, dark_blue, blackcolor, Gary_Light, whitecolor } from '../Styles/CommonStyles';
 import LinearGradient from 'react-native-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -464,7 +464,7 @@ export default class HomeScreen extends Component {
                 <View>
 
                     <FlatList
-                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5,}}
+                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5, }}
                         horizontal={true}
                         showsHorizontalScrollIndicator={true}
                         persistentScrollbar={true}
@@ -649,7 +649,7 @@ export default class HomeScreen extends Component {
                         }
                     />
                 </View>
-                <ScrollView style={{backgroundColor:Gary_Light }}
+                <ScrollView style={{ backgroundColor: Gary_Light }}
                     ref={this.mySectionListRef}
                     refreshControl={
                         <RefreshControl
@@ -665,16 +665,16 @@ export default class HomeScreen extends Component {
                             showsHorizontalScrollIndicator={false}
                             horizontal={true}
                             renderItem={({ item, index }) =>
-                                <View style={{ marginRight: 5, marginLeft: 5 ,marginTop:10}} >
+                                <View style={{ marginRight: 5, marginLeft: 5, marginTop: 10 }} >
                                     <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
                                         <View style={commonstyles.sliderView}>
                                             <FastImage source={{ uri: item.web_featured_image }}
                                                 style={commonstyles.slidercard}  >
                                             </FastImage>
                                             {/* <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']} */}
-                                               <View style={commonstyles.sliderGradient}>
+                                            <View style={commonstyles.sliderGradient}>
                                                 <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
-                                            {/* </LinearGradient> */}
+                                                {/* </LinearGradient> */}
                                             </View>
                                         </View>
                                     </TouchableOpacity>
@@ -689,7 +689,7 @@ export default class HomeScreen extends Component {
                     <View>
                         {/* LatestNews  text*/}
 
-                        <View style={{ flexDirection: 'row', marginLeft: 10,top:5,bottom:5, flex: 1 }}>
+                        <View style={{ flexDirection: 'row', marginLeft: 10, top: 5, bottom: 5, flex: 1 }}>
                             <View style={commonstyles.categoryView}>
                                 <View>
                                     <Text style={commonstyles.Category}>
@@ -721,19 +721,19 @@ export default class HomeScreen extends Component {
                                                 <View >
                                                     <View>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                          <View style={{margin:10,width:screenWidth-200}}>
-                                                          <View style={{backgroundColor:whitecolor,height:160,borderRadius:5}}>
-                                                            
-                                                            <View>
-                                                                <FastImage  style={{width:160,height:100,borderTopLeftRadius:5,borderTopRightRadius:5}} source={{ uri: item.web_featured_image }}/>
+                                                            <View style={{ margin: 10, width: screenWidth - 200 }}>
+                                                                <View style={{ backgroundColor: whitecolor, height: 160, borderRadius: 5 }}>
+
+                                                                    <View>
+                                                                        <FastImage style={{ width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5 }} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={{ color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2 }}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
                                                             </View>
-                                                            <View>
-                                                            <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                        style={{color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33,left:5,right:2}}>{decode(item.title.rendered)}
-                                                                </Text>
-                                                            </View>
-                                                            </View>
-                                                          </View>
                                                             {/* <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
                                                                     <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
@@ -881,8 +881,8 @@ export default class HomeScreen extends Component {
                     <View>
                         {/*photo gallery  text*/}
 
-                        <View style={{ backgroundColor: gallerycolor, flex: 1, borderRadius: 10, margin: 5, width: '100%', }}>
-                            <View style={{ flexDirection: 'row', margin: 10, flex: 1 }}>
+                        <View style={{ backgroundColor: blackcolor, borderRadius: 10, margin: 5, width: '97%',paddingBottom:10 }}>
+                            <View style={{ flexDirection: 'row', paddingLeft:10,paddingRight:10,paddingTop:10, flex: 1 }}>
                                 <View style={{ flex: 1.7 }}>
                                     <Text style={{ color: "#fff", fontSize: 25, marginEnd: 5, fontFamily: 'Mandali-Bold' }}>
                                         ఫోటో గ్యాలరీ
@@ -901,7 +901,7 @@ export default class HomeScreen extends Component {
                                     this.state.Gallery.length != 0 && { isLoading: true } ?
 
                                         <View >
-                                            <FlatList
+                                            {/* <FlatList
                                                 data={this.state.Gallery.data}
                                                 // numColumns={2}
                                                 horizontal={true}
@@ -924,8 +924,30 @@ export default class HomeScreen extends Component {
 
                                                 }
 
-                                            />
+                                            /> */}
+                                            <FlatList
+                                                data={this.state.Gallery.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10,}} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+                                                                <FastImage source={{ uri: item.web_featured_image }}
+                                                                    style={commonstyles.photocard}  >
+                                                                </FastImage>
+                                                                {/* <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']} */}
+                                                                <View style={commonstyles.sliderGradient}>
+                                                                    <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
+                                                                    {/* </LinearGradient> */}
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
 
+                                                    </View>
+                                                }
+
+                                            />
                                         </View>
                                         :
                                         <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>

@@ -145,8 +145,8 @@ export default class CinemaDetailsScreen extends Component {
                         data={this.state.MenuData}
                         ref={(ref) => { this.headerSlots = ref; }}
                         extraData={this.state}
-                        renderItem={({ item, index }) =>
-                            <View >
+                        renderItem={({ item, index }) =>  
+                            <View>
 
                                 <TouchableOpacity onPress={() => {
                                     switch (index) {

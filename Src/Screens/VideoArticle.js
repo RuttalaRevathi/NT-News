@@ -89,10 +89,10 @@ export default class VideoArticle extends Component {
 
             <View style={commonstyles.container}>
 
-                <Header  image={require('../Assets/Images/logo.png')}
- isMenu={true} leftBtnClick={() => {
-                    this.props.navigation.openDrawer()
-                }} isNotif={true} />
+                <Header image={require('../Assets/Images/logo.png')}
+                    isMenu={true} leftBtnClick={() => {
+                        this.props.navigation.openDrawer()
+                    }} isNotif={true} />
                 <View >
                     <SubHeader isMenu={false} isBook={false} isShare={true}
                         leftBtnClick={() => this.props.navigation.goBack(null)}
@@ -120,7 +120,7 @@ export default class VideoArticle extends Component {
                         {/* description */}
                         <AutoHeightWebView
                             androidHardwareAccelerationDisabled // update here androidLayerType="software"
-                            style={{ width: Dimensions.get('window').width - 15 }}
+                            style={{ width: Dimensions.get('window').width - 15, bottom: 40 }}
 
                             customStyle={`
                                   * {

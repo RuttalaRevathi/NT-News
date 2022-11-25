@@ -716,7 +716,7 @@ export default class HomeScreen extends Component {
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
-                                            data={this.state.OnlyLatest.slice(0, 4)}
+                                            data={this.state.OnlyLatest.slice(0, 2)}
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View>
@@ -881,10 +881,10 @@ export default class HomeScreen extends Component {
                     <View>
                         {/*photo gallery  text*/}
 
-                        <View style={{ backgroundColor: blackcolor, borderRadius: 10, margin: 5, width: '97%',paddingBottom:10 }}>
-                            <View style={{ flexDirection: 'row', paddingLeft:10,paddingRight:10,paddingTop:10, flex: 1 }}>
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
                                 <View style={{ flex: 1.7 }}>
-                                    <Text style={{ color: "#fff", fontSize: 25, marginEnd: 5, fontFamily: 'Mandali-Bold' }}>
+                                    <Text style={commonstyles.ptext}>
                                         ఫోటో గ్యాలరీ
                                     </Text>
                                 </View>
@@ -901,46 +901,24 @@ export default class HomeScreen extends Component {
                                     this.state.Gallery.length != 0 && { isLoading: true } ?
 
                                         <View >
-                                            {/* <FlatList
-                                                data={this.state.Gallery.data}
-                                                // numColumns={2}
-                                                horizontal={true}
 
-                                                renderItem={({ item, index }) =>
-
-                                                    <View style={{ flex: 1, }}>
-                                                        <View style={commonstyles.pcard}>
-                                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
-
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.pimg} />
-                                                                <View >
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
-                                                                </View>
-                                                            </TouchableOpacity>
-                                                        </View>
-                                                    </View>
-
-
-
-                                                }
-
-                                            /> */}
                                             <FlatList
                                                 data={this.state.Gallery.data}
                                                 showsHorizontalScrollIndicator={false}
                                                 horizontal={true}
                                                 renderItem={({ item, index }) =>
-                                                    <View style={{ marginRight: 5, marginLeft: 10,}} >
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
                                                             <View style={commonstyles.sliderView}>
                                                                 <FastImage source={{ uri: item.web_featured_image }}
                                                                     style={commonstyles.photocard}  >
                                                                 </FastImage>
-                                                                {/* <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']} */}
-                                                                <View style={commonstyles.sliderGradient}>
-                                                                    <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
-                                                                    {/* </LinearGradient> */}
-                                                                </View>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
                                                             </View>
                                                         </TouchableOpacity>
 
@@ -958,69 +936,6 @@ export default class HomeScreen extends Component {
                         </View>
 
                     </View>
-
-                    {/* videos Gallery */}
-                    <View>
-                        {/* // videos  text */}
-
-                        <View style={{ backgroundColor: gallerycolor, flex: 1, borderRadius: 10, margin: 5, width: '100%' }}>
-                            <View style={{ flexDirection: 'row', margin: 10, flex: 2 }}>
-                                <View style={{ flex: 1.7 }}>
-                                    <Text style={{ color: "#fff", fontSize: 25, marginEnd: 5, fontFamily: 'Mandali-Bold' }}>
-                                        వీడియోలు
-                                    </Text>
-                                </View>
-                                <View style={{ flex: 0.3 }}>
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Videos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            {/* Videos  Cards */}
-                            <View>
-                                {
-
-                                    this.state.VideosData.length != 0 && { isLoading: true } ?
-
-                                        <View >
-                                            <FlatList
-                                                data={this.state.VideosData.data}
-                                                // numColumns={2}
-                                                horizontal={true}
-                                                renderItem={({ item, index }) =>
-
-                                                    <View style={{ flex: 1, }}>
-                                                        <View style={commonstyles.pcard}>
-                                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
-                                                                <ImageBackground source={{ uri: item.web_featured_image }} style={commonstyles.vimg} >
-                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
-                                                                        <FastImage style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
-                                                                    </View>
-                                                                </ImageBackground>
-                                                                <View >
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
-                                                                </View>
-                                                            </TouchableOpacity>
-                                                        </View>
-                                                    </View>
-
-
-
-                                                }
-
-                                            />
-
-                                        </View>
-                                        :
-                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                        </View>
-                                }
-                            </View>
-                        </View>
-
-                    </View>
-
                     {/* Sports */}
                     <View>
                         {/* sports news  text*/}
@@ -1151,6 +1066,67 @@ export default class HomeScreen extends Component {
                                     </View>
                             }
                         </View>
+                    </View>
+                    {/* videos Gallery */}
+                    <View>
+                        {/*videos  text*/}
+
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
+                                <View style={{ flex: 1.7 }}>
+                                    <Text style={commonstyles.ptext}>
+                                        వీడియోలు
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 0.3 }}>
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
+                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            {/* videos  Cards*/}
+                            <View>
+                                {
+
+                                    this.state.VideosData.length != 0 && { isLoading: true } ?
+                                        <View >
+
+                                            <FlatList
+                                                data={this.state.VideosData.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+
+                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
+                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
+                                                                        <FastImage style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
+                                                                    </View>
+                                                                </ImageBackground>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+                                                }
+
+                                            />
+                                        </View>
+                                        :
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                        </View>
+                                }
+                            </View>
+                        </View>
+
                     </View>
 
                     {/* National News */}

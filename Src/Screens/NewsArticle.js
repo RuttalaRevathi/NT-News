@@ -13,7 +13,7 @@ import { Article, BaseUrl, HomeSlider, RelatedUrl, MenuUrl } from '../Utilities/
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, Swipeable } from 'react-native-gesture-handler';
 // import SubHeader from '../Header/SubHeader';
 import HTMLView from 'react-native-htmlview';
 import { HeaderStyle } from '../Custom Components/Header/Header.Styles';
@@ -120,7 +120,12 @@ export default class CinemaDetailsScreen extends Component {
         let source1 = this.state.data.content.rendered.replace('lazyload', 'text/javascript')
         const regex = /(<([^>#&'';;]+)>)/ig;
         let decode = require('html-entities-decoder')
-        // console.log("related data",this.state.onlyRelated);
+        const stickySegmentControlX = this.state.scrollY.interpolate({
+            inputRange: [0, STICKY_SCROLL_DISTANCE],
+            outputRange: [INIT_STICKY_HEADER, HEADER_MIN_HEIGHT],
+            extrapolate: 'clamp'
+        })
+        
         return (
 
             <View style={commonstyles.container}>
@@ -133,7 +138,7 @@ export default class CinemaDetailsScreen extends Component {
                 <View>
 
                     <FlatList
-                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5,}}
+                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5, }}
                         horizontal={true}
                         showsHorizontalScrollIndicator={true}
                         persistentScrollbar={true}
@@ -319,17 +324,12 @@ export default class CinemaDetailsScreen extends Component {
                     />
                 </View>
                 <View >
-                    {/* <SubHeader isMenu={false} isBook={false} isShare={true}
-                        leftBtnClick={() => this.props.navigation.goBack()}
-                        ShareClick={() => { this.share() }}
-                        BookClick={() => { alert("BookMark   Clicked") }}
-                    /> */}
                     <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>
                             <TouchableOpacity onPress={() => {
-                               this.props.navigation.goBack()
+                                this.props.navigation.goBack()
                             }} style={{ zIndex: 999, }}>
-                                <Image  source={require('../Assets/Images/arrow.png')} style={{ width: 30, height: 30 ,left:10}} />
+                                <Image source={require('../Assets/Images/arrow.png')} style={{ width: 30, height: 30, left: 10 }} />
                                 {/* <MaterialIcons name="arrow-back" size={30} color={blackcolor} style={{  left: 10,zIndex: 999, }} /> */}
                             </TouchableOpacity>
                         </View>
@@ -339,15 +339,14 @@ export default class CinemaDetailsScreen extends Component {
                             <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
                             <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
                             <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
-
-
                         </View>
-
                     </View>
                 </View>
 
                 <ScrollView
-                    ref={(c, curent) => { this.scroll = c, this.scrollRef = curent }}>
+                    ref={(c,) => { this.scroll = c }}
+                    stickyHeaderIndices={[1]}
+                    showsVerticalScrollIndicator={false}>
                     <View>
 
                         <View >

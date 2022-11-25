@@ -6,13 +6,13 @@ export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
 export const Dark_graycolor = "#808080"
 export const blackcolor = "#000000"
-export const gallerycolor = "#1b120b"
+export const gallerycolor = "#402612"
 export const light_blue = "#d8f3fc"
 export const dark_blue = "#bae6f5"
 export const Header_text = "#262A85"
-export const Header_BG_Color="#030533"
+export const Header_BG_Color = "#030533"
 export const TimeStamp = "#8D8D8D"
-export const Gary_Light="#f5f5f5"
+export const Gary_Light = "#f5f5f5"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -46,24 +46,19 @@ export const commonstyles = StyleSheet.create({
   slidercard: {
     height: 200,
     width: screenWidth - 10,
-    // width: '100%',
-    // flex: 1,
-    // margin: 5,
-    // marginLeft: 5,
-    // marginRight: 5,
-    // resizeMode: "stretch",
     borderRadius: 15,
 
   },
   photocard: {
     height: Dimensions.get('window').height * 0.32,
-    width: screenWidth - 50,
+    // width: screenWidth - 50,
     // width: '100%',
     // flex: 1,
     // margin: 5,
     // marginLeft: 5,
     // marginRight: 5,
-    resizeMode: "cover",
+    resizeMode: "contain",
+    aspectRatio: 10 / 9,
     borderRadius: 5,
     // padding:10
 
@@ -73,29 +68,64 @@ export const commonstyles = StyleSheet.create({
     fontFamily: 'Mandali-Bold',
     // fontWeight:'bold',
     fontSize: 22,
-    marginBottom: 5,
+    // marginBottom: 5,
     marginLeft: 10,
     marginRight: 10,
-    lineHeight: 29
-
+    lineHeight: 29,
+  },
+  photoview: {
+    backgroundColor: gallerycolor,
+    borderRadius: 10, margin: 5,
+     width: '97%', paddingBottom: 10
+  },
+  phototextview: {
+    flexDirection: 'row', paddingLeft: 10,
+    paddingRight: 10, paddingTop: 10, flex: 1
+  },
+  ptext:{ color: "#fff", fontSize: 25,
+   marginEnd: 5, fontFamily: 'Mandali-Bold' },
+  phototext: {
+    color: blackcolor,
+    fontFamily: 'Mandali-Bold',
+    // fontWeight:'bold',
+    fontSize: 22,
+    // marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    lineHeight: 29,
+    position: 'relative',
+    top: 72
   },
   sliderGradient: {
     width: '100%', flex: 1, bottom: 0, borderBottomLeftRadius: 15,
-     borderBottomRightRadius: 15,
+    borderBottomRightRadius: 15,
     position: 'absolute',
+  },
+  linearGradient: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    height: 200,
+    width: "100%",
+    position: 'absolute',
+    bottom: 0,
+    flex: 1,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+
   },
   Category: {
     color: blackcolor,
     fontFamily: 'Mandali-Bold',
     fontSize: 27,
-    top:8
+    top: 8
     // fontWeight: '400'
 
   },
-  sliderView:{
+  sliderView: {
     position: 'relative', backgroundColor: 'transparent',
     opacity: 0.8
-},
+  },
   dot: {
     marginTop: 22, marginLeft: 5
   },
@@ -135,12 +165,12 @@ export const commonstyles = StyleSheet.create({
     shadowOpacity: 0.7,
     shadowRadius: 2,
   },
-  latestViewcard:{
+  latestViewcard: {
     backgroundColor: whitecolor,
     padding: 5,
     elevation: 5,
     margin: 5,
-    width:'100%',
+    width: '100%',
     // height:120,
     borderRadius: 10,
     // flexDirection: 'row',
@@ -149,7 +179,7 @@ export const commonstyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.7,
     shadowRadius: 2,
-   
+
   },
   cardViewHome: {
     backgroundColor: whitecolor,
@@ -194,12 +224,12 @@ export const commonstyles = StyleSheet.create({
     elevation: 1,
     margin: 5,
     borderRadius: 5,
-    height:650,
+    height: 650,
     flexDirection: 'row'
   },
   pcard: {
     // flex: 1,
-    width:'95%',
+    width: '95%',
     backgroundColor: "#fff",
     elevation: 1,
     margin: 5,
@@ -209,9 +239,9 @@ export const commonstyles = StyleSheet.create({
   },
   vcard: {
     // flex: 1,
-    width:'95%',
+    width: '95%',
     backgroundColor: whitecolor,
-    elevation: 1, 
+    elevation: 1,
     margin: 5,
     borderRadius: 5,
     height: Dimensions.get('window').height * 0.3,
@@ -230,9 +260,9 @@ export const commonstyles = StyleSheet.create({
 
   },
   cartoonimg: {
-    width: screenWidth-20, height: 600,
-    borderRadius: 10, resizeMode: 'cover', margin: 5
-    // width: '100%', height: 280, resizeMode: "contain",
+    width: screenWidth - 20, height: 600,
+    borderRadius: 10, resizeMode: 'contain', margin: 5,
+    aspectRatio:3/4
 
   },
   photoimage: {
@@ -260,8 +290,10 @@ export const commonstyles = StyleSheet.create({
     flexDirection: 'row',
     top: -5
   },
-  cateviewText: {  flex: 1.9,
-    fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33,justifyContent:'center' },
+  cateviewText: {
+    flex: 1.9,
+    fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, justifyContent: 'center'
+  },
   cateviewImg: { marginRight: 5 },
   cateflist: { paddingBottom: 150, top: 10, margin: 5 },
 

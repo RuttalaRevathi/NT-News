@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, View, FlatList, Image, ActivityIndicator, TouchableOpacity, ScrollView, SafeAreaView, Share } from "react-native";
 import Header from "../../Custom Components/Header/Header";
 import SubHeader from "../../Custom Components/SubHeader/SubHeader";
-import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
+import { appThemeColor, commonstyles, Header_text } from "../../Styles/CommonStyles";
 import { BaseUrl, LatestUrl, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
@@ -60,17 +60,18 @@ export default class LatestNews extends Component {
         return (
             <SafeAreaView styles={commonstyles.container}>
                 <View style={[HeaderStyle.viewHeight]}>
-                    <View style={{ flex: 0.3 }}>
-                        <TouchableOpacity>
-                            <Image source={require('../../Assets/Images/menu.png')} style={HeaderStyle.buttonImg} />
+                    <View style={HeaderStyle.buttonView}>
+                        <TouchableOpacity >
+                            <FastImage source={require('../../Assets/Images/menu.png')} style={HeaderStyle.buttonImg} />
                         </TouchableOpacity >
                     </View>
                     <View style={{ flex: 3.5, justifyContent: 'center', alignItems: 'center' }}>
-                        {/* <Text style={[HeaderStyle.customheading]}>{'నమస్తే తెలంగాణ'}</Text> */}
+
                         <Image style={[HeaderStyle.heading]} source={require('../../Assets/Images/logo.png')} />
+
                     </View>
-                    <View style={{ flex: 0.3 }}>
-                        <MaterialIcons name="notifications" size={30} color="#000" style={{ marginTop: 10 }} />
+                    <View style={HeaderStyle.buttonView}>
+                        <MaterialIcons name="notifications" size={25} color={Header_text} style={{ marginTop: 0, left: 3 }} />
                     </View>
                 </View>
                 {/* <Header  image={require('../../Assets/Images/logo.png')}

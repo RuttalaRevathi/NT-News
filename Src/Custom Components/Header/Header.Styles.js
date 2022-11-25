@@ -72,7 +72,7 @@ export const HeaderStyle = StyleSheet.create({
         color: blackcolor,
         width: '100%',
         textAlign: 'center',
-        fontFamily: 'JIMS',
+        fontFamily: 'Mandali-Bold',
         fontSize: 30,
       
     }

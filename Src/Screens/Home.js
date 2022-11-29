@@ -461,7 +461,7 @@ export default class HomeScreen extends Component {
 
 
                 {/* Top Scroller */}
-                <View>
+                {/* <View>
 
                     <FlatList
                         style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5, }}
@@ -648,7 +648,7 @@ export default class HomeScreen extends Component {
                             </View>
                         }
                     />
-                </View>
+                </View> */}
                 <ScrollView style={{ backgroundColor: Gary_Light }}
                     ref={this.mySectionListRef}
                     refreshControl={
@@ -671,11 +671,11 @@ export default class HomeScreen extends Component {
                                             <FastImage source={{ uri: item.web_featured_image }}
                                                 style={commonstyles.slidercard}  >
                                             </FastImage>
-                                            {/* <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']} */}
-                                            <View style={commonstyles.sliderGradient}>
+                                            <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
+                                            style={commonstyles.sliderGradient}>
                                                 <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
-                                                {/* </LinearGradient> */}
-                                            </View>
+                                                </LinearGradient>
+                                            
                                         </View>
                                     </TouchableOpacity>
 

@@ -72,6 +72,8 @@ export const commonstyles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     lineHeight: 29,
+    top:50,
+    position:'relative'
   },
   photoview: {
     backgroundColor: gallerycolor,
@@ -97,9 +99,9 @@ export const commonstyles = StyleSheet.create({
     top: 72
   },
   sliderGradient: {
-    width: '100%', flex: 1, bottom: 0, borderBottomLeftRadius: 15,
+    width: '100%', flex: 1.5, bottom: 0, borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
-    position: 'absolute',
+    position: 'absolute',height:100
   },
   linearGradient: {
     alignItems: 'center',

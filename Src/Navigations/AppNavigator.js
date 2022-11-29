@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import SideMenu from '../Sreens/SideMenu/SideMenu'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { appThemeColor, graycode, whitecolor,Dark_garycolor, blackcolor } from '../Styles/CommonStyles';
@@ -15,7 +14,7 @@ import SideMenu from '../Screens/SideMenu';
 import LatestNews from '../Screens/Bottom Tab Screens/LatestNews';
 import Epaper from '../Screens/Bottom Tab Screens/epaper';
 import NewsArticle from '../Screens/NewsArticle';
-import { Agriculture, Business, Hyderabad, Lifestyle } from '../Utilities/Api/Urls';
+import { Agriculture, Business, Hyderabad, Lifestyle, Varthalu } from '../Utilities/Api/Urls';
 import HyderabadNews from '../Screens/Top Tab Screens/Hyderabad';
 import NationalNews from '../Screens/Top Tab Screens/National';
 import InternationalNews from '../Screens/Top Tab Screens/International';
@@ -87,7 +86,7 @@ const Tab = createBottomTabNavigator();
       >
 
         <Tab.Screen
-          name="Home" component={AppDrawer}
+          name="Home" component={TopTabs}
           options={{
             headerShown: false, tabBarLabel: 'Home',
             tabBarIcon: ({ color,focused }) => (
@@ -261,9 +260,57 @@ function AppDrawer() {
 const TopTab = createMaterialTopTabNavigator();
 function TopTabs() {
   return (
-    <TopTab.Navigator>
-      <TopTab.Screen name="Home" component={Home} />
-      <TopTab.Screen name="LatestNews" component={LatestNews} />
+    <TopTab.Navigator
+    screenOptions={({ focused }) =>({
+      tabBarActiveTintColor: appThemeColor,
+      tabBarInactiveTintColor: 'black',
+      style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
+      tabBarLabelStyle: { fontSize: 12,fontWeight:'700'},
+      tabBarItemStyle: { width: 100, },
+      tabBarStyle: {
+        backgroundColor: '#d8f3fc', height: 45
+      },
+      tabBarOptions: {
+        activeBackgroundColor: appThemeColor,
+        inactiveBackgroundColor: appThemeColor,
+        showLabel: true,
+       
+      }
+
+    })}
+  >
+         <TopTab.Screen name="వార్తలు" component={AppDrawer} />
+      <TopTab.Screen name="హైదరాబాద్‌" component={HyderabadNews} />
+      <TopTab.Screen name="జాతీయం" component={NationalNews} />
+      <TopTab.Screen name="అంతర్జాతీయం" component={InternationalNews} />
+      <TopTab.Screen name="తెలంగాణ" component={TelanganaNews} />
+      <TopTab.Screen name="ఏపీ" component={ApNews} />
+      <TopTab.Screen name="సినిమా" component={CinemaNews} />
+      <TopTab.Screen name="స్పోర్ట్స్" component={SportsNews} />
+      <TopTab.Screen name="చింతన" component={ChinthanaNews} />
+      <TopTab.Screen name="ఎడ్యుకేషన్ & కెరీర్‌" component={EducationNews} />
+      <TopTab.Screen name="బిజినెస్" component={BusinessNews} />
+      <TopTab.Screen name="ప్రత్యేకం" component={SpecialNews} />
+      <TopTab.Screen name="ఎన్‌ఆర్‌ఐ" component={NriNews} />
+      <TopTab.Screen name="లైఫ్‌స్టైల్‌" component={LifestyleNews} />
+      <TopTab.Screen name="ఫొటోలు" component={PhotosNews} />
+      <TopTab.Screen name="వీడియోలు" component={VideosNews} />
+      <TopTab.Screen name="మరిన్ని" component={MoreNews} />
+      <TopTab.Screen name="సైన్స్‌ అండ్‌ టెక్నాలజీ" component={ScienceNews} />
+      <TopTab.Screen name="కార్టూన్‌" component={CartoonNews} />
+      <TopTab.Screen name="ఎవర్‌గ్రీన్‌" component={EvergreenNews} />
+      <TopTab.Screen name="క్రైమ్‌" component={CrimeNews} />
+      <TopTab.Screen name="జిందగీ" component={ZindagiNews} />
+      <TopTab.Screen name="బతుకమ్మ" component={BathukammaNews} />
+      <TopTab.Screen name="టూరిజం" component={TourismNews} />
+      <TopTab.Screen name="వ్యవసాయం" component={AgricultureNews} />
+      <TopTab.Screen name="ఎడిట్‌ పేజీ" component={EditpageNews} />
+      <TopTab.Screen name="సంపద" component={SampadhaNews} />
+      <TopTab.Screen name="వంటలు" component={CookingNews} />
+      <TopTab.Screen name="కథలు" component={KathaluNews} />
+      <TopTab.Screen name="ఆరోగ్యం" component={HealthNews} />
+      <TopTab.Screen name="వాస్తు" component={VaasthuNews} />
+      <TopTab.Screen name="సాహిత్యం" component={SahithyamNews} />
     </TopTab.Navigator>
 
 

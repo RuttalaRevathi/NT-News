@@ -41,8 +41,8 @@ export default class VarthaluNews extends Component {
         let decode = require('html-entities-decoder')
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
+                <Header image={require('../../Assets/Images/logo.png')}
+                    isMenu={true} isNotif={true}
                     leftBtnClick={() => this.props.navigation.openDrawer()}
                     NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
                 <SubHeader title={"వార్తలు"} isMenu={false} isBook={false} isShare={true}
@@ -51,6 +51,18 @@ export default class VarthaluNews extends Component {
                     BookClick={() => { alert("BookMark   Clicked") }}
                 />
                 <ScrollView >
+                    {/* <ImageSlider
+                        loopBothSides
+                        autoPlayWithInterval={3000}
+                        images={this.state.HyderabadData.data}
+                        customSlide={({ index, item, style, width }) => (
+                            // It's important to put style here because it's got offset inside
+                            <View key={index} style={{}}>
+                                 <FastImage source={{ uri: item.web_featured_image }}
+                                                                style={commonstyles.cateImage} />
+                            </View>
+                        )}
+                    /> */}
                     <View>
                         {
 

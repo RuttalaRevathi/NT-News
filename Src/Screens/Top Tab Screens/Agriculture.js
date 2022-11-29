@@ -7,6 +7,7 @@ import { Agriculture, BaseUrl, CategoryUrl, National, ShareUrl } from "../../Uti
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 
+
 export default class AgricultureNews extends Component {
     constructor(props) {
         super(props);

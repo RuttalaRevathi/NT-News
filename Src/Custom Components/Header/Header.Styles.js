@@ -10,9 +10,10 @@ export const HeaderStyle = StyleSheet.create({
         padding: 10,
         justifyContent: 'center',
         alignContent: "center",
-        // flex:1,
         borderBottomColor:graycolor,
-        borderBottomWidth:2
+        borderBottomWidth:2,
+        // position:"absolute",
+        // top:0
     },
     buttonImg: {
         width: 20,

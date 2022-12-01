@@ -454,201 +454,7 @@ export default class HomeScreen extends Component {
         // const mySectionListRef = useRef();
         return (
             <SafeAreaView style={commonstyles.container}>
-                <Header image={require('../Assets/Images/logo.png')} isMenu={true} leftBtnClick={() => {
-                    this.props.navigation.openDrawer()
-                }} isNotif={true}
-                    NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
-
-
-                {/* Top Scroller */}
-                {/* <View>
-
-                    <FlatList
-                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5, }}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={true}
-                        persistentScrollbar={true}
-                        data={this.state.MenuData}
-                        ref={(ref) => { this.headerSlots = ref; }}
-                        extraData={this.state}
-                        renderItem={({ item, index }) =>
-                            <View >
-
-                                <TouchableOpacity onPress={() => {
-                                    switch (index) {
-                                        case 0: {
-                                            this.props.navigation.navigate("Varthalu");
-                                        }
-                                            break;
-                                        case 1: {
-                                            this.props.navigation.navigate("Hyderabad");
-                                        }
-                                            break;
-                                        case 2: {
-                                            this.props.navigation.navigate("National");
-                                        }
-                                            break;
-                                        case 3: {
-                                            this.props.navigation.navigate("InterNational");
-
-                                        }
-                                            break;
-                                        case 4: {
-                                            this.props.navigation.navigate("Telangana");
-
-                                        }
-                                            break;
-                                        case 5: {
-                                            this.props.navigation.navigate("Ap");
-
-                                        }
-                                            break;
-                                        case 6: {
-                                            this.props.navigation.navigate("Cinema");
-
-                                        }
-                                            break;
-                                        case 7: {
-                                            this.props.navigation.navigate("Sports");
-
-                                        }
-                                            break;
-                                        case 8: {
-                                            this.props.navigation.navigate("Chinthana");
-
-                                        }
-                                            break;
-                                        case 9: {
-                                            this.props.navigation.navigate("Education");
-
-                                        }
-                                            break;
-                                        case 10: {
-                                            this.props.navigation.navigate("Business");
-
-                                        }
-                                            break;
-                                        case 11: {
-                                            this.props.navigation.navigate("Special");
-
-                                        }
-                                            break;
-                                        case 12: {
-                                            this.props.navigation.navigate("LifeStyle");
-
-                                        }
-                                            break;
-                                        case 13: {
-                                            this.props.navigation.navigate("Photos");
-
-                                        }
-                                            break;
-                                        case 14: {
-                                            this.props.navigation.navigate("Videos");
-
-                                        }
-                                            break;
-                                        case 15: {
-                                            this.props.navigation.navigate("More");
-
-                                        }
-                                            break;
-                                        case 16: {
-                                            this.props.navigation.navigate("Bathukamma");
-
-                                        }
-                                            break;
-                                        case 17: {
-                                            this.props.navigation.navigate("Nri");
-                                        }
-                                            break;
-                                        case 18: {
-                                            this.props.navigation.navigate("Science");
-
-                                        }
-                                            break;
-                                        case 19: {
-                                            this.props.navigation.navigate("Cartoon");
-
-                                        }
-                                            break;
-                                        case 20: {
-                                            this.props.navigation.navigate("EverGreen");
-
-                                        }
-                                            break;
-                                        case 21: {
-                                            this.props.navigation.navigate("Crime");
-
-                                        }
-                                            break;
-                                        case 22: {
-                                            this.props.navigation.navigate("Zindagi");
-
-                                        }
-                                            break;
-                                        case 23: {
-                                            this.props.navigation.navigate("Bathukamma");
-
-                                        }
-                                            break;
-                                        case 24: {
-                                            this.props.navigation.navigate("Tourism");
-
-                                        }
-                                            break;
-                                        case 25: {
-                                            this.props.navigation.navigate("Agriculture");
-
-                                        }
-                                            break;
-                                        case 26: {
-                                            this.props.navigation.navigate("EditPage");
-
-                                        }
-                                            break;
-                                        case 27: {
-                                            this.props.navigation.navigate("Sampadha");
-
-                                        }
-                                            break;
-                                        case 28: {
-                                            this.props.navigation.navigate("Cooking");
-
-                                        }
-                                            break;
-                                        case 29: {
-                                            this.props.navigation.navigate("Kathalu");
-
-                                        }
-                                            break;
-                                        case 30: {
-                                            this.props.navigation.navigate("Health");
-
-                                        }
-                                        case 31: {
-                                            this.props.navigation.navigate("Vaasthu");
-
-                                        }
-                                            break;
-                                        default: {
-                                            this.props.navigation.navigate("Sahithyam");
-
-
-                                        }
-                                    }
-
-                                }}>
-                                    <View style={commonstyles.menuview}>
-
-                                        <Text style={commonstyles.menutext}>{item.title}</Text>
-                                    </View>
-                                </TouchableOpacity>
-
-                            </View>
-                        }
-                    />
-                </View> */}
+                             
                 <ScrollView style={{ backgroundColor: Gary_Light }}
                     ref={this.mySectionListRef}
                     refreshControl={
@@ -672,10 +478,10 @@ export default class HomeScreen extends Component {
                                                 style={commonstyles.slidercard}  >
                                             </FastImage>
                                             <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
-                                            style={commonstyles.sliderGradient}>
+                                                style={commonstyles.sliderGradient}>
                                                 <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
-                                                </LinearGradient>
-                                            
+                                            </LinearGradient>
+
                                         </View>
                                     </TouchableOpacity>
 
@@ -721,33 +527,19 @@ export default class HomeScreen extends Component {
                                                 <View >
                                                     <View>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                            <View style={{ margin: 10, width: screenWidth - 200 }}>
-                                                                <View style={{ backgroundColor: whitecolor, height: 160, borderRadius: 5 }}>
-
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={{ width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5 }} source={{ uri: item.web_featured_image }} />
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                            style={{ color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2 }}>{decode(item.title.rendered)}
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
                                                                         </Text>
                                                                     </View>
                                                                 </View>
                                                             </View>
-                                                            {/* <View style={commonstyles.cardViewHome}>
-                                                                <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                                </View>
-                                                                <View style={commonstyles.cateviewText}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                    <View style={commonstyles.timeview}>
-                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}</Text>
-                                                                    </View>
-
-                                                                </View>
-                                                            </View> */}
+                                                         
                                                         </TouchableOpacity>
                                                     </View>
                                                 </View>

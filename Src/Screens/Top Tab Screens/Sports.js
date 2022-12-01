@@ -40,10 +40,7 @@ export default class SportsNews extends Component {
         let decode = require('html-entities-decoder')
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
-                    leftBtnClick={() => this.props.navigation.openDrawer()}
-                    NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 <SubHeader title={"స్పోర్ట్స్"} isMenu={false} isBook={false} isShare={true}
                     leftBtnClick={() => this.props.navigation.goBack()}
                     ShareClick={() => { this.sharecall() }}

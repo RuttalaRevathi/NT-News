@@ -39,10 +39,7 @@ export default class VideosNews extends Component {
 
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
-                    leftBtnClick={() => this.props.navigation.openDrawer()}
-                    NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 <SubHeader title={"వీడియోలు "} isMenu={false} isBook={false} isShare={true}
                     leftBtnClick={() => this.props.navigation.goBack()}
                     ShareClick={() => { this.sharecall() }}
@@ -62,11 +59,19 @@ export default class VideosNews extends Component {
                                         renderItem={({ item, index }) =>
 
                                             <View style={{ flex: 1, }}>
-                                                <View style={commonstyles.SportCard}>
+                                                <View style={{}}>
                                                     <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
-                                                        <Image source={{ uri: item.web_featured_image }} style={commonstyles.photoimage} />
-                                                        <View >
-                                                            <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
+                                                    <View style={commonstyles.latestMainView}>
+                                                            <View style={commonstyles.latestsubView}>
+                                                                <View>
+                                                                    <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                </View>
+                                                                <View>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestTxtTag}>{item.title.rendered}
+                                                                    </Text>
+                                                                </View>
+                                                            </View>
                                                         </View>
                                                     </TouchableOpacity>
                                                 </View>

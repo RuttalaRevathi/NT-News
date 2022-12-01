@@ -8,7 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { appThemeColor, graycode, whitecolor,Dark_garycolor, blackcolor } from '../Styles/CommonStyles';
+import { appThemeColor, graycode, whitecolor, Dark_garycolor, blackcolor, light_blue } from '../Styles/CommonStyles';
 import Home from '../Screens/Home';
 import SideMenu from '../Screens/SideMenu';
 import LatestNews from '../Screens/Bottom Tab Screens/LatestNews';
@@ -56,87 +56,85 @@ import VideoArticle from '../Screens/VideoArticle';
 import Category from '../Screens/Top Tab Screens/Category';
 import CartoonArticle from '../Screens/CartoonArticle';
 import SplashScreen from '../Custom Components/Splash';
+import Header from '../Custom Components/Header/Header';
 
 
 const Tab = createBottomTabNavigator();
 
 
- function BottomTab() {
+function BottomTab() {
 
   return (
     // <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ focused }) =>({
-          tabBarActiveTintColor: appThemeColor,
-          tabBarInactiveTintColor: 'black',
-          style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
-          tabBarLabelStyle: { fontSize: 12,fontWeight:'700'},
-          tabBarItemStyle: { width: 100, },
-          tabBarStyle: {
-            backgroundColor: '#d8f3fc', height: 45
-          },
-          tabBarOptions: {
-            activeBackgroundColor: appThemeColor,
-            inactiveBackgroundColor: appThemeColor,
-            showLabel: true,
-           
-          }
+    <Tab.Navigator
+      screenOptions={({ focused }) => ({
+        tabBarActiveTintColor: appThemeColor,
+        tabBarInactiveTintColor: 'black',
+        style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
+        tabBarLabelStyle: { fontSize: 12, fontWeight: '700' },
+        tabBarItemStyle: { width: 100, },
+        tabBarStyle: {
+          backgroundColor: '#d8f3fc', height: 45
+        },
+        tabBarOptions: {
+          activeBackgroundColor: appThemeColor,
+          inactiveBackgroundColor: appThemeColor,
+          showLabel: true,
+        }
+      })}>
+   
+        
 
-        })}
-      >
-
-        <Tab.Screen
-          name="Home" component={TopTabs}
-          options={{
-            headerShown: false, tabBarLabel: 'Home',
-            tabBarIcon: ({ color,focused }) => (
-              // <Entypo name="home" size={20}  style={{ tintColor: focused ? appThemeColor : null,top: 5 }} />
-
-              <Image style={{ height: 20, width: 20,tintColor: focused ? appThemeColor : 'black',top: 5 }} 
+      <Tab.Screen
+        name="TopTabs" component={TopTabs}
+        options={{
+          headerShown: false, tabBarLabel: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/home.png')} />
-            ),
-          }} />
-        <Tab.Screen
-          name="LatestNews" component={LatestNews}
-          options={{
-            headerShown: false, tabBarLabel: 'Latest News',
-            tabBarIcon: ({ color,focused }) => (
-              // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
+          ),
+        }} />
+      <Tab.Screen
+        name="LatestNews" component={LatestNews}
+        options={{
+          headerShown: false, tabBarLabel: 'Latest News',
+          tabBarIcon: ({ color, focused }) => (
+            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
 
-              <Image style={{ height: 20, width: 20,tintColor: focused ? appThemeColor : 'black',top: 5 }} 
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/topnews.png')} />
-            ),
-          }} />
-        <Tab.Screen
-          name="Photos" component={PhotosNews}
-          options={{
-            headerShown: false, tabBarLabel: 'Photo Gallery',
+          ),
+        }} />
+      <Tab.Screen
+        name="Photos" component={PhotosNews}
+        options={{
+          headerShown: false, tabBarLabel: 'Photo Gallery',
 
-            tabBarIcon: ({ color ,focused}) => (
-              <Image style={{ height: 20, width: 20,tintColor: focused ? appThemeColor : 'black',top: 5 }} 
+          tabBarIcon: ({ color, focused }) => (
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/gallery.png')} />
 
-              // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
+            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
 
-            ),
-          }} />
-        <Tab.Screen name="Epaper" component={Epaper}
+          ),
+        }} />
+      <Tab.Screen name="Epaper" component={Epaper}
 
-          options={{
-            headerShown: false, tabBarLabel: 'e-Paper',
-            tabBarButton: props => (
-              <TouchableOpacity {...props} onPress={() => { Linking.openURL('https://epaper.ntnews.com/') }} />
-            ),
+        options={{
+          headerShown: false, tabBarLabel: 'e-Paper',
+          tabBarButton: props => (
+            <TouchableOpacity {...props} onPress={() => { Linking.openURL('https://epaper.ntnews.com/') }} />
+          ),
 
-            tabBarIcon: ({ color,focused }) => (
-              <Image style={{ height: 20, width: 20,tintColor: focused ? appThemeColor : 'black',top: 5 }} 
+          tabBarIcon: ({ color, focused }) => (
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/paper.png')} />
-              // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
-              ),
-          }} />
+            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
+          ),
+        }} />
 
 
-      </Tab.Navigator>
+    </Tab.Navigator>
 
     // </NavigationContainer>
 
@@ -144,16 +142,22 @@ const Tab = createBottomTabNavigator();
   );
 
 }
-const Stack = createStackNavigator();
-export default function MainStack({}) {
-  return (
-    <NavigationContainer>
-    <Stack.Navigator screenOptions={{
-      headerShown: false
-    }}>
+function DummyHeader(){
+  return(
+    <Header image={require('../Assets/Images/logo.png')} isMenu={true} leftBtnClick={() => {
+        this.props.navigation.openDrawer()}} isNotif={true}
 
-      <Stack.Screen name="splash" component={SplashScreen}/>
-      <Stack.Screen name="BottomTab" component={BottomTab} />
+        NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+  )
+}
+const Stack = createStackNavigator();
+function MainStack({ }) {
+  return (
+
+    <Stack.Navigator  screenOptions={{header: DummyHeader}}>
+ 
+      {/* <Stack.Screen name="splash" component={SplashScreen} /> */}
+      <Stack.Screen name="appDrawer" component={AppDrawer} />
       {/* <Stack.Screen name="Category" component={Category} /> */}
       <Stack.Screen name="Details" component={NewsArticle} />
       <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
@@ -194,7 +198,6 @@ export default function MainStack({}) {
 
 
     </Stack.Navigator>
-    </NavigationContainer>
   )
 }
 
@@ -208,8 +211,8 @@ function AppDrawer() {
         width: 250,
       },
     }}
-      initialRouteName="Home" drawerContent={props => <SideMenu{...props} />}>
-      <Drawer.Screen name="Home" component={Home} />
+      drawerContent={props => <SideMenu{...props} />}>
+      <Drawer.Screen name="bottomTab" component={BottomTab} />
       <Drawer.Screen name="LatestNews" component={LatestNews} />
       {/* <Drawer.Screen name="Category" component={Category} /> */}
       <Drawer.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
@@ -260,26 +263,33 @@ function AppDrawer() {
 const TopTab = createMaterialTopTabNavigator();
 function TopTabs() {
   return (
+   
+      
     <TopTab.Navigator
-    screenOptions={({ focused }) =>({
-      tabBarActiveTintColor: appThemeColor,
-      tabBarInactiveTintColor: 'black',
-      style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
-      tabBarLabelStyle: { fontSize: 12,fontWeight:'700'},
-      tabBarItemStyle: { width: 100, },
-      tabBarStyle: {
-        backgroundColor: '#d8f3fc', height: 45
-      },
-      tabBarOptions: {
-        activeBackgroundColor: appThemeColor,
-        inactiveBackgroundColor: appThemeColor,
-        showLabel: true,
-       
-      }
+      // tabBarPosition="top"
+      // tabBar={(props) =>}
+      screenOptions={({ focused }) => ({
+        tabBarScrollEnabled: true,
+        tabBarActiveTintColor: appThemeColor,
+        tabBarInactiveTintColor: 'black',
+        tabBarLabelStyle: { fontSize: 20, fontFamily: 'Mandali-Bold' },
+        tabBarStyle: {
+          backgroundColor: light_blue, height: 50,
+        },
+        tabBarItemStyle: {
+          
+          width: 'auto',
+          alignItems: 'flex-start',
+        },
+        tabBarOptions: {
+          showLabel: true,
+        }
 
-    })}
-  >
-         <TopTab.Screen name="వార్తలు" component={AppDrawer} />
+      })}
+
+    >
+      {/* <TopTab.Screen name="Home" component={Home} /> */}
+      <TopTab.Screen name="వార్తలు" component={Home} />
       <TopTab.Screen name="హైదరాబాద్‌" component={HyderabadNews} />
       <TopTab.Screen name="జాతీయం" component={NationalNews} />
       <TopTab.Screen name="అంతర్జాతీయం" component={InternationalNews} />
@@ -312,8 +322,17 @@ function TopTabs() {
       <TopTab.Screen name="వాస్తు" component={VaasthuNews} />
       <TopTab.Screen name="సాహిత్యం" component={SahithyamNews} />
     </TopTab.Navigator>
-
+    // </View>
 
   )
 }
 
+export default AppNavigator=()=>{
+
+  return (
+    <NavigationContainer >
+      <MainStack />
+    </NavigationContainer>
+  );
+
+};

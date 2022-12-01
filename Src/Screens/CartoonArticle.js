@@ -106,10 +106,7 @@ export default class CartoonArticle extends Component {
 
             <View style={commonstyles.container}>
 
-                <Header  image={require('../Assets/Images/logo.png')}
- isMenu={true} leftBtnClick={() => {
-                    this.props.navigation.openDrawer()
-                }} isNotif={true} NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 <View >
                     <SubHeader isMenu={false} isBook={false} isShare={true}
                         leftBtnClick={() => this.props.navigation.goBack()}

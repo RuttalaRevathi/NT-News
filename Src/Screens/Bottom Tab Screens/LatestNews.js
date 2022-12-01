@@ -59,24 +59,7 @@ export default class LatestNews extends Component {
 
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <View style={[HeaderStyle.viewHeight]}>
-                    <View style={HeaderStyle.buttonView}>
-                        <TouchableOpacity >
-                            <FastImage source={require('../../Assets/Images/menu.png')} style={HeaderStyle.buttonImg} />
-                        </TouchableOpacity >
-                    </View>
-                    <View style={{ flex: 3.5, justifyContent: 'center', alignItems: 'center' }}>
-
-                        <Image style={[HeaderStyle.heading]} source={require('../../Assets/Images/logo.png')} />
-
-                    </View>
-                    <View style={HeaderStyle.buttonView}>
-                        <MaterialIcons name="notifications" size={25} color={Header_text} style={{ marginTop: 0, left: 3 }} />
-                    </View>
-                </View>
-                {/* <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
-                    leftBtnClick={() => this.props.navigation.openDrawer()} /> */}
+               
                 <SubHeader title={"తాజావార్తలు "} isMenu={false} isBook={false} isShare={true}
                     leftBtnClick={() => this.props.navigation.goBack()}
                     ShareClick={() => { this.sharecall() }}

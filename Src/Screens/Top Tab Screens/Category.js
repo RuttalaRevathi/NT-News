@@ -43,10 +43,7 @@ export default class Category extends Component {
 
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
-                    leftBtnClick={() => this.props.navigation.openDrawer()}
-                    NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 <SubHeader title={this.props.route.params.teluguCatName} isMenu={false} isBook={false} isShare={true}
                     leftBtnClick={() => this.props.navigation.goBack(null)}
                     ShareClick={() => { this.sharecall() }}

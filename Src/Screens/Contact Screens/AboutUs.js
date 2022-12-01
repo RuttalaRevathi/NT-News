@@ -18,10 +18,7 @@ export default class AboutUs extends Component {
     render() {
         return (
             <SafeAreaView styles={commonstyles.container}>
-                <Header  image={require('../../Assets/Images/logo.png')}
- isMenu={true} isNotif={true}
-                    leftBtnClick={() => this.props.navigation.openDrawer()}
-                    NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 <View style={[HeaderStyle.subHeaderviewHeight]}>
                     <View style={{ flex: 0.5 }}>
                         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>

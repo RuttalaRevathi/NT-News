@@ -142,9 +142,7 @@ export default class CinemaDetailsScreen extends Component {
             animated: true
         });
     }
-    copyToClipboard = () => {
-        Clipboard.setString(this.state.data.link);
-    }
+  
     render() {
 
         let source1 = this.state.data.content.rendered.replace('lazyload', 'text/javascript')
@@ -155,10 +153,7 @@ export default class CinemaDetailsScreen extends Component {
 
             <View style={commonstyles.container}>
 
-                <Header image={require('../Assets/Images/logo.png')}
-                    isMenu={true} leftBtnClick={() => {
-                        this.props.navigation.openDrawer()
-                    }} isNotif={true} NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+                
                 {/* Top Scroller */}
                 {/* <View>
 
@@ -374,9 +369,7 @@ export default class CinemaDetailsScreen extends Component {
                             <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => { this.copyToClipboard() }} >
-                                <Image resizeMode='contain' source={require('../Assets/Images/link.png')} style={{ width: 35, height: 35 }} />
-                            </TouchableOpacity>
+                           
                         </View>
                     </View>
                 </View>
@@ -481,34 +474,19 @@ export default class CinemaDetailsScreen extends Component {
                                                 <View >
                                                     <View>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                            <View style={{ margin: 10, width: screenWidth - 200 }}>
-                                                                <View style={{ backgroundColor: whitecolor, height: 160, borderRadius: 5 }}>
-
+                                                        <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={{ width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5 }} source={{ uri: item.web_featured_image }} />
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                            style={{ color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2 }}>{decode(item.title.rendered)}
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
                                                                         </Text>
                                                                     </View>
                                                                 </View>
                                                             </View>
-                                                            {/* <View style={commonstyles.cardViewHome}>
-                                                                <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                                </View>
-                                                                <View style={commonstyles.cateviewText}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                    <View style={commonstyles.timeview}>
-                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}</Text>
-                                                                    </View>
-
-                                                                </View>
-                                                            </View> */}
-                                                        </TouchableOpacity>
+                                                                                                        </TouchableOpacity>
                                                     </View>
                                                 </View>
                                             }

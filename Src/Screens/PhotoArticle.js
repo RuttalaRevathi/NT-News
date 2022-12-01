@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, StyleSheet, Alert, Dimensions } from 'react-native'
+import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator,Linking, StyleSheet, Alert, Dimensions } from 'react-native'
 import { commonstyles, appThemeColor, graycode, blackcolor, whitecolor } from '../Styles/CommonStyles'
 import Header from '../Custom Components/Header/Header'
 import AutoHeightWebView from 'react-native-autoheight-webview'
@@ -22,7 +22,6 @@ const screenHeight = Dimensions.get('window').height;
 export default class PhotoArticle extends Component {
     constructor(props) {
         super(props);
-        console.log(props, "props")
         this.state = {
             data: this.props.route.params.data,
             RelatedData: [],
@@ -95,10 +94,7 @@ export default class PhotoArticle extends Component {
 
             <View style={commonstyles.container}>
 
-                <Header  image={require('../Assets/Images/logo.png')}
- isMenu={true} leftBtnClick={() => {
-                    this.props.navigation.openDrawer()
-                }} isNotif={true} />
+                
                 <View >
                     {/* <SubHeader isMenu={false} isBook={false} isShare={true}
                         leftBtnClick={() => this.props.navigation.goBack(null)}
@@ -115,13 +111,22 @@ export default class PhotoArticle extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                            <Image resizeMode='contain' source={require('../Assets/Images/facebook_share.png')} style={{ width: 30, height: 30 }} />
-                            <Image resizeMode='contain' source={require('../Assets/Images/twitter_share.png')} style={{ width: 30, height: 30 }} />
-                            <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
-                            <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
-                            <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
-
-
+                            <TouchableOpacity onPress={() => { Linking.openURL('http://www.facebook.com/sharer.php?u=' + this.state.data.link + '%3Futm_source%3Dreferral%26utm_medium%3DFB%26utm_campaign%3Dsocial_share&app_id=369158533547966') }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/facebook_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('https://twitter.com/intent/tweet?url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/twitter_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('whatsapp://send?text=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('http://www.linkedin.com/shareArticle?mini=true&url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                           
                         </View>
 
                     </View>

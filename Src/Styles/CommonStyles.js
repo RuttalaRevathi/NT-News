@@ -1,7 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 // export const appThemeColor = "#337DFF"
 //3349FF,339fff
-export const appThemeColor = "#2e3397";
+export const appThemeColor = "#262A85";
 export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
 export const Dark_graycolor = "#808080"
@@ -12,7 +12,8 @@ export const dark_blue = "#bae6f5"
 export const Header_text = "#262A85"
 export const Header_BG_Color = "#030533"
 export const TimeStamp = "#8D8D8D"
-export const Gary_Light = "#f5f5f5"
+export const Gary_Light = "#ecf1f5"
+export const shadow_color = "#ccc"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -43,6 +44,16 @@ export const commonstyles = StyleSheet.create({
     fontFamily: "Mandali-Bold",
     // fontWeight: '500'
   },
+  latestMainView: { margin: 10, width: screenWidth - 200 },
+  latestsubView: {
+    backgroundColor: whitecolor,
+    height: 160, borderRadius: 5,
+    borderBottomColor: shadow_color, borderBottomWidth: 2,
+    borderLeftColor: shadow_color, borderLeftWidth: 1,
+    borderRightColor: shadow_color, borderRightWidth: 1
+  },
+  latestimgTag: { width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
+  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2 },
   slidercard: {
     height: 200,
     width: screenWidth - 10,
@@ -72,20 +83,22 @@ export const commonstyles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     lineHeight: 29,
-    top:50,
-    position:'relative'
+    top: 50,
+    position: 'relative'
   },
   photoview: {
     backgroundColor: gallerycolor,
     borderRadius: 10, margin: 5,
-     width: '97%', paddingBottom: 10
+    width: '97%', paddingBottom: 10
   },
   phototextview: {
     flexDirection: 'row', paddingLeft: 10,
     paddingRight: 10, paddingTop: 10, flex: 1
   },
-  ptext:{ color: "#fff", fontSize: 25,
-   marginEnd: 5, fontFamily: 'Mandali-Bold' },
+  ptext: {
+    color: "#fff", fontSize: 25,
+    marginEnd: 5, fontFamily: 'Mandali-Bold'
+  },
   phototext: {
     color: blackcolor,
     fontFamily: 'Mandali-Bold',
@@ -101,7 +114,7 @@ export const commonstyles = StyleSheet.create({
   sliderGradient: {
     width: '100%', flex: 1.5, bottom: 0, borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
-    position: 'absolute',height:100
+    position: 'absolute', height: 100
   },
   linearGradient: {
     alignItems: 'center',
@@ -196,8 +209,9 @@ export const commonstyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.7,
     shadowRadius: 2,
-    // borderBottomColor:graycolor,
-    // borderBottomWidth:1.3
+    borderBottomColor: shadow_color, borderBottomWidth: 2,
+    borderLeftColor: shadow_color, borderLeftWidth: 1,
+    borderRightColor: shadow_color, borderRightWidth: 1
 
   },
   cinemaText: {
@@ -220,7 +234,7 @@ export const commonstyles = StyleSheet.create({
     borderRadius: 10, resizeMode: "center",
   },
   CartoonCard: {
-
+    width: screenWidth-20,
     flex: 1,
     backgroundColor: "#fff",
     elevation: 1,
@@ -264,7 +278,7 @@ export const commonstyles = StyleSheet.create({
   cartoonimg: {
     width: screenWidth - 20, height: 600,
     borderRadius: 10, resizeMode: 'contain', margin: 5,
-    aspectRatio:3/4
+    aspectRatio: 3 / 4
 
   },
   photoimage: {

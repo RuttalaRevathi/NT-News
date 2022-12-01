@@ -21,6 +21,7 @@ import SubHeader from '../Custom Components/SubHeader/SubHeader';
 // import Clipboard from '@react-native-clipboard/clipboard';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
+
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 

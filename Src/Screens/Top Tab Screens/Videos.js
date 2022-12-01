@@ -67,6 +67,10 @@ export default class VideosNews extends Component {
                                                                     <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                 </View>
                                                                 <View>
+                                                                <View style={{backgroundColor:'red',padding:5,bottom: 55, left:0, position:'absolute'}}>
+                                                                <Image style={{ height: 15, width: 15 }}
+                                                                source={require('../../Assets/Images/play-button.png')} />
+                                                                </View>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
                                                                         style={commonstyles.latestTxtTag}>{item.title.rendered}
                                                                     </Text>

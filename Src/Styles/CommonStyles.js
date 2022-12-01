@@ -234,13 +234,14 @@ export const commonstyles = StyleSheet.create({
     borderRadius: 10, resizeMode: "center",
   },
   CartoonCard: {
-    width: screenWidth-20,
+    width: '100%',
+    justifyContent:'center',
     flex: 1,
     backgroundColor: "#fff",
     elevation: 1,
     margin: 5,
     borderRadius: 5,
-    height: 650,
+    height: 'auto',
     flexDirection: 'row'
   },
   pcard: {
@@ -276,10 +277,9 @@ export const commonstyles = StyleSheet.create({
 
   },
   cartoonimg: {
-    width: screenWidth - 20, height: 600,
+    width: Dimensions.get('window').height * 0.23, 
     borderRadius: 10, resizeMode: 'contain', margin: 5,
     aspectRatio: 3 / 4
-
   },
   photoimage: {
     width: "110%",

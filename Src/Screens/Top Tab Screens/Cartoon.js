@@ -58,10 +58,10 @@ export default class CartoonNews extends Component {
                                         data={this.state.HyderabadData.data}
                                         numColumns={2}
                                         renderItem={({ item, index }) =>
-                                        <View style={{ flex: 1, }}>
+                                        <View style={{ flex: 1, marginRight:5 }}>
                                         <View style={commonstyles.CartoonCard}>
                                             <TouchableOpacity onPress={() => { this.props.navigation.navigate("CartoonArticle", { data: item }) }}  >
-                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} />
+                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} resizeMode="contain" />
                                                 {/* <View >
                                                     <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
                                                 </View> */}

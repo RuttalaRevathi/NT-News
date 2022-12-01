@@ -6,6 +6,7 @@ import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, CategoryUrl, Cinema, National, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
+import LinearGradient from "react-native-linear-gradient";
 
 export default class CinemaNews extends Component {
     constructor(props) {
@@ -53,9 +54,30 @@ export default class CinemaNews extends Component {
                             this.state.HyderabadData.length != 0 && { isLoading: true } ?
 
                                 <View style={{ position: 'relative' }}>
+                                     <FlatList
+                               showsHorizontalScrollIndicator={false}
+                            horizontal={true}
+                            data={this.state.HyderabadData.data.slice(0, 1)}
+                            renderItem={({ item, index }) =>
+                                <View style={{ marginRight: 5, marginLeft: 5, marginTop: 10 }} >
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                        <View style={commonstyles.sliderView}>
+                                            <FastImage source={{ uri: item.web_featured_image }}
+                                                style={commonstyles.slidercard}  >
+                                            </FastImage>
+                                            <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
+                                                style={commonstyles.sliderGradient}>
+                                                <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
+                                            </LinearGradient>
+
+                                        </View>
+                                    </TouchableOpacity>
+
+                                </View>
+                                 }/>
                                     <FlatList
                                         style={commonstyles.cateflist}
-                                        data={this.state.HyderabadData.data}
+                                        data={this.state.HyderabadData.data.slice(1,-1)}
                                         renderItem={({ item, index }) =>
 
                                             <View >
@@ -79,9 +101,7 @@ export default class CinemaNews extends Component {
 
                                             </View>
 
-                                        }
-
-                                    />
+                                        }/>
 
                                 </View>
                                 :

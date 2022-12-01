@@ -144,8 +144,9 @@ function BottomTab() {
 }
 function DummyHeader(){
   return(
-    <Header image={require('../Assets/Images/logo.png')} isMenu={true} leftBtnClick={() => {
-        this.props.navigation.openDrawer()}} isNotif={true}
+    <Header image={require('../Assets/Images/logo.png')} isMenu={true} 
+    leftBtnClick={() => {this.props.navigation.openDrawer()}}
+         isNotif={true}
 
         NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
   )
@@ -327,7 +328,7 @@ function TopTabs() {
   )
 }
 
-export default AppNavigator=()=>{
+export default function AppNavigator(props, { navigation }){
 
   return (
     <NavigationContainer >

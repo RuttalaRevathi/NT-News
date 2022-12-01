@@ -68,8 +68,8 @@ export default class VideosNews extends Component {
                                                                 </View>
                                                                 <View>
                                                                 <View style={{backgroundColor:'red',padding:5,bottom: 55, left:0, position:'absolute'}}>
-                                                                <Image style={{ height: 15, width: 15 }}
-                                                                source={require('../../Assets/Images/play-button.png')} />
+                                                                <FastImage style={{ height: 15, width: 25,borderRadius:10 }}
+                                                                source={require('../../Assets/Images/videoicon.png')} />
                                                                 </View>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
                                                                         style={commonstyles.latestTxtTag}>{item.title.rendered}

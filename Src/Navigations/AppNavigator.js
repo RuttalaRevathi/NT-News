@@ -142,7 +142,7 @@ function BottomTab() {
   );
 
 }
-function DummyHeader(){
+function DummyHeader(_props){
   return(
     <Header image={require('../Assets/Images/logo.png')} isMenu={true} 
     leftBtnClick={() => {this.props.navigation.openDrawer()}}

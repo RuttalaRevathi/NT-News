@@ -164,39 +164,7 @@ function MainStack({ }) {
       <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
       <Stack.Screen name="VideoArticle" component={VideoArticle} />
       <Stack.Screen name="CartoonArticle" component={CartoonArticle} />
-      {/* <Stack.Screen name="Varthalu" component={VarthaluNews} />
-      <Stack.Screen name="Hyderabad" component={HyderabadNews} />
-      <Stack.Screen name="National" component={NationalNews} />
-      <Stack.Screen name="InterNational" component={InternationalNews} />
-      <Stack.Screen name="Telangana" component={TelanganaNews} />
-      <Stack.Screen name="Ap" component={ApNews} />
-      <Stack.Screen name="Cinema" component={CinemaNews} />
-      <Stack.Screen name="Sports" component={SportsNews} />
-      <Stack.Screen name="Chinthana" component={ChinthanaNews} />
-      <Stack.Screen name="Education" component={EducationNews} />
-      <Stack.Screen name="Business" component={BusinessNews} />
-      <Stack.Screen name="Special" component={SpecialNews} />
-      <Stack.Screen name="Nri" component={NriNews} />
-      <Stack.Screen name="LifeStyle" component={LifestyleNews} />
-      <Stack.Screen name="Photos" component={PhotosNews} />
-      <Stack.Screen name="Videos" component={VideosNews} />
-      <Stack.Screen name="More" component={MoreNews} />
-      <Stack.Screen name="Science" component={ScienceNews} />
-      <Stack.Screen name="Cartoon" component={CartoonNews} />
-      <Stack.Screen name="EverGreen" component={EvergreenNews} />
-      <Stack.Screen name="Crime" component={CrimeNews} />
-      <Stack.Screen name="Zindagi" component={ZindagiNews} />
-      <Stack.Screen name="Bathukamma" component={BathukammaNews} />
-      <Stack.Screen name="Tourism" component={TourismNews} />
-      <Stack.Screen name="Agriculture" component={AgricultureNews} />
-      <Stack.Screen name="EditPage" component={EditpageNews} />
-      <Stack.Screen name="Sampadha" component={SampadhaNews} />
-      <Stack.Screen name="Cooking" component={CookingNews} />
-      <Stack.Screen name="Kathalu" component={KathaluNews} />
-      <Stack.Screen name="Health" component={HealthNews} />
-      <Stack.Screen name="Vaasthu" component={VaasthuNews} />
-      <Stack.Screen name="Sahithyam" component={SahithyamNews} /> */}
-
+      
 
     </Stack.Navigator>
   )

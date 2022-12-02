@@ -46,7 +46,7 @@ export const commonstyles = StyleSheet.create({
     fontFamily: "Mandali-Bold",
     // fontWeight: '500'
   },
-  latestMainView: {  width: '60%', margin:3 },  
+  latestMainView: {  width: Dimensions.get('window').width / 2.2, margin:5 },  
   latestsubView: {
     backgroundColor: whitecolor,
     height: 160, borderRadius: 5,
@@ -337,6 +337,6 @@ export const commonstyles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",
   },
   categoryView: { flex: 1.7, flexDirection: 'row', },
-  flatView: { position: 'relative', margin:5, justifyContent:'center',display:'flex',width:'100%'},  
+  flatView: { position: 'relative', margin:5, justifyContent:'center',display:'flex'},  
   bgDarkGrey:{width:'100%',backgroundColor:'#85929e', paddingTop:10,paddingBottom:10,paddingRight:3,paddingLeft:3,borderTopLeftRadius:8,borderTopRightRadius:8} 
 })

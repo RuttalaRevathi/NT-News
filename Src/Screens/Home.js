@@ -766,7 +766,7 @@ export default class HomeScreen extends Component {
 
                                 this.state.HyderabadData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -861,7 +861,7 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.NationalData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -958,7 +958,7 @@ export default class HomeScreen extends Component {
                                 this.state.InterNationalData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1054,7 +1054,7 @@ export default class HomeScreen extends Component {
                                 this.state.TelanganaData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1151,7 +1151,7 @@ export default class HomeScreen extends Component {
                                 this.state.ApData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1248,7 +1248,7 @@ export default class HomeScreen extends Component {
                                 this.state.CinemaData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1343,7 +1343,7 @@ export default class HomeScreen extends Component {
                                 this.state.SportsData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1439,7 +1439,7 @@ export default class HomeScreen extends Component {
                                 this.state.ChinthanaData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1533,7 +1533,7 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.EducationData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1629,7 +1629,7 @@ export default class HomeScreen extends Component {
                                 this.state.BusinessData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1726,7 +1726,7 @@ export default class HomeScreen extends Component {
                                 this.state.SpecialData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1823,7 +1823,7 @@ export default class HomeScreen extends Component {
                                 this.state.NriData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -1919,7 +1919,7 @@ export default class HomeScreen extends Component {
                                 this.state.LifeStyleData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2076,7 +2076,7 @@ export default class HomeScreen extends Component {
                                 this.state.MoreData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2172,7 +2172,7 @@ export default class HomeScreen extends Component {
                                 this.state.ScienceData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2331,7 +2331,7 @@ export default class HomeScreen extends Component {
                                 this.state.CartoonData.length != 0 && { isLoading: true } ?
 
                                     <View >
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             data={this.state.CartoonData.data}
                                             showsHorizontalScrollIndicator={true}
                                             horizontal={true}
@@ -2388,7 +2388,7 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.EverGreenData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2485,7 +2485,7 @@ export default class HomeScreen extends Component {
                                 this.state.CrimeData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2581,7 +2581,7 @@ export default class HomeScreen extends Component {
                                 this.state.ZindagiData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2677,7 +2677,7 @@ export default class HomeScreen extends Component {
                                 this.state.BathukammaData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2774,7 +2774,7 @@ export default class HomeScreen extends Component {
                                 this.state.TourismData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2870,7 +2870,7 @@ export default class HomeScreen extends Component {
                                 this.state.AgricultureData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -2966,7 +2966,7 @@ export default class HomeScreen extends Component {
 
                                 this.state.EditpageData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3063,7 +3063,7 @@ export default class HomeScreen extends Component {
                                 this.state.SampadhaData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3159,7 +3159,7 @@ export default class HomeScreen extends Component {
                                 this.state.CookingData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3256,7 +3256,7 @@ export default class HomeScreen extends Component {
                                 this.state.StoriesData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3353,7 +3353,7 @@ export default class HomeScreen extends Component {
                                 this.state.HealthData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3450,7 +3450,7 @@ export default class HomeScreen extends Component {
                                 this.state.VaasthuData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -3547,7 +3547,7 @@ export default class HomeScreen extends Component {
                                 this.state.SahithyamData.length != 0 && { isLoading: true } ?
 
                                     <View style={commonstyles.flatView}>
-                                        <FlatList
+                                        <FlatList style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}

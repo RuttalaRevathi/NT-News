@@ -549,7 +549,7 @@ export default class HomeScreen extends Component {
                     <View>
                         {/* LatestNews  text*/}
 
-                        <View style={{ flexDirection: 'row',  top: 5, bottom: 5, flex: 1,backgroundColor:"#d6dbdf" }}>
+                        <View style={{ flexDirection: 'row',  top: 5, bottom: 5, flex: 1, }}>
                             <View style={commonstyles.categoryView}>
                                 <View>
                                     <Text style={commonstyles.Category}>

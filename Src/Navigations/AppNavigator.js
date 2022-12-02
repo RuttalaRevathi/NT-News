@@ -82,8 +82,8 @@ function BottomTab() {
           showLabel: true,
         }
       })}>
-   
-        
+
+
 
       <Tab.Screen
         name="TopTabs" component={TopTabs}
@@ -142,33 +142,13 @@ function BottomTab() {
   );
 
 }
-function DummyHeader({navigation}){
-  return(
-  //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-  //   <Text>Home Screen</Text>
-  //   <Button
-  //     title="Go to Profile"
-  //     onPress={() =>
-  //       navigation.navigate('Details')
-  //     }
-  //   />
-  // </View>
-    
-    <Header image={require('../Assets/Images/logo.png')} isMenu={true} 
-    
-    leftBtnClick={() => {navigation.navigate.openDrawer()}}
-         isNotif={true}
 
-        NotificationClick={() => this.props?.navigation.navigate("LatestNews")} />
-        
-  )
-}
 const Stack = createStackNavigator();
 function MainStack({ }) {
   return (
 
-    <Stack.Navigator  screenOptions={{header: DummyHeader}}>
- 
+    <Stack.Navigator screenOptions={{ header: DummyHeader }}>
+
       {/* <Stack.Screen name="splash" component={SplashScreen} /> */}
       <Stack.Screen name="appDrawer" component={AppDrawer} />
       {/* <Stack.Screen name="Category" component={Category} /> */}
@@ -176,12 +156,20 @@ function MainStack({ }) {
       <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
       <Stack.Screen name="VideoArticle" component={VideoArticle} />
       <Stack.Screen name="CartoonArticle" component={CartoonArticle} />
-      
+
 
     </Stack.Navigator>
   )
 }
+function DummyHeader({ navigation }) {
+  return (
+    <Header image={require('../Assets/Images/logo.png')} isMenu={true}
+      leftBtnClick={() => { navigation.navigate.openDrawer() }}
+      isNotif={true}
+      NotificationClick={() => navigation.navigate("LatestNews")} />
 
+  )
+}
 const Drawer = createDrawerNavigator();
 function AppDrawer() {
   return (
@@ -244,8 +232,8 @@ function AppDrawer() {
 const TopTab = createMaterialTopTabNavigator();
 function TopTabs() {
   return (
-   
-      
+
+
     <TopTab.Navigator
       // tabBarPosition="top"
       // tabBar={(props) =>}
@@ -258,7 +246,7 @@ function TopTabs() {
           backgroundColor: light_blue, height: 50,
         },
         tabBarItemStyle: {
-          
+
           width: 'auto',
           alignItems: 'flex-start',
         },
@@ -308,7 +296,7 @@ function TopTabs() {
   )
 }
 
-export default function AppNavigator(props, { navigation }){
+export default function AppNavigator(props, { navigation }) {
 
   return (
     <NavigationContainer >

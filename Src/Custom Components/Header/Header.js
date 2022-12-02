@@ -1,6 +1,6 @@
 import React from "react";
 import { HeaderStyle } from "./Header.Styles";
-import { View, Image, Text, TouchableOpacity } from 'react-native'
+import { View, Image, Text, TouchableOpacity, ToastAndroid } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import FastImage from 'react-native-fast-image'
 import { Header_text, whitecolor } from "../../Styles/CommonStyles";

@@ -142,13 +142,25 @@ function BottomTab() {
   );
 
 }
-function DummyHeader(_props){
+function DummyHeader({navigation}){
   return(
+  //   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+  //   <Text>Home Screen</Text>
+  //   <Button
+  //     title="Go to Profile"
+  //     onPress={() =>
+  //       navigation.navigate('Details')
+  //     }
+  //   />
+  // </View>
+    
     <Header image={require('../Assets/Images/logo.png')} isMenu={true} 
-    leftBtnClick={() => {this.props.navigation.openDrawer()}}
+    
+    leftBtnClick={() => {navigation.navigate.openDrawer()}}
          isNotif={true}
 
-        NotificationClick={() => this.props.navigation.navigate("LatestNews")} />
+        NotificationClick={() => this.props?.navigation.navigate("LatestNews")} />
+        
   )
 }
 const Stack = createStackNavigator();

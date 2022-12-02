@@ -6,7 +6,7 @@ export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
 export const Dark_graycolor = "#808080"
 export const blackcolor = "#000000"
-export const gallerycolor = "#0C6291"
+export const gallerycolor = "#FFC300"
 export const light_blue = "#d8f3fc"
 export const dark_blue = "#bae6f5"
 export const Header_text = "#262A85"
@@ -134,7 +134,7 @@ export const commonstyles = StyleSheet.create({
     color: blackcolor,
     fontFamily: 'Mandali-Bold',
     fontSize: 27,
-    top: 8
+    top: 8,
     // fontWeight: '400'
 
   },
@@ -336,5 +336,5 @@ export const commonstyles = StyleSheet.create({
   },
   categoryView: { flex: 1.7, flexDirection: 'row', },
   flatView: { position: 'relative', marginBottom: -10 ,marginTop:10},
-  gridView:{backgroundColor:grid_color,}
+  gridView:{}
 })

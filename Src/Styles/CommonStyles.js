@@ -54,7 +54,7 @@ export const commonstyles = StyleSheet.create({
     borderRightColor: shadow_color, borderRightWidth: 1
   },
   latestimgTag: { width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
-  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2 },
+  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2,paddingRight:20 },
   slidercard: {
     height: 200,
     width: screenWidth - 10,

@@ -14,6 +14,7 @@ export const Header_BG_Color = "#030533"
 export const TimeStamp = "#8D8D8D"
 export const Gary_Light = "#ecf1f5"
 export const shadow_color = "#ccc"
+export const grid_color ="#F2D7EE"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -333,7 +334,7 @@ export const commonstyles = StyleSheet.create({
   videoImg: {
     width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",
   },
-  categoryView: { flex: 1.7, flexDirection: 'row' },
+  categoryView: { flex: 1.7, flexDirection: 'row', },
   flatView: { position: 'relative', marginBottom: -10 ,marginTop:10},
-  gridView:{backgroundColor:"#F2D7EE",}
+  gridView:{backgroundColor:grid_color,}
 })

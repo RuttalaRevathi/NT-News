@@ -50,12 +50,48 @@ export default class VideosNews extends Component {
                         {
 
                             this.state.HyderabadData.length != 0 && { isLoading: true } ?
-
+                                
                                 <View >
                                     <FlatList
+                                        style={commonstyles.cateflistOne}
+                                        //data={this.state.HyderabadData.data}
+                                        numColumns={1}
+                                     data={this.state.HyderabadData.data.slice(0, 1)}
+                                        renderItem={({ item, index }) =>
+
+                                            <View style={{ flex: 1, }}>
+                                                <View style={{}}>
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
+                                                    <View style={commonstyles.latestMainView}>
+                                                            <View style={commonstyles.latestsubView}>
+                                                                <View>
+                                                                    <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                </View>
+                                                                <View>
+                                                                <View style={{backgroundColor:'red',padding:5,bottom: 55, left:0, position:'absolute'}}>
+                                                                <FastImage style={{ height: 15, width: 25,borderRadius:10 }}
+                                                                source={require('../../Assets/Images/videoicon.png')} />
+                                                                </View>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestTxtTag}>{item.title.rendered}
+                                                                    </Text>
+                                                                </View>
+                                                            </View>
+                                                        </View>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            </View>
+
+
+
+                                        }
+
+                                    />
+                                    <FlatList
                                         style={commonstyles.cateflist}
-                                        data={this.state.HyderabadData.data}
+                                        //data={this.state.HyderabadData.data}
                                         numColumns={2}
+                                     data={this.state.HyderabadData.data.slice(1, -1)}
                                         renderItem={({ item, index }) =>
 
                                             <View style={{ flex: 1, }}>

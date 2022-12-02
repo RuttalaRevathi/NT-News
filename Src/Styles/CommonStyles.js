@@ -166,6 +166,21 @@ export const commonstyles = StyleSheet.create({
   cateImage: { width: 120, height: 90, borderRadius: 10, },
   latestText: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, },
   latesttime: { color: appThemeColor, fontSize: 16, fontFamily: 'JIMS', },
+  
+  cardViewFirst: {
+    backgroundColor: whitecolor,
+    padding: 3,
+    elevation: 5,
+    margin: 5,
+    // height:120,
+    borderRadius: 10,
+    flexDirection: 'row',
+    flex: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.7,
+    shadowRadius: 2,
+  },
   cardView: {
     backgroundColor: whitecolor,
     padding: 3,
@@ -313,6 +328,7 @@ export const commonstyles = StyleSheet.create({
   },
   cateviewImg: { marginRight: 5 },
   cateflist: { paddingBottom: 150, top: 10, margin: 5 },
+  cateflist: { paddingBottom: 50, top: 10, margin: 5 },
 
   videoImg: {
     width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",

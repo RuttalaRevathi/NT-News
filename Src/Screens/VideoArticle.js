@@ -80,7 +80,7 @@ export default class VideoArticle extends Component {
     }
 
     render() {
-
+        let source1 = this.state.data.content.rendered.replace('lazyload', 'text/javascript')
         const regex = /(<([^>#&'';;]+)>)/ig;
         const result = this.state.data.content.rendered
         var Arr = this.state.RelatedData
@@ -158,16 +158,22 @@ export default class VideoArticle extends Component {
                                                                     height:inherit
                                                                   }
                                                                   p iframe{
+<<<<<<< HEAD
                                                                     width:100% !important;
                                                                     height:255px
                                                                   }
+=======
+                                                                    width:100%;
+                                                                    height:180px;  
+                                                                  
+>>>>>>> 510486bf19339e52b63367183207af878eba21cb
                                                                   figure img{
                                                                     width:100%;
                                                                     height:inherit
                                                                   }
                                 `}
 
-                            source={{ html: this.state.data.content.rendered, baseUrl: 'https://twitter.com' }}
+                                source={{ html: source1+="<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}</style>", baseUrl: 'https://twitter.com' }}
                             scalesPageToFit={false}
                             viewportContent={'width=device-width, user-scalable=no'}
 

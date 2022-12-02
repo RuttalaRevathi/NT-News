@@ -9,7 +9,7 @@ import AutoHeightWebView from 'react-native-autoheight-webview'
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-import { Article, BaseUrl, HomeSlider, RelatedUrl, MenuUrl, LatestUrl } from '../Utilities/Api/Urls';
+import { Article, BaseUrl, HomeSlider, RelatedUrl, MenuUrl, Next } from '../Utilities/Api/Urls';
 import moment from 'moment'
 import FastImage from 'react-native-fast-image'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
@@ -29,7 +29,6 @@ const screenHeight = Dimensions.get('window').height;
 export default class CinemaDetailsScreen extends Component {
     constructor(props) {
         super(props);
-        console.log(props, "props")
         this.state = {
             data: this.props.route.params.data,
             RelatedData: [],
@@ -49,40 +48,7 @@ export default class CinemaDetailsScreen extends Component {
         }
     };
     componentDidMount() {
-        //    Api integration for  Menu
-        fetch(BaseUrl + MenuUrl)
-            .then((response) => response.json())
-            .then(responseJson => {
-                this.setState({ MenuData: responseJson, isLoading: true }, () => {
-
-                });
-
-            })
-        this.fetchData()
-        setTimeout(() => {
-            this.setState({ time: '10' });
-        }, 500);
-          //    Api integration for  Latest News
-          fetch(BaseUrl + LatestUrl)
-          .then((response) => response.json())
-
-          .then(responseJson => {
-              // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-
-              this.setState({ LatestData: responseJson, isLoading: true }, () => {
-                  // console.log("LatestDataList data===========" + JSON.stringify(this.state.LatestData))                    
-                  var onlyStandard = this.state.LatestData.data.filter((obj) => {
-                      return (obj.format == 'standard')
-                  })
-                  this.setState({ OnlyLatest: onlyStandard, }, () => {
-
-                  })
-              });
-          })
-          .catch((error) => {
-              console.error(error);
-          });
-
+    console.log(this.state.data.length);
     }
 
     componentDidUpdate() {
@@ -155,195 +121,7 @@ export default class CinemaDetailsScreen extends Component {
             <View style={commonstyles.container}>
 
                 
-                {/* Top Scroller */}
-                {/* <View>
-
-                    <FlatList
-                        style={{ backgroundColor: light_blue, borderBottomColor: dark_blue, borderBottomWidth: 1.5, }}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={true}
-                        persistentScrollbar={true}
-                        data={this.state.MenuData}
-                        ref={(ref) => { this.headerSlots = ref; }}
-                        extraData={this.state}
-                        renderItem={({ item, index }) =>  
-                            <View>
-
-                                <TouchableOpacity onPress={() => {
-                                    switch (index) {
-                                        case 0: {
-                                            this.props.navigation.navigate("Varthalu");
-                                        }
-                                            break;
-                                        case 1: {
-                                            this.props.navigation.navigate("Hyderabad");
-                                        }
-                                            break;
-                                        case 2: {
-                                            this.props.navigation.navigate("National");
-                                        }
-                                            break;
-                                        case 3: {
-                                            this.props.navigation.navigate("InterNational");
-
-                                        }
-                                            break;
-                                        case 4: {
-                                            this.props.navigation.navigate("Telangana");
-
-                                        }
-                                            break;
-                                        case 5: {
-                                            this.props.navigation.navigate("Ap");
-
-                                        }
-                                            break;
-                                        case 6: {
-                                            this.props.navigation.navigate("Cinema");
-
-                                        }
-                                            break;
-                                        case 7: {
-                                            this.props.navigation.navigate("Sports");
-
-                                        }
-                                            break;
-                                        case 8: {
-                                            this.props.navigation.navigate("Chinthana");
-
-                                        }
-                                            break;
-                                        case 9: {
-                                            this.props.navigation.navigate("Education");
-
-                                        }
-                                            break;
-                                        case 10: {
-                                            this.props.navigation.navigate("Business");
-
-                                        }
-                                            break;
-                                        case 11: {
-                                            this.props.navigation.navigate("Special");
-
-                                        }
-                                            break;
-                                        case 12: {
-                                            this.props.navigation.navigate("LifeStyle");
-
-                                        }
-                                            break;
-                                        case 13: {
-                                            this.props.navigation.navigate("Photos");
-
-                                        }
-                                            break;
-                                        case 14: {
-                                            this.props.navigation.navigate("Videos");
-
-                                        }
-                                            break;
-                                        case 15: {
-                                            this.props.navigation.navigate("More");
-
-                                        }
-                                            break;
-                                        case 16: {
-                                            this.props.navigation.navigate("Bathukamma");
-
-                                        }
-                                            break;
-                                        case 17: {
-                                            this.props.navigation.navigate("Nri");
-                                        }
-                                            break;
-                                        case 18: {
-                                            this.props.navigation.navigate("Science");
-
-                                        }
-                                            break;
-                                        case 19: {
-                                            this.props.navigation.navigate("Cartoon");
-
-                                        }
-                                            break;
-                                        case 20: {
-                                            this.props.navigation.navigate("EverGreen");
-
-                                        }
-                                            break;
-                                        case 21: {
-                                            this.props.navigation.navigate("Crime");
-
-                                        }
-                                            break;
-                                        case 22: {
-                                            this.props.navigation.navigate("Zindagi");
-
-                                        }
-                                            break;
-                                        case 23: {
-                                            this.props.navigation.navigate("Bathukamma");
-
-                                        }
-                                            break;
-                                        case 24: {
-                                            this.props.navigation.navigate("Tourism");
-
-                                        }
-                                            break;
-                                        case 25: {
-                                            this.props.navigation.navigate("Agriculture");
-
-                                        }
-                                            break;
-                                        case 26: {
-                                            this.props.navigation.navigate("EditPage");
-
-                                        }
-                                            break;
-                                        case 27: {
-                                            this.props.navigation.navigate("Sampadha");
-
-                                        }
-                                            break;
-                                        case 28: {
-                                            this.props.navigation.navigate("Cooking");
-
-                                        }
-                                            break;
-                                        case 29: {
-                                            this.props.navigation.navigate("Kathalu");
-
-                                        }
-                                            break;
-                                        case 30: {
-                                            this.props.navigation.navigate("Health");
-
-                                        }
-                                        case 31: {
-                                            this.props.navigation.navigate("Vaasthu");
-
-                                        }
-                                            break;
-                                        default: {
-                                            this.props.navigation.navigate("Sahithyam");
-
-
-                                        }
-                                    }
-
-                                }}>
-                                    <View style={commonstyles.menuview}>
-
-                                        <Text style={commonstyles.menutext}>{item.title}</Text>
-                                    </View>
-                                </TouchableOpacity>
-
-                            </View>
-                        }
-                    />
-                </View> */}
+            
                 <View >
                     <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>

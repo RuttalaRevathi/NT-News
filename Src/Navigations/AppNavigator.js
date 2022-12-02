@@ -147,7 +147,7 @@ const Stack = createStackNavigator();
 function MainStack({ }) {
   return (
 
-    <Stack.Navigator screenOptions={{ header: DummyHeader }}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
 
       {/* <Stack.Screen name="splash" component={SplashScreen} /> */}
       <Stack.Screen name="appDrawer" component={AppDrawer} />
@@ -164,24 +164,29 @@ function MainStack({ }) {
 function DummyHeader({ navigation }) {
   return (
     <Header image={require('../Assets/Images/logo.png')} isMenu={true}
-      leftBtnClick={() => { navigation.navigate.openDrawer() }}
+      leftBtnClick={() => {navigation.navigate.openDrawer()}}
       isNotif={true}
       NotificationClick={() => navigation.navigate("LatestNews")} />
-
   )
 }
 const Drawer = createDrawerNavigator();
 function AppDrawer() {
   return (
-    <Drawer.Navigator screenOptions={{
-      headerShown: false,
+    <Drawer.Navigator screenOptions={{header:DummyHeader,
+      // headerShown: false,
       drawerStyle: {
         backgroundColor: '#c6cbef',
         width: 250,
       },
     }}
-      drawerContent={props => <SideMenu{...props} />}>
-      <Drawer.Screen name="bottomTab" component={BottomTab} />
+    useLegacyImplementation
+      drawerContent={(props) => <SideMenu {...props} />}
+    >
+      {/* <Drawer.Screen name="Ap" component={ApNews} />
+      <Drawer.Screen name="Cinema" component={CinemaNews} /> */}
+      {/* drawerContent={props => <SideMenu{...props} />}> */}
+      <Drawer.Screen name="bottomTab" component={BottomTab} 
+        />
       <Drawer.Screen name="LatestNews" component={LatestNews} />
       {/* <Drawer.Screen name="Category" component={Category} /> */}
       <Drawer.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
@@ -193,8 +198,8 @@ function AppDrawer() {
       <Drawer.Screen name="National" component={NationalNews} />
       <Drawer.Screen name="InterNational" component={InternationalNews} />
       <Drawer.Screen name="Telangana" component={TelanganaNews} />
-      <Drawer.Screen name="Ap" component={ApNews} />
-      <Drawer.Screen name="Cinema" component={CinemaNews} />
+      {/* <Drawer.Screen name="Ap" component={ApNews} />
+      <Drawer.Screen name="Cinema" component={CinemaNews} /> */}
       <Drawer.Screen name="Sports" component={SportsNews} />
       <Drawer.Screen name="Chinthana" component={ChinthanaNews} />
       <Drawer.Screen name="Education" component={EducationNews} />
@@ -301,6 +306,7 @@ export default function AppNavigator(props, { navigation }) {
   return (
     <NavigationContainer >
       <MainStack />
+      {/* <AppDrawer/> */}
     </NavigationContainer>
   );
 

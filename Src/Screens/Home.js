@@ -2000,7 +2000,7 @@ export default class HomeScreen extends Component {
                                 </View>
                                 <View style={{ flex: 0.3 }}>
                                     <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
+                                        <Ionicons name="arrow-forward" size={25} color={"#111"} style={{ justifyContent: 'center', }} />
                                     </TouchableOpacity>
                                 </View>
                             </View>

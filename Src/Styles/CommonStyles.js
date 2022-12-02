@@ -5,7 +5,7 @@ export const appThemeColor = "#262A85";
 export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
 export const Dark_graycolor = "#808080"
-export const blackcolor = "#000000"
+export const blackcolor = "#000"
 export const gallerycolor = "#FFC300"
 export const light_blue = "#d8f3fc"
 export const dark_blue = "#bae6f5"
@@ -97,7 +97,7 @@ export const commonstyles = StyleSheet.create({
     paddingRight: 10, paddingTop: 10, flex: 1
   },
   ptext: {
-    color: "#fff", fontSize: 25,
+    color: "#111", fontSize: 25,
     marginEnd: 5, fontFamily: 'Mandali-Bold'
   },
   phototext: {
@@ -110,7 +110,7 @@ export const commonstyles = StyleSheet.create({
     marginRight: 10,
     lineHeight: 29,
     position: 'relative',
-    top: 72
+    top: 25
   },
   sliderGradient: {
     width: '100%', flex: 1.5, bottom: 0, borderBottomLeftRadius: 15,
@@ -121,7 +121,7 @@ export const commonstyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
-    height: 200,
+    height: 100,
     width: "100%",
     position: 'absolute',
     bottom: 0,
@@ -135,6 +135,7 @@ export const commonstyles = StyleSheet.create({
     fontFamily: 'Mandali-Bold',
     fontSize: 27,
     top: 8,
+    left:10  
     // fontWeight: '400'
 
   },
@@ -143,7 +144,7 @@ export const commonstyles = StyleSheet.create({
     opacity: 0.8
   },
   dot: {
-    marginTop: 22, marginLeft: 5
+    marginTop: 22, marginLeft: 15
   },
   latestCard: {
     backgroundColor: "#fff",

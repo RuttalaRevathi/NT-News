@@ -6,7 +6,7 @@ export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
 export const Dark_graycolor = "#808080"
 export const blackcolor = "#000000"
-export const gallerycolor = "#402612"
+export const gallerycolor = "#0282b3"
 export const light_blue = "#d8f3fc"
 export const dark_blue = "#bae6f5"
 export const Header_text = "#262A85"
@@ -89,7 +89,7 @@ export const commonstyles = StyleSheet.create({
   photoview: {
     backgroundColor: gallerycolor,
     borderRadius: 10, margin: 5,
-    width: '97%', paddingBottom: 10
+    width: '97%', paddingBottom: 10,marginTop:10
   },
   phototextview: {
     flexDirection: 'row', paddingLeft: 10,
@@ -239,10 +239,11 @@ export const commonstyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     elevation: 1,
-    margin: 5,
+    margin:10,
     borderRadius: 5,
     height: 'auto',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingRight:10
   },
   pcard: {
     // flex: 1,
@@ -317,5 +318,6 @@ export const commonstyles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",
   },
   categoryView: { flex: 1.7, flexDirection: 'row' },
-  flatView: { position: 'relative', marginBottom: -10 }
+  flatView: { position: 'relative', marginBottom: -10 ,marginTop:10},
+  gridView:{backgroundColor:"#F2D7EE",}
 })

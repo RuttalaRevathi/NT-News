@@ -42,7 +42,8 @@ export default class HomeScreen extends Component {
             VideosData: [], CartoonData: [], EverGreenData: [], CrimeData: [], ZindagiData: [],
             TourismData: [], AgricultureData: [], EditpageData: [], CookingData: [],
             StoriesData: [], ApData: [], ChinthanaData: [], EducationData: [], SpecialData: [],
-            MoreData: [], ScienceData: [],
+            MoreData: [], ScienceData: [], VarthaluData: [], BathukammaData: [], SampadhaData: [],
+            HealthData: [], VaasthuData: [], SahithyamData: [],
             refresh: false,
 
         }
@@ -58,7 +59,6 @@ export default class HomeScreen extends Component {
                 });
 
             })
-
 
         //    Api integration for  slider News
         fetch(BaseUrl + Slider)
@@ -98,83 +98,17 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
-
-        //    Api integration for  Cinema News
-        fetch(BaseUrl + CategoryUrl + Cinema).then((response) => response.json())
+        //    Api integration for  Varthalu News
+        fetch(BaseUrl + CategoryUrl + Varthalu).then((response) => response.json())
             .then(responseJson => {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ CinemaData: responseJson, isLoading: true }, () => {
+                this.setState({ VarthaluData: responseJson, isLoading: true }, () => {
                     // console.log("CinemaDataList data=========================================================" + JSON.stringify(this.state.CinemaData.data))
                 });
             })
             .catch((error) => {
                 console.error(error);
             });
-        //    Api integration for  Web stories
-        fetch(BaseUrl + WebstoriesUrl).then((response) =>
-            response.json())
-
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-
-                this.setState({ WebStoriesData: responseJson, isLoading: true }, () => {
-                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
-                    // console.log(" data=========================================================" + (this.state.LatestData.data[0].date))
-
-                });
-
-            })
-
-            .catch((error) => {
-                console.error(error);
-            });
-        //    Api integration for  Photogallery
-        fetch(BaseUrl + CategoryUrl + Photos).then((response) =>
-            response.json())
-
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-
-                this.setState({ Gallery: responseJson, isLoading: true }, () => {
-                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
-                    // console.log(" data=========================================================" + (this.state.Gallery))
-
-                });
-
-            })
-
-            .catch((error) => {
-                console.error(error);
-            });
-
-        //    Api integration for  Videos News
-        fetch(BaseUrl + CategoryUrl + Videos).then((response) => response.json())
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ VideosData: responseJson, isLoading: true }, () => {
-                    // console.log("VideosData=========================================================" + JSON.stringify(this.state.VideosData.data))
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        //    Api integration for  Sports
-        fetch(BaseUrl + CategoryUrl + Sports)
-            .then((response) => response.json())
-
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-
-                this.setState({ SportsData: responseJson, isLoading: true }, () => {
-                    // console.log("SportsData data=========================================================" + JSON.stringify(this.state.SportsData.data))
-                    // console.log(" data=========================================================" + (this.state.LatestData.data[0].date))
-                });
-            })
-
-            .catch((error) => {
-                console.error(error);
-            });
-
         //    Api integration for  Hyderabad News
         fetch(BaseUrl + CategoryUrl + Hyderabad).then((response) => response.json())
             .then(responseJson => {
@@ -232,6 +166,58 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+        //    Api integration for  Cinema News
+        fetch(BaseUrl + CategoryUrl + Cinema).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ CinemaData: responseJson, isLoading: true }, () => {
+                    // console.log("CinemaDataList data=========================================================" + JSON.stringify(this.state.CinemaData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Sports
+        fetch(BaseUrl + CategoryUrl + Sports)
+            .then((response) => response.json())
+
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+
+                this.setState({ SportsData: responseJson, isLoading: true }, () => {
+                    // console.log("SportsData data=========================================================" + JSON.stringify(this.state.SportsData.data))
+                    // console.log(" data=========================================================" + (this.state.LatestData.data[0].date))
+                });
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Chinthana News
+        fetch(BaseUrl + CategoryUrl + Chinthana).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ ChinthanaData: responseJson, isLoading: true }, () => {
+                    // console.log("ChinthanaData================================" + JSON.stringify(this.state.ChinthanaData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Education News
+        fetch(BaseUrl + CategoryUrl + Education).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ EducationData: responseJson, isLoading: true }, () => {
+                    // console.log("EducationData================================" + JSON.stringify(this.state.EducationData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
         //    Api integration for  Business News
         fetch(BaseUrl + CategoryUrl + Business).then((response) => response.json())
@@ -239,6 +225,18 @@ export default class HomeScreen extends Component {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
                 this.setState({ BusinessData: responseJson, isLoading: true }, () => {
                     // console.log("BusinessData=========================================================" + JSON.stringify(this.state.BusinessData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  special News
+        fetch(BaseUrl + CategoryUrl + Special).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ SpecialData: responseJson, isLoading: true }, () => {
+                    // console.log("SpecialData================================" + JSON.stringify(this.state.SpecialData.data))
                 });
             })
             .catch((error) => {
@@ -268,6 +266,78 @@ export default class HomeScreen extends Component {
                 console.error(error);
             });
 
+        //    Api integration for  Web stories
+        fetch(BaseUrl + WebstoriesUrl).then((response) =>
+            response.json())
+
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+
+                this.setState({ WebStoriesData: responseJson, isLoading: true }, () => {
+                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
+                    // console.log(" data=========================================================" + (this.state.LatestData.data[0].date))
+
+                });
+
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+        //    Api integration for  Photogallery
+        fetch(BaseUrl + CategoryUrl + Photos).then((response) =>
+            response.json())
+
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+
+                this.setState({ Gallery: responseJson, isLoading: true }, () => {
+                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
+                    // console.log(" data=========================================================" + (this.state.Gallery))
+
+                });
+
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Videos News
+        fetch(BaseUrl + CategoryUrl + Videos).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ VideosData: responseJson, isLoading: true }, () => {
+                    // console.log("VideosData=========================================================" + JSON.stringify(this.state.VideosData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  More News
+        fetch(BaseUrl + CategoryUrl + More).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ MoreData: responseJson, isLoading: true }, () => {
+                    // console.log("MoreData================================" + JSON.stringify(this.state.MoreData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Science News
+        fetch(BaseUrl + CategoryUrl + Science).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ ScienceData: responseJson, isLoading: true }, () => {
+                    // console.log("ScienceData================================" + JSON.stringify(this.state.ScienceData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
         //    Api integration for  Cartoon News
         fetch(BaseUrl + CategoryUrl + Cartoon).then((response) => response.json())
             .then(responseJson => {
@@ -312,6 +382,19 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
+        //    Api integration for  Bathukamma News
+        fetch(BaseUrl + CategoryUrl + Bathukamma).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ BathukammaData: responseJson, isLoading: true }, () => {
+                    // console.log("TourismData================================" + JSON.stringify(this.state.TourismData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
         //    Api integration for  Tourism News
         fetch(BaseUrl + CategoryUrl + Tourism).then((response) => response.json())
             .then(responseJson => {
@@ -334,6 +417,7 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
         //    Api integration for  EditPage News
         fetch(BaseUrl + CategoryUrl + Editpage).then((response) => response.json())
             .then(responseJson => {
@@ -345,6 +429,19 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
+        //    Api integration for  Sampadha News
+        fetch(BaseUrl + CategoryUrl + Sampadha).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ SampadhaData: responseJson, isLoading: true }, () => {
+                    // console.log("EditpageData================================" + JSON.stringify(this.state.EditpageData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
         //    Api integration for  cooking News
         fetch(BaseUrl + CategoryUrl + Cooking).then((response) => response.json())
             .then(responseJson => {
@@ -367,94 +464,51 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
-
-        //    Api integration for  Education News
-        fetch(BaseUrl + CategoryUrl + Education).then((response) => response.json())
+        //    Api integration for  Health News
+        fetch(BaseUrl + CategoryUrl + Health).then((response) => response.json())
             .then(responseJson => {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ EducationData: responseJson, isLoading: true }, () => {
-                    // console.log("EducationData================================" + JSON.stringify(this.state.EducationData.data))
+                this.setState({ HealthData: responseJson, isLoading: true }, () => {
+                    // console.log("StoriesData================================" + JSON.stringify(this.state.StoriesData.data))
                 });
             })
             .catch((error) => {
                 console.error(error);
             });
-
-        //    Api integration for  special News
-        fetch(BaseUrl + CategoryUrl + Special).then((response) => response.json())
+        //    Api integration for  Vaasthu News
+        fetch(BaseUrl + CategoryUrl + Vaasthu).then((response) => response.json())
             .then(responseJson => {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ SpecialData: responseJson, isLoading: true }, () => {
-                    // console.log("SpecialData================================" + JSON.stringify(this.state.SpecialData.data))
+                this.setState({ VaasthuData: responseJson, isLoading: true }, () => {
+                    // console.log("StoriesData================================" + JSON.stringify(this.state.StoriesData.data))
                 });
             })
             .catch((error) => {
                 console.error(error);
             });
-
-        //    Api integration for  Science News
-        fetch(BaseUrl + CategoryUrl + Science).then((response) => response.json())
+        //    Api integration for  Sahithyam News
+        fetch(BaseUrl + CategoryUrl + Sahithyam).then((response) => response.json())
             .then(responseJson => {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ ScienceData: responseJson, isLoading: true }, () => {
-                    // console.log("ScienceData================================" + JSON.stringify(this.state.ScienceData.data))
+                this.setState({ SahithyamData: responseJson, isLoading: true }, () => {
+                    // console.log("StoriesData================================" + JSON.stringify(this.state.StoriesData.data))
                 });
             })
             .catch((error) => {
                 console.error(error);
             });
-
-        //    Api integration for  More News
-        fetch(BaseUrl + CategoryUrl + More).then((response) => response.json())
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ MoreData: responseJson, isLoading: true }, () => {
-                    // console.log("MoreData================================" + JSON.stringify(this.state.MoreData.data))
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-        //    Api integration for  Chinthana News
-        fetch(BaseUrl + CategoryUrl + Chinthana).then((response) => response.json())
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ ChinthanaData: responseJson, isLoading: true }, () => {
-                    // console.log("ChinthanaData================================" + JSON.stringify(this.state.ChinthanaData.data))
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-
-
-    }
-
-
-
-    toTop = () => {
-        // use current
-        flatListRef.current.scrollToOffset({ animated: true, offset: 0 })
     }
     goToTop = () => {
         this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     }
-    PullMe = () => {
-        this.setState({ refresh: true })
-        setTimeout(() => {
-            this.setState({ refresh: false })
 
-        }, 100)
-    }
     render() {
         const regex = /(<([^&#;>]+)>)/ig
         let decode = require('html-entities-decoder')
         // const mySectionListRef = useRef();
         return (
             <SafeAreaView style={commonstyles.container}>
-                             
+
                 <ScrollView style={{ backgroundColor: Gary_Light }}
                     ref={this.mySectionListRef}
                     refreshControl={
@@ -525,7 +579,7 @@ export default class HomeScreen extends Component {
                                             data={this.state.OnlyLatest.slice(0, 2)}
                                             renderItem={({ item, index }) =>
                                                 <View >
-                                                    <View>
+                                                    <View style={commonstyles.gridView}>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
@@ -539,203 +593,64 @@ export default class HomeScreen extends Component {
                                                                     </View>
                                                                 </View>
                                                             </View>
-                                                         
+
                                                         </TouchableOpacity>
                                                     </View>
                                                 </View>
                                             }
                                         />
-                                    </View>
-                                    :
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                    </View>
-                            }
-                        </View>
-
-                    </View>
-                    {/* Cinema News */}
-                    <View>
-                        {/* Cinema   text*/}
-
-
-                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
-                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
-                                <View style={{}}>
-                                    <Text style={commonstyles.Category}>
-                                        సినిమా
-                                    </Text>
-                                </View>
-                                <View style={commonstyles.dot}>
-                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
-                                </View>
-                            </View>
-                            <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Cinema") }}  >
-                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        {/*  Cinema  Cards*/}
-                        <View>
-                            {
-
-                                this.state.CinemaData.length != 0 && { isLoading: true } ?
-
-                                    <View style={{ position: 'relative' }}>
-                                        <FlatList
-                                            showsHorizontalScrollIndicator={false}
-                                            persistentScrollbar={false}
-                                            data={this.state.CinemaData.data.slice(0, 4)}
-                                            horizontal={false}
-                                            renderItem={({ item, index }) =>
-                                                <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
-                                                                </View>
-
-                                                            </View>
-                                                        </View>
-                                                    </TouchableOpacity>
-
-                                                </View>
-
-                                            }
-
-                                        />
-
-                                    </View>
-                                    :
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                    </View>
-                            }
-                        </View>
-                    </View>
-                    <View>
-                        {/* Web Stories */}
-                        {/* <View>
-                        web Stories  text
-
-                       <View style={commonstyles.cateView}>
-                            <View style={{}}>
-                                <Text style={commonstyles.Category}>
-                                    వెబ్ స్టోరీస్
-                                </Text>
-                            </View>
-                            <View style={commonstyles.dot}>
-                                <FontAwesome name="circle" size={10} color={appThemeColor} />
-                            </View>
-                        </View>
-                        web Stories  Cards
-                        <View>
-                            {
-
-                                this.state.WebStoriesData.length != 0 && { isLoading: true } ?
-
-                                    <View style={{ position: 'relative' }}>
-                                        <FlatList
-                                            data={this.state.WebStoriesData.data}
-                                            showsHorizontalScrollIndicator={false}
-                                            horizontal={true}
-                                            renderItem={({ item, index }) =>
-                                                <View >
-                                                    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => { this.props.navigation.navigate("WebStoriesDetails", { data: item }) }}  >
-                                                        <FastImageBackground source={{ uri: item.web_featured_image }} style={commonstyles.webcard} >
-                                                            <View style={{ backgroundColor: 'rgba(0,0,0,0.4)', flex: 0.2, top: 216, }}>
-                                                                <Text style={commonstyles.webtext}>{item.title.rendered}</Text>
-                                                            </View>
-                                                        </ImageBackground>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            }
-
-                                        />
-                                    </View>
-                                    :
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                    </View>
-                            }
-                        </View>
-                    </View> */}
-                    </View>
-                    {/* Photo Gallery */}
-                    <View>
-                        {/*photo gallery  text*/}
-
-                        <View style={commonstyles.photoview}>
-                            <View style={commonstyles.phototextview}>
-                                <View style={{ flex: 1.7 }}>
-                                    <Text style={commonstyles.ptext}>
-                                        ఫోటో గ్యాలరీ
-                                    </Text>
-                                </View>
-                                <View style={{ flex: 0.3 }}>
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            {/* photo gallery  Cards*/}
-                            <View>
-                                {
-
-                                    this.state.Gallery.length != 0 && { isLoading: true } ?
-
-                                        <View >
-
+                                        <View style={{ position: 'relative' }}>
                                             <FlatList
-                                                data={this.state.Gallery.data}
                                                 showsHorizontalScrollIndicator={false}
-                                                horizontal={true}
+                                                persistentScrollbar={false}
+                                                // numColumns={2}
+                                                data={this.state.OnlyLatest.slice(2, 8)}
                                                 renderItem={({ item, index }) =>
-                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                    <View >
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                            <View style={commonstyles.sliderView}>
-                                                                <FastImage source={{ uri: item.web_featured_image }}
-                                                                    style={commonstyles.photocard}  >
-                                                                </FastImage>
-                                                                <LinearGradient colors={['transparent', 'white']}
-                                                                    style={commonstyles.linearGradient}
-                                                                    start={{ x: 0.5, y: 0.2 }}
-                                                                    locations={[0.2, 0.8]}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
-                                                                </LinearGradient>
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
                                                             </View>
                                                         </TouchableOpacity>
 
                                                     </View>
+
                                                 }
 
                                             />
+
                                         </View>
-                                        :
-                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                        </View>
-                                }
-                            </View>
+                                    </View>
+
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
                         </View>
 
                     </View>
-                    {/* Sports */}
+
+                    {/* Varthalu  */}
                     <View>
-                        {/* sports news  text*/}
-                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
-                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
-                                <View style={{}}>
+                        {/* Varthalu  text*/}
+
+                        <View style={{ flexDirection: 'row', marginLeft: 10, top: 5, bottom: 5, flex: 1 }}>
+                            <View style={commonstyles.categoryView}>
+                                <View>
                                     <Text style={commonstyles.Category}>
-                                        స్పోర్ట్స్
+                                        వార్తలు
                                     </Text>
                                 </View>
                                 <View style={commonstyles.dot}>
@@ -743,55 +658,86 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
                             <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Sports") }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Varthalu") }}  >
                                     <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
                                 </TouchableOpacity>
                             </View>
                         </View>
-
-                        {/* sports Varthalu  Cards*/}
+                        {/* flatlist for Varthalu News */}
                         <View>
                             {
-                                this.state.SportsData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                this.state.VarthaluData.length != 0 && { isLoading: true } ?
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.SportsData.data.slice(0, 4)}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.VarthaluData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                // numColumns={2}
+                                                data={this.state.OnlyLatest.slice(2, 8)}
+                                                renderItem={({ item, index }) =>
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
 
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
+
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
                                         <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
                                     </View>
                             }
                         </View>
-                    </View>
 
+                    </View>
                     {/* Hyderabad News */}
                     <View>
                         {/* Hyderabad   text*/}
@@ -818,39 +764,67 @@ export default class HomeScreen extends Component {
                             {
 
                                 this.state.HyderabadData.length != 0 && { isLoading: true } ?
-
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.HyderabadData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.HyderabadData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.HyderabadData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -858,67 +832,6 @@ export default class HomeScreen extends Component {
                                     </View>
                             }
                         </View>
-                    </View>
-                    {/* videos Gallery */}
-                    <View>
-                        {/*videos  text*/}
-
-                        <View style={commonstyles.photoview}>
-                            <View style={commonstyles.phototextview}>
-                                <View style={{ flex: 1.7 }}>
-                                    <Text style={commonstyles.ptext}>
-                                        వీడియోలు
-                                    </Text>
-                                </View>
-                                <View style={{ flex: 0.3 }}>
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            {/* videos  Cards*/}
-                            <View>
-                                {
-
-                                    this.state.VideosData.length != 0 && { isLoading: true } ?
-                                        <View >
-
-                                            <FlatList
-                                                data={this.state.VideosData.data}
-                                                showsHorizontalScrollIndicator={false}
-                                                horizontal={true}
-                                                renderItem={({ item, index }) =>
-                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                            <View style={commonstyles.sliderView}>
-
-                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
-                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
-                                                                        <FastImage style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
-                                                                    </View>
-                                                                </ImageBackground>
-                                                                <LinearGradient colors={['transparent', 'white']}
-                                                                    style={commonstyles.linearGradient}
-                                                                    start={{ x: 0.5, y: 0.2 }}
-                                                                    locations={[0.2, 0.8]}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
-                                                                </LinearGradient>
-                                                            </View>
-                                                        </TouchableOpacity>
-
-                                                    </View>
-                                                }
-
-                                            />
-                                        </View>
-                                        :
-                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                        </View>
-                                }
-                            </View>
-                        </View>
-
                     </View>
 
                     {/* National News */}
@@ -946,36 +859,67 @@ export default class HomeScreen extends Component {
                         <View>
                             {
                                 this.state.NationalData.length != 0 && { isLoading: true } ?
-
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.NationalData.data.slice(0, 4)}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.NationalData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.NationalData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1012,38 +956,67 @@ export default class HomeScreen extends Component {
 
                                 this.state.InterNationalData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.InterNationalData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.InterNationalData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.InterNationalData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1079,36 +1052,67 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.TelanganaData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.TelanganaData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.TelanganaData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.TelanganaData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1145,38 +1149,449 @@ export default class HomeScreen extends Component {
 
                                 this.state.ApData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.ApData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.ApData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.ApData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+                    {/* Cinema News */}
+                    <View>
+                        {/* Cinema   text*/}
+
+
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        సినిమా
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Cinema") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        {/*  Cinema  Cards*/}
+                        <View>
+                            {
+
+                                this.state.CinemaData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.CinemaData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.CinemaData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+                    {/* Sports */}
+                    <View>
+                        {/* sports news  text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        స్పోర్ట్స్
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Sports") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* sports   Cards*/}
+                        <View>
+                            {
+                                this.state.SportsData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.SportsData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.SportsData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+
+                    {/* Chinthana News */}
+                    <View>
+                        {/* Chinthana news  text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        చింతన
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Chinthana") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* Chinthana  Cards*/}
+                        <View>
+                            {
+                                this.state.ChinthanaData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.ChinthanaData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.ChinthanaData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+                    {/* Education News */}
+                    <View>
+                        {/* Education news  text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        ఎడ్యుకేషన్ & కెరీర్‌
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Education") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* education  Cards*/}
+                        <View>
+                            {
+                                this.state.EducationData.length != 0 && { isLoading: true } ?
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.EducationData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.EducationData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1212,36 +1627,164 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.BusinessData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.BusinessData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.BusinessData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.BusinessData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+
+                    {/* Special News */}
+                    <View>
+                        {/* Special   text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        ప్రత్యేకం
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Special") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* Special  Cards*/}
+                        <View>
+                            {
+
+                                this.state.SpecialData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.SpecialData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.SpecialData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1278,38 +1821,67 @@ export default class HomeScreen extends Component {
 
                                 this.state.NriData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.NriData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.NriData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.NriData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1345,36 +1917,67 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.LifeStyleData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.LifeStyleData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.LifeStyleData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.LifeStyleData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1384,6 +1987,321 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
+                    {/* Photo Gallery */}
+                    <View>
+                        {/*photo gallery  text*/}
+
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
+                                <View style={{ flex: 1.7 }}>
+                                    <Text style={commonstyles.ptext}>
+                                        ఫోటో గ్యాలరీ
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 0.3 }}>
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
+                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            {/* photo gallery  Cards*/}
+                            <View>
+                                {
+
+                                    this.state.Gallery.length != 0 && { isLoading: true } ?
+
+                                        <View >
+
+                                            <FlatList
+                                                data={this.state.Gallery.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+                                                                <FastImage source={{ uri: item.web_featured_image }}
+                                                                    style={commonstyles.photocard}  >
+                                                                </FastImage>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+                                                }
+
+                                            />
+                                        </View>
+                                        :
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                        </View>
+                                }
+                            </View>
+                        </View>
+
+                    </View>
+
+                     {/* More News */}
+                     <View>
+                        {/* More   text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        మరిన్ని
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("More") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* More  Cards*/}
+                        <View>
+                            {
+
+                                this.state.MoreData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.MoreData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.MoreData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+
+                    {/* Science News */}
+                    <View>
+                        {/* Science news  text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        సైన్స్‌ అండ్‌ టెక్నాలజీ
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Science") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* Science  Cards*/}
+                        <View>
+                            {
+                                this.state.ScienceData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.ScienceData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.ScienceData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+
+                    {/* videos Gallery */}
+                    <View>
+                        {/*videos  text*/}
+
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
+                                <View style={{ flex: 1.7 }}>
+                                    <Text style={commonstyles.ptext}>
+                                        వీడియోలు
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 0.3 }}>
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Videos") }}  >
+                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            {/* videos  Cards*/}
+                            <View>
+                                {
+
+                                    this.state.VideosData.length != 0 && { isLoading: true } ?
+                                        <View >
+
+                                            <FlatList
+                                                data={this.state.VideosData.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+
+                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
+                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
+                                                                        <FastImage style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
+                                                                    </View>
+                                                                </ImageBackground>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+                                                }
+
+                                            />
+                                        </View>
+                                        :
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                        </View>
+                                }
+                            </View>
+                        </View>
+
+                    </View>
+                   
                     {/* Cartoon News */}
                     <View>
                         {/* Cartoon   text*/}
@@ -1468,37 +2386,67 @@ export default class HomeScreen extends Component {
                         <View>
                             {
                                 this.state.EverGreenData.length != 0 && { isLoading: true } ?
-
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.EverGreenData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.EverGreenData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.EverGreenData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1535,38 +2483,67 @@ export default class HomeScreen extends Component {
 
                                 this.state.CrimeData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.CrimeData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.CrimeData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.CrimeData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1602,36 +2579,67 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.ZindagiData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.ZindagiData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.ZindagiData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.ZindagiData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1641,6 +2649,101 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
+                    {/* Bathukamma News */}
+                    <View>
+                        {/* Bathukamma  text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        బతుకమ్మ
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Bathukamma") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* Bathukamma  Cards*/}
+                        <View>
+                            {
+                                this.state.BathukammaData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.BathukammaData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.BathukammaData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
 
                     {/* Tourism News */}
                     <View>
@@ -1669,38 +2772,67 @@ export default class HomeScreen extends Component {
 
                                 this.state.TourismData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.TourismData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.TourismData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.TourismData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1736,36 +2868,67 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.AgricultureData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.AgricultureData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.AgricultureData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.AgricultureData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1801,39 +2964,164 @@ export default class HomeScreen extends Component {
                             {
 
                                 this.state.EditpageData.length != 0 && { isLoading: true } ?
-
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.EditpageData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.EditpageData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.EditpageData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
+                        </View>
+                    </View>
+
+                    {/* Sampadha News */}
+                    <View>
+                        {/* Sampadha   text*/}
+                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
+                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
+                                <View style={{}}>
+                                    <Text style={commonstyles.Category}>
+                                        సంపద
+                                    </Text>
+                                </View>
+                                <View style={commonstyles.dot}>
+                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
+                                </View>
+                            </View>
+                            <View style={{ flex: 0.3, top: 10 }}>
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("EditPage") }}  >
+                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                        {/* Sampadha  Cards*/}
+                        <View>
+                            {
+
+                                this.state.SampadhaData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.SampadhaData.data.slice(0, 2)}
+                                            renderItem={({ item, index }) =>
+                                                <View >
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
+                                                                </View>
+                                                            </View>
+
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            }
+                                        />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.SampadhaData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
+
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1869,36 +3157,67 @@ export default class HomeScreen extends Component {
                             {
                                 this.state.CookingData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.CookingData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.CookingData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.CookingData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1935,38 +3254,67 @@ export default class HomeScreen extends Component {
 
                                 this.state.StoriesData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.StoriesData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.StoriesData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.StoriesData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -1976,14 +3324,14 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
-                    {/* Education News */}
+                    {/* Health News */}
                     <View>
-                        {/* Education news  text*/}
+                        {/* Health   text*/}
                         <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
                             <View style={{ flex: 1.7, flexDirection: 'row' }}>
                                 <View style={{}}>
                                     <Text style={commonstyles.Category}>
-                                        ఎడ్యుకేషన్ & కెరీర్‌
+                                        ఆరోగ్యం
                                     </Text>
                                 </View>
                                 <View style={commonstyles.dot}>
@@ -1991,115 +3339,79 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
                             <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Education") }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Health") }}  >
                                     <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
                                 </TouchableOpacity>
                             </View>
                         </View>
 
-                        {/* education  Cards*/}
-                        <View>
-                            {
-                                this.state.EducationData.length != 0 && { isLoading: true } ?
-
-                                    <View >
-                                        <FlatList
-                                            data={this.state.EducationData.data.slice(0, 4)}
-                                            // numColumns={2}
-                                            renderItem={({ item, index }) =>
-
-                                                <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
-                                                                </View>
-
-                                                            </View>
-                                                        </View>
-                                                    </TouchableOpacity>
-
-                                                </View>
-
-                                            }
-
-                                        />
-
-                                    </View>
-                                    :
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                    </View>
-                            }
-                        </View>
-                    </View>
-
-                    {/* Special News */}
-                    <View>
-                        {/* Special   text*/}
-                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
-                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
-                                <View style={{}}>
-                                    <Text style={commonstyles.Category}>
-                                        ప్రత్యేకం
-                                    </Text>
-                                </View>
-                                <View style={commonstyles.dot}>
-                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
-                                </View>
-                            </View>
-                            <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Special") }}  >
-                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-
-                        {/* Special  Cards*/}
+                        {/* Health  Cards*/}
                         <View>
                             {
 
-                                this.state.SpecialData.length != 0 && { isLoading: true } ?
+                                this.state.HealthData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.SpecialData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.HealthData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.HealthData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -2109,14 +3421,14 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
-                    {/* Science News */}
+                    {/* Vaasthu News */}
                     <View>
-                        {/* Science news  text*/}
+                        {/* Vaasthu   text*/}
                         <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
                             <View style={{ flex: 1.7, flexDirection: 'row' }}>
                                 <View style={{}}>
                                     <Text style={commonstyles.Category}>
-                                        సైన్స్‌ అండ్‌ టెక్నాలజీ
+                                        వాస్తు
                                     </Text>
                                 </View>
                                 <View style={commonstyles.dot}>
@@ -2124,115 +3436,79 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
                             <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Science") }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Vaasthu") }}  >
                                     <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
                                 </TouchableOpacity>
                             </View>
                         </View>
 
-                        {/* Science  Cards*/}
-                        <View>
-                            {
-                                this.state.ScienceData.length != 0 && { isLoading: true } ?
-
-                                    <View >
-                                        <FlatList
-                                            data={this.state.ScienceData.data.slice(0, 4)}
-                                            // numColumns={2}
-                                            renderItem={({ item, index }) =>
-
-                                                <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
-                                                                </View>
-
-                                                            </View>
-                                                        </View>
-                                                    </TouchableOpacity>
-
-                                                </View>
-
-                                            }
-
-                                        />
-
-                                    </View>
-                                    :
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                    </View>
-                            }
-                        </View>
-                    </View>
-
-                    {/* More News */}
-                    <View>
-                        {/* More   text*/}
-                        <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
-                            <View style={{ flex: 1.7, flexDirection: 'row' }}>
-                                <View style={{}}>
-                                    <Text style={commonstyles.Category}>
-                                        మరిన్ని
-                                    </Text>
-                                </View>
-                                <View style={commonstyles.dot}>
-                                    <FontAwesome name="circle" size={10} color={appThemeColor} />
-                                </View>
-                            </View>
-                            <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("More") }}  >
-                                    <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-
-                        {/* More  Cards*/}
+                        {/* Vaasthu  Cards*/}
                         <View>
                             {
 
-                                this.state.MoreData.length != 0 && { isLoading: true } ?
+                                this.state.VaasthuData.length != 0 && { isLoading: true } ?
 
-                                    <View style={{ position: 'relative' }}>
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
-                                            data={this.state.MoreData.data.slice(0, 4)}
-                                            horizontal={false}
+                                            numColumns={2}
+                                            data={this.state.VaasthuData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.VaasthuData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -2242,14 +3518,14 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
-                    {/* Chinthana News */}
+                    {/* Sahithyam News */}
                     <View>
-                        {/* Chinthana news  text*/}
+                        {/* Sahithyam   text*/}
                         <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
                             <View style={{ flex: 1.7, flexDirection: 'row' }}>
                                 <View style={{}}>
                                     <Text style={commonstyles.Category}>
-                                        చింతన
+                                        సాహిత్యం
                                     </Text>
                                 </View>
                                 <View style={commonstyles.dot}>
@@ -2257,47 +3533,79 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
                             <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Chinthana") }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Sahithyam") }}  >
                                     <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
                                 </TouchableOpacity>
                             </View>
                         </View>
 
-                        {/* Chinthana  Cards*/}
+                        {/* Sahithyam  Cards*/}
                         <View>
                             {
-                                this.state.ChinthanaData.length != 0 && { isLoading: true } ?
 
-                                    <View >
+                                this.state.SahithyamData.length != 0 && { isLoading: true } ?
+
+                                    <View style={commonstyles.flatView}>
                                         <FlatList
-                                            data={this.state.ChinthanaData.data.slice(0, 4)}
-                                            // numColumns={2}
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            numColumns={2}
+                                            data={this.state.SahithyamData.data.slice(0, 2)}
                                             renderItem={({ item, index }) =>
-
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                        <View style={commonstyles.cardViewHome}>
-                                                            <View style={commonstyles.cateviewImg}>
-                                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                            </View>
-                                                            <View style={commonstyles.cateviewText}>
-                                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                                <View style={commonstyles.timeview}>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                    <View style={commonstyles.gridView}>
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.latestMainView}>
+                                                                <View style={commonstyles.latestsubView}>
+                                                                    <View>
+                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    </View>
+                                                                    <View>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                            style={commonstyles.latestTxtTag}>{decode(item.title.rendered)}
+                                                                        </Text>
+                                                                    </View>
                                                                 </View>
-
                                                             </View>
-                                                        </View>
-                                                    </TouchableOpacity>
 
+                                                        </TouchableOpacity>
+                                                    </View>
                                                 </View>
-
                                             }
-
                                         />
+                                        <View style={{ position: 'relative' }}>
+                                            <FlatList
+                                                showsHorizontalScrollIndicator={false}
+                                                persistentScrollbar={false}
+                                                data={this.state.SahithyamData.data.slice(2, 8)}
+                                                horizontal={false}
+                                                renderItem={({ item, index }) =>
 
+                                                    <View >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                            <View style={commonstyles.cardViewHome}>
+                                                                <View style={commonstyles.cateviewImg}>
+                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                </View>
+                                                                <View style={commonstyles.cateviewText}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                    <View style={commonstyles.timeview}>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                        <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                    </View>
+
+                                                                </View>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+
+                                                }
+
+                                            />
+
+                                        </View>
                                     </View>
                                     :
                                     <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
@@ -2306,12 +3614,17 @@ export default class HomeScreen extends Component {
                             }
                         </View>
                     </View>
+
+
+
+
+
+
+
 
                 </ScrollView>
 
-                {/* <TouchableOpacity onPress={() => {this.mySectionListRef.current.scrollToLocation({'animated':false,'sectionIndex':0,itemIndex: 0,
-                viewPosition: 0,viewOffset:1500})}} style={{position: 'absolute', right: 10, bottom: 10}}>      <Image resizeMode='contain' source={require('../Assets/Images/top_arrow.png')} style={{ width: 35, height: 35 }} />
-      </TouchableOpacity> */}
+
             </SafeAreaView>
         );
     }

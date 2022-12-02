@@ -1,6 +1,6 @@
 import 'react-native-get-random-values';
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator,Linking, StyleSheet, Alert, Dimensions } from 'react-native'
+import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, Linking, StyleSheet, Alert, Dimensions } from 'react-native'
 import { commonstyles, appThemeColor, graycode } from '../Styles/CommonStyles'
 import Header from '../Custom Components/Header/Header'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
@@ -89,9 +89,9 @@ export default class VideoArticle extends Component {
 
             <View style={commonstyles.container}>
 
-                
+
                 <View >
-                <View style={HeaderStyle.subHeadercustom}>
+                    <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.goBack()
@@ -116,7 +116,7 @@ export default class VideoArticle extends Component {
                             <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
-                           
+
                         </View>
                     </View>
                 </View>
@@ -145,9 +145,7 @@ export default class VideoArticle extends Component {
                             customStyle={`
                                   * {
                                     font-family: 'JIMS';
-                                    line-height: 2;
-                                    -webkit-user-select: none;
-  -webkit-touch-callout: none; 
+                                    line-height: 2;; 
                                   }
                                   p {
                                     font-size: 15px;
@@ -160,8 +158,8 @@ export default class VideoArticle extends Component {
                                                                     height:inherit
                                                                   }
                                                                   p iframe{
-                                                                    width:100%;
-                                                                    height:inherit
+                                                                    width:100% !important;
+                                                                    height:255px
                                                                   }
                                                                   figure img{
                                                                     width:100%;

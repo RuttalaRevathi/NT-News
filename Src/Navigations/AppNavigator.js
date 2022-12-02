@@ -164,7 +164,7 @@ function MainStack({ }) {
       <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
       <Stack.Screen name="VideoArticle" component={VideoArticle} />
       <Stack.Screen name="CartoonArticle" component={CartoonArticle} />
-      <Stack.Screen name="Varthalu" component={VarthaluNews} />
+      {/* <Stack.Screen name="Varthalu" component={VarthaluNews} />
       <Stack.Screen name="Hyderabad" component={HyderabadNews} />
       <Stack.Screen name="National" component={NationalNews} />
       <Stack.Screen name="InterNational" component={InternationalNews} />
@@ -195,7 +195,7 @@ function MainStack({ }) {
       <Stack.Screen name="Kathalu" component={KathaluNews} />
       <Stack.Screen name="Health" component={HealthNews} />
       <Stack.Screen name="Vaasthu" component={VaasthuNews} />
-      <Stack.Screen name="Sahithyam" component={SahithyamNews} />
+      <Stack.Screen name="Sahithyam" component={SahithyamNews} /> */}
 
 
     </Stack.Navigator>

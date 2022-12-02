@@ -10,6 +10,8 @@ export const LatestUrl="latest-news-api?paged=2"
 export const WebstoriesUrl='webstories-api'
 export const RelatedUrl='article-related-api'
 export const Contact="contact-us-api"
+export const Next="article-next-prev-by-id-api"
+
 // category Title
 export const TeluguVarthalu="వార్తలు"
 export const  TeluguHyderabad="హైదరాబాద్‌"

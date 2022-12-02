@@ -46,7 +46,7 @@ export const commonstyles = StyleSheet.create({
     fontFamily: "Mandali-Bold",
     // fontWeight: '500'
   },
-  latestMainView: { margin: 10, width: screenWidth - 200 },
+  latestMainView: {  width: '60%', margin:3 },  
   latestsubView: {
     backgroundColor: whitecolor,
     height: 160, borderRadius: 5,
@@ -54,7 +54,7 @@ export const commonstyles = StyleSheet.create({
     borderLeftColor: shadow_color, borderLeftWidth: 1,
     borderRightColor: shadow_color, borderRightWidth: 1
   },
-  latestimgTag: { width: 160, height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
+  latestimgTag: { width: '100%', height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
   latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2,paddingRight:20 },
   slidercard: {
     height: 200,
@@ -337,6 +337,6 @@ export const commonstyles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",
   },
   categoryView: { flex: 1.7, flexDirection: 'row', },
-  flatView: { position: 'relative', marginBottom: -10 ,marginTop:10},
-  gridView:{backgroundColor:'#85929e'}
+  flatView: { position: 'relative', margin:5, justifyContent:'center',display:'flex',width:'100%'},  
+  bgDarkGrey:{width:'100%',backgroundColor:'#85929e', paddingTop:10,paddingBottom:10,paddingRight:3,paddingLeft:3,borderTopLeftRadius:8,borderTopRightRadius:8} 
 })

@@ -573,13 +573,14 @@ export default class HomeScreen extends Component {
                                 this.state.OnlyLatest.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
                                         <FlatList
+                                            style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
                                             data={this.state.OnlyLatest.slice(0, 2)}
                                             renderItem={({ item, index }) =>
                                                 <View >
-                                                    <View style={commonstyles.gridView}>
+                                                    <View>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>

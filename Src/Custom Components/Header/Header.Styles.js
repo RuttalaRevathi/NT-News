@@ -18,20 +18,15 @@ export const HeaderStyle = StyleSheet.create({
     buttonImg: {
         width: 20,
         height: 20,
-        marginLeft: 6,
-        marginTop: 1,
+        // marginLeft: 6,
+        // marginTop: 1,
     },
     buttonView:{ flex: 0.4,backgroundColor:whitecolor,justifyContent:'center',
     borderRadius:50,height:30 ,top:5},
     heading: {
         width: '70%',
         height: 45,
-        // fontFamily:'Mandali-Bold',
-        // textAlign:'center',
-        // fontSize:33,
-        // color:whitecolor,
-        // fontWeight:'bold',
-        // top:18
+      
     },
     customheading: {
         width: '70%',

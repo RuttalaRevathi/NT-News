@@ -6,9 +6,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import SideMenu from '../Sreens/SideMenu/SideMenu'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { appThemeColor, graycode, whitecolor, Dark_garycolor, blackcolor, light_blue } from '../Styles/CommonStyles';
+import { appThemeColor, graycode, whitecolor, Dark_garycolor, blackcolor, light_blue, graycolor } from '../Styles/CommonStyles';
 import Home from '../Screens/Home';
 import SideMenu from '../Screens/SideMenu';
 import LatestNews from '../Screens/Bottom Tab Screens/LatestNews';
@@ -57,7 +57,14 @@ import Category from '../Screens/Top Tab Screens/Category';
 import CartoonArticle from '../Screens/CartoonArticle';
 import SplashScreen from '../Custom Components/Splash';
 import Header from '../Custom Components/Header/Header';
-
+import FastImage from 'react-native-fast-image';
+import { HeaderStyle } from '../Custom Components/Header/Header.Styles';
+import { sideMenuStyle } from '../Styles/SideMenuStyles'
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 
 const Tab = createBottomTabNavigator();
 
@@ -65,13 +72,12 @@ const Tab = createBottomTabNavigator();
 function BottomTab() {
 
   return (
-    // <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ focused }) => ({
         tabBarActiveTintColor: appThemeColor,
         tabBarInactiveTintColor: 'black',
         style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '700' },
+        tabBarLabelStyle: { fontSize: 12, fontWeight: '700', fontFamily: 'RobotoCondensed-Regular' },
         tabBarItemStyle: { width: 100, },
         tabBarStyle: {
           backgroundColor: '#d8f3fc', height: 45
@@ -82,9 +88,6 @@ function BottomTab() {
           showLabel: true,
         }
       })}>
-
-
-
       <Tab.Screen
         name="TopTabs" component={TopTabs}
         options={{
@@ -99,8 +102,6 @@ function BottomTab() {
         options={{
           headerShown: false, tabBarLabel: 'Latest News',
           tabBarIcon: ({ color, focused }) => (
-            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
-
             <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/topnews.png')} />
           ),
@@ -109,17 +110,12 @@ function BottomTab() {
         name="Photos" component={PhotosNews}
         options={{
           headerShown: false, tabBarLabel: 'Photo Gallery',
-
           tabBarIcon: ({ color, focused }) => (
             <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/gallery.png')} />
-
-            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
-
           ),
         }} />
       <Tab.Screen name="Epaper" component={Epaper}
-
         options={{
           headerShown: false, tabBarLabel: 'e-Paper',
           tabBarButton: props => (
@@ -129,7 +125,6 @@ function BottomTab() {
           tabBarIcon: ({ color, focused }) => (
             <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
               source={require('../Assets/Images/paper.png')} />
-            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
           ),
         }} />
 
@@ -147,7 +142,7 @@ const Stack = createStackNavigator();
 function MainStack({ }) {
   return (
 
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
 
       {/* <Stack.Screen name="splash" component={SplashScreen} /> */}
       <Stack.Screen name="appDrawer" component={AppDrawer} />
@@ -161,77 +156,522 @@ function MainStack({ }) {
     </Stack.Navigator>
   )
 }
-function DummyHeader({ navigation }) {
-  return (
-    <Header image={require('../Assets/Images/logo.png')} isMenu={true}
-      leftBtnClick={() => {navigation.navigate.openDrawer()}}
-      isNotif={true}
-      NotificationClick={() => navigation.navigate("LatestNews")} />
-  )
-}
+
 const Drawer = createDrawerNavigator();
 function AppDrawer() {
   return (
-    <Drawer.Navigator screenOptions={{header:DummyHeader,
-      // headerShown: false,
-      drawerStyle: {
-        backgroundColor: '#c6cbef',
-        width: 250,
-      },
-    }}
-    useLegacyImplementation
-      drawerContent={(props) => <SideMenu {...props} />}
-    >
-      {/* <Drawer.Screen name="Ap" component={ApNews} />
-      <Drawer.Screen name="Cinema" component={CinemaNews} /> */}
-      {/* drawerContent={props => <SideMenu{...props} />}> */}
-      <Drawer.Screen name="bottomTab" component={BottomTab} 
-        />
-      <Drawer.Screen name="LatestNews" component={LatestNews} />
-      {/* <Drawer.Screen name="Category" component={Category} /> */}
-      <Drawer.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
-      <Drawer.Screen name="VideoArticle" component={VideoArticle} />
-      <Drawer.Screen name="CartoonArticle" component={CartoonArticle} />
-      <Drawer.Screen name="Details" component={NewsArticle} />
-      <Drawer.Screen name="Varthalu" component={VarthaluNews} />
-      <Drawer.Screen name="Hyderabad" component={HyderabadNews} />
-      <Drawer.Screen name="National" component={NationalNews} />
-      <Drawer.Screen name="InterNational" component={InternationalNews} />
-      <Drawer.Screen name="Telangana" component={TelanganaNews} />
-      {/* <Drawer.Screen name="Ap" component={ApNews} />
-      <Drawer.Screen name="Cinema" component={CinemaNews} /> */}
-      <Drawer.Screen name="Sports" component={SportsNews} />
-      <Drawer.Screen name="Chinthana" component={ChinthanaNews} />
-      <Drawer.Screen name="Education" component={EducationNews} />
-      <Drawer.Screen name="Business" component={BusinessNews} />
-      <Drawer.Screen name="Special" component={SpecialNews} />
-      <Drawer.Screen name="Nri" component={NriNews} />
-      <Drawer.Screen name="LifeStyle" component={LifestyleNews} />
-      <Drawer.Screen name="Photos" component={PhotosNews} />
-      <Drawer.Screen name="Videos" component={VideosNews} />
-      <Drawer.Screen name="More" component={MoreNews} />
-      <Drawer.Screen name="Science" component={ScienceNews} />
-      <Drawer.Screen name="Cartoon" component={CartoonNews} />
-      <Drawer.Screen name="EverGreen" component={EvergreenNews} />
-      <Drawer.Screen name="Crime" component={CrimeNews} />
-      <Drawer.Screen name="Zindagi" component={ZindagiNews} />
-      <Drawer.Screen name="Bathukamma" component={BathukammaNews} />
-      <Drawer.Screen name="Tourism" component={TourismNews} />
-      <Drawer.Screen name="Agriculture" component={AgricultureNews} />
-      <Drawer.Screen name="EditPage" component={EditpageNews} />
-      <Drawer.Screen name="Sampadha" component={SampadhaNews} />
-      <Drawer.Screen name="Cooking" component={CookingNews} />
-      <Drawer.Screen name="Kathalu" component={KathaluNews} />
-      <Drawer.Screen name="Health" component={HealthNews} />
-      <Drawer.Screen name="Vaasthu" component={VaasthuNews} />
-      <Drawer.Screen name="Sahithyam" component={SahithyamNews} />
-      <Drawer.Screen name="Contact" component={ContactUs} />
-      <Drawer.Screen name="About" component={AboutUs} />
-      <Drawer.Screen name="Privacy" component={PrivacyPolicy} />
-      <Drawer.Screen name="Terms" component={Terms} />
+    <Drawer.Navigator drawerContent={(props) => <CustomSideMenu {...props} />}>
+      <Drawer.Screen name='bottomTabs' component={BottomTab}
+        options={({ navigation }) => ({
+          headerStyle: {
+            backgroundColor: appThemeColor,
+          },
+          headerRight: () => (
 
+            <View style={{
+              justifyContent: 'center', alignItems: 'center', backgroundColor: whitecolor,
+              borderRadius: 50, height: 30, width: 30, marginRight: 10
+            }}>
+              <TouchableOpacity onPress={() => {
+                navigation.navigate("LatestNews");
+              }} >
+                <Image
+                  style={{ height: 20, width: 20, left: 2 }}
+                  source={require('../Assets/Images/bell.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          ),
+          headerLeft: () => (
+            <View style={{
+              justifyContent: 'center', alignItems: 'center', backgroundColor: whitecolor,
+              borderRadius: 50, height: 30, width: 30, marginLeft: 10
+            }}>
+              <TouchableOpacity onPress={() => {
+                navigation.toggleDrawer();
+              }} >
+                <Image
+                  style={{ height: 20, width: 20 }}
+                  source={require('../Assets/Images/menu.png')}
+                />
+              </TouchableOpacity>
+            </View>
+
+          ),
+          headerTitle: () => (
+
+            <View style={{ justifyContent: 'center', alignItems: 'center', width: Dimensions.get("window").width - 120, }}>
+              <Image
+                style={{ height: 40, width: 160 }}
+                source={require('../Assets/Images/logo.png')}
+              />
+            </View>
+          )
+        })} />
     </Drawer.Navigator>
 
+  )
+}
+const CustomSideMenu = (props) => {
+  return (
+    <DrawerContentScrollView {...props} style={{ flex: 1, paddingTop: 20, backgroundColor: graycolor, }}>
+    {/* <DrawerItemList {...props} /> */}
+    {/* <DrawerItem
+      label="Close drawer"
+      onPress={() => props.navigation.closeDrawer()}
+    />
+    <DrawerItem
+      label="Toggle drawer"
+      onPress={() => props.navigation.toggleDrawer()}
+    /> */}
+ <View style={{ backgroundColor: appThemeColor, flexDirection: 'row' }}>
+          <View style={{ width: '90%' }}>
+            <Text style={sideMenuStyle.sectionsText}>Sections</Text>
+          </View>
+          <View >
+            <TouchableOpacity onPress={() => {
+              props.navigation.closeDrawer()
+            }}>
+              <AntDesign name="close" size={23} color={whitecolor} style={{ top: 5, alignSelf: 'flex-end', justifyContent: 'center' }} />
+            </TouchableOpacity>
+          </View>
+        </View>
+    <DrawerItem style={sideMenuStyle.item}
+
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/homeblack.png')} style={sideMenuStyle.icon} />
+      }
+      label="హోమ్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Home")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/varthalu.png')} style={sideMenuStyle.icon} />
+      }
+      label={({ color }) => (
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+          <View>
+            <Text style={sideMenuStyle.text}>వార్తలు</Text>
+          </View>
+
+        </View>
+      )}
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Varthalu")
+      }}
+
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/hyderabad.png')} style={sideMenuStyle.icon} />
+      }
+      label="హైదరాబాద్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Hyderabad")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/national.png')} style={sideMenuStyle.icon} />
+      }
+      label="జాతీయం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("National")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/international.png')} style={sideMenuStyle.icon} />
+      }
+      label="అంతర్జాతీయం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("InterNational")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/telangana.png')} style={sideMenuStyle.icon} />
+      }
+      label="తెలంగాణ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Telangana")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/ap.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఏపీ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Ap")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/cinema.png')} style={sideMenuStyle.icon} />
+      }
+      label="సినిమా"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Cinema")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/sports.png')} style={sideMenuStyle.icon} />
+      }
+      label="స్పోర్ట్స్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Sports")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/chinthana.png')} style={sideMenuStyle.icon} />
+      }
+      label="చింతన"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Chinthana")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/education.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఎడ్యుకేషన్ & కెరీర్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Education")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/business.png')} style={sideMenuStyle.icon} />
+      }
+      label="బిజినెస్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Business")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/special.png')} style={sideMenuStyle.icon} />
+      }
+      label="ప్రత్యేకం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Special")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/nri.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఎన్‌ఆర్‌ఐ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Nri")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/lifestyle.png')} style={sideMenuStyle.icon} />
+      }
+      label="లైఫ్‌స్టైల్"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("LifeStyle")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/photos.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఫొటోలు"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Photos")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/video.png')} style={sideMenuStyle.icon} />
+      }
+      label="వీడియోలు"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Videos")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/more.png')} style={sideMenuStyle.icon} />
+      }
+
+      label={({ color }) => (
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+          <View>
+            <Text style={sideMenuStyle.text}>మరిన్ని</Text>
+          </View>
+          {/* <TouchableOpacity onPress={() => {
+                                      this.NestedDrawerItem()
+                                  }}>
+                                      <AntDesign name="caretdown" size={15} color={blackcolor} style={{ top: 5 }} />
+                                  </TouchableOpacity> */}
+        </View>
+      )}
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("More")
+      }}
+    />
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/science.png')} style={sideMenuStyle.icon} />
+      }
+      label="సైన్స్‌ అండ్‌ టెక్నాలజీ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Science")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/cartoon.png')} style={sideMenuStyle.icon} />
+      }
+      label="కార్టూన్‌"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Cartoon")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/evergreen.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఎవర్‌గ్రీన్‌"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("EverGreen")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/crime.png')} style={sideMenuStyle.icon} />
+      }
+      label="క్రైమ్‌"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Crime")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/zindagi.png')} style={sideMenuStyle.icon} />
+      }
+      label="జిందగీ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Zindagi")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/bathukamma.png')} style={sideMenuStyle.icon} />
+      }
+      label="బతుకమ్మ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Bathukamma")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/tourism.png')} style={sideMenuStyle.icon} />
+      }
+      label="టూరిజం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Tourism")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/agriculture.png')} style={sideMenuStyle.icon} />
+      }
+      label="వ్యవసాయం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Agriculture")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/editpage.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఎడిట్‌ పేజీ"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("EditPage")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/sampadha.png')} style={sideMenuStyle.icon} />
+      }
+      label="సంపద"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Sampadha")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/cooking.png')} style={sideMenuStyle.icon} />
+      }
+      label="వంటలు"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Cooking")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/kathalu.png')} style={sideMenuStyle.icon} />
+      }
+      label="కథలు"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Kathalu")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/health.png')} style={sideMenuStyle.icon} />
+      }
+      label="ఆరోగ్యం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Health")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/vaasthu.png')} style={sideMenuStyle.icon} />
+      }
+      label="వాస్తు"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Vaasthu")
+      }}
+    />
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/sahithyam.png')} style={sideMenuStyle.icon} />
+      }
+      label="సాహిత్యం"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Sahithyam")
+      }}
+    />
+
+
+
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/contact.png')} style={sideMenuStyle.icon} />
+      }
+      label="Contact Us"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Contact")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/about.png')} style={sideMenuStyle.icon} />
+      }
+      label="About Us"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("About")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/privacy.png')} style={sideMenuStyle.icon} />
+      }
+      label="Privacy Policy"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Privacy")
+      }}
+    />
+    <DrawerItem style={sideMenuStyle.item}
+      icon={({ color, size }) =>
+        <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
+      }
+      label="Terms and Conditions"
+      labelStyle={sideMenuStyle.text}
+      onPress={() => {
+        props.navigation.navigate("Terms")
+      }}
+    />
+
+  </DrawerContentScrollView>
   )
 }
 const TopTab = createMaterialTopTabNavigator();

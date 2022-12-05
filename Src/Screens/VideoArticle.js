@@ -88,19 +88,17 @@ export default class VideoArticle extends Component {
         return (
 
             <View style={commonstyles.container}>
-
-
-                <View >
+  <View >
                     <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.goBack()
                             }} style={{ zIndex: 999, }}>
-                                <Image source={require('../Assets/Images/arrow.png')} style={{ width: 30, height: 30, left: 10 }} />
+                                <Image source={require('../Assets/Images/arrow.png')} style={{ width: 18, height: 18, top: 10 }} />
                                 {/* <MaterialIcons name="arrow-back" size={30} color={blackcolor} style={{  left: 10,zIndex: 999, }} /> */}
                             </TouchableOpacity>
                         </View>
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <View style={{ flex: 0.6, flexDirection: 'row', justifyContent: 'space-evenly', paddingTop: 5 }}>
                             <TouchableOpacity onPress={() => { Linking.openURL('http://www.facebook.com/sharer.php?u=' + this.state.data.link + '%3Futm_source%3Dreferral%26utm_medium%3DFB%26utm_campaign%3Dsocial_share&app_id=369158533547966') }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/facebook_share.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
@@ -110,12 +108,15 @@ export default class VideoArticle extends Component {
                             <TouchableOpacity onPress={() => { Linking.openURL('whatsapp://send?text=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => { Linking.openURL('http://www.linkedin.com/shareArticle?mini=true&url=' + this.state.data.link) }} >
+                            {/* <TouchableOpacity onPress={() => { Linking.openURL('http://www.linkedin.com/shareArticle?mini=true&url=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                             <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
+                            {/* <TouchableOpacity onPress={() => { this.copyToClipboard() }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/link.png')} style={{ width: 35, height: 35 }} />
+                            </TouchableOpacity> */}
 
                         </View>
                     </View>
@@ -158,15 +159,9 @@ export default class VideoArticle extends Component {
                                                                     height:inherit
                                                                   }
                                                                   p iframe{
-<<<<<<< HEAD
-                                                                    width:100% !important;
-                                                                    height:255px
-                                                                  }
-=======
                                                                     width:100%;
                                                                     height:180px;  
                                                                   
->>>>>>> 510486bf19339e52b63367183207af878eba21cb
                                                                   figure img{
                                                                     width:100%;
                                                                     height:inherit

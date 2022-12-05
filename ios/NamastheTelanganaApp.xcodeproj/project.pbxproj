@@ -23,6 +23,9 @@
 		BFB8983B48F44456A99EFE83 /* SHREE0001.TTF in Resources */ = {isa = PBXBuildFile; fileRef = F50247ECC6E6451B9C5FB501 /* SHREE0001.TTF */; };
 		8BCE46137652449BABBF8FD7 /* SHREE0001.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F6952FDEA7D41C881AE02DC /* SHREE0001.ttf */; };
 		8C58B09C6F374F9EB43FF3FF /* shree0001.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC1847255A0A4227A4CF9CC2 /* shree0001.ttf */; };
+		DECBB9C1693549BEAFC25695 /* mandali-regular-webfont.woff in Resources */ = {isa = PBXBuildFile; fileRef = E4DE9F6AAE144331AE34A82B /* mandali-regular-webfont.woff */; };
+		194EB8BB7D7648F99ABC7B8F /* mandali-regular-webfont.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 3FDDEB6770B84C188352B575 /* mandali-regular-webfont.woff2 */; };
+		731C486A5B1E4CD7B49D16BC /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D2951296032E4423B5016C23 /* RobotoCondensed-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,9 @@
 		F50247ECC6E6451B9C5FB501 /* SHREE0001.TTF */ = {isa = PBXFileReference; name = "SHREE0001.TTF"; path = "../Src/Assets/fonts/SHREE0001.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9F6952FDEA7D41C881AE02DC /* SHREE0001.ttf */ = {isa = PBXFileReference; name = "SHREE0001.ttf"; path = "../Src/Assets/fonts/SHREE0001.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		AC1847255A0A4227A4CF9CC2 /* shree0001.ttf */ = {isa = PBXFileReference; name = "shree0001.ttf"; path = "../Src/Assets/fonts/shree0001.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4DE9F6AAE144331AE34A82B /* mandali-regular-webfont.woff */ = {isa = PBXFileReference; name = "mandali-regular-webfont.woff"; path = "../Src/Assets/fonts/mandali-regular-webfont.woff"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3FDDEB6770B84C188352B575 /* mandali-regular-webfont.woff2 */ = {isa = PBXFileReference; name = "mandali-regular-webfont.woff2"; path = "../Src/Assets/fonts/mandali-regular-webfont.woff2"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D2951296032E4423B5016C23 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; name = "RobotoCondensed-Regular.ttf"; path = "../Src/Assets/fonts/RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,9 @@
 				F50247ECC6E6451B9C5FB501 /* SHREE0001.TTF */,
 				9F6952FDEA7D41C881AE02DC /* SHREE0001.ttf */,
 				AC1847255A0A4227A4CF9CC2 /* shree0001.ttf */,
+				E4DE9F6AAE144331AE34A82B /* mandali-regular-webfont.woff */,
+				3FDDEB6770B84C188352B575 /* mandali-regular-webfont.woff2 */,
+				D2951296032E4423B5016C23 /* RobotoCondensed-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -289,6 +298,9 @@
 				BFB8983B48F44456A99EFE83 /* SHREE0001.TTF in Resources */,
 				8BCE46137652449BABBF8FD7 /* SHREE0001.ttf in Resources */,
 				8C58B09C6F374F9EB43FF3FF /* shree0001.ttf in Resources */,
+				DECBB9C1693549BEAFC25695 /* mandali-regular-webfont.woff in Resources */,
+				194EB8BB7D7648F99ABC7B8F /* mandali-regular-webfont.woff2 in Resources */,
+				731C486A5B1E4CD7B49D16BC /* RobotoCondensed-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -514,7 +514,7 @@ export default class HomeScreen extends Component {
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refresh}
-                            onRefresh={() => this.PullMe()}
+                            
                         />
                     }
                 >

@@ -15,7 +15,7 @@ export const Header_BG_Color = "#030533"
 export const TimeStamp = "#8D8D8D"
 export const Gary_Light = "#ecf1f5"
 export const shadow_color = "#ccc"
-export const grid_color ="#F2D7EE"
+export const grid_color = "#F2D7EE"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -46,16 +46,16 @@ export const commonstyles = StyleSheet.create({
     fontFamily: "Mandali-Bold",
     // fontWeight: '500'
   },
-  latestMainView: {  width: Dimensions.get('window').width / 2.2, margin:5 },  
+  latestMainView: { width: Dimensions.get('window').width / 2.2, margin: 5 },
   latestsubView: {
     backgroundColor: whitecolor,
-    height: 160, borderRadius: 5,
+    height: 170, borderRadius: 5,
     borderBottomColor: shadow_color, borderBottomWidth: 2,
     borderLeftColor: shadow_color, borderLeftWidth: 1,
     borderRightColor: shadow_color, borderRightWidth: 1
   },
   latestimgTag: { width: '100%', height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
-  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2,paddingRight:20 },
+  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2, paddingRight: 20 },
   slidercard: {
     height: 200,
     width: screenWidth - 10,
@@ -91,7 +91,7 @@ export const commonstyles = StyleSheet.create({
   photoview: {
     backgroundColor: gallerycolor,
     borderRadius: 10, margin: 5,
-    width: '97%', paddingBottom: 10,marginTop:10
+    width: '97%', paddingBottom: 10, marginTop: 10
   },
   phototextview: {
     flexDirection: 'row', paddingLeft: 10,
@@ -136,7 +136,7 @@ export const commonstyles = StyleSheet.create({
     fontFamily: 'Mandali-Bold',
     fontSize: 27,
     top: 8,
-    left:10  
+    left: 10
     // fontWeight: '400'
 
   },
@@ -169,7 +169,7 @@ export const commonstyles = StyleSheet.create({
   cateImage: { width: 120, height: 90, borderRadius: 10, },
   latestText: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, },
   latesttime: { color: appThemeColor, fontSize: 16, fontFamily: 'JIMS', },
-  
+
   cardViewFirst: {
     backgroundColor: whitecolor,
     padding: 3,
@@ -253,15 +253,15 @@ export const commonstyles = StyleSheet.create({
   },
   CartoonCard: {
     width: '100%',
-    justifyContent:'center',
+    justifyContent: 'center',
     flex: 1,
     backgroundColor: "#fff",
     elevation: 1,
-    margin:10,
+    margin: 10,
     borderRadius: 5,
     height: 'auto',
     flexDirection: 'row',
-    paddingRight:10
+    paddingRight: 10
   },
   pcard: {
     // flex: 1,
@@ -296,7 +296,7 @@ export const commonstyles = StyleSheet.create({
 
   },
   cartoonimg: {
-    width: Dimensions.get('window').height * 0.23, 
+    width: Dimensions.get('window').height * 0.23,
     borderRadius: 10, resizeMode: 'contain', margin: 5,
     aspectRatio: 3 / 4
   },
@@ -334,9 +334,29 @@ export const commonstyles = StyleSheet.create({
   cateflist: { paddingBottom: 50, top: 10, margin: 5 },
 
   videoImg: {
-    width: Dimensions.get('window').width * 0.3, height: Dimensions.get('window').height * 0.2, borderRadius: 10, resizeMode: "stretch",
+    width: Dimensions.get('window').width * 0.3,
+    height: Dimensions.get('window').height * 0.2,
+    borderRadius: 10, resizeMode: "stretch",
   },
   categoryView: { flex: 1.7, flexDirection: 'row', },
-  flatView: { position: 'relative', margin:5, justifyContent:'center',display:'flex'},  
-  bgDarkGrey:{width:'100%',backgroundColor:'#85929e', paddingTop:10,paddingBottom:10,paddingRight:3,paddingLeft:3,borderTopLeftRadius:8,borderTopRightRadius:8} 
+  flatView: { position: 'relative', margin: 5, justifyContent: 'center', display: 'flex' },
+  bgDarkGrey: {
+    width: '100%', backgroundColor: '#85929e', paddingTop: 10,
+    paddingBottom: 10, paddingRight: 3, paddingLeft: 3,
+    borderTopLeftRadius: 8, borderTopRightRadius: 8
+  },
+  prevText: {
+    borderBottomColor: appThemeColor, borderBottomWidth: 1, color: appThemeColor,
+    textAlign: 'center', fontFamily: 'Mandali-Bold', fontSize: 18,
+    fontFamily: 'RobotoCondensed-Regular'
+  },
+  prevNextMainView:{
+    flexDirection:'row',flex:1,
+  justifyContent:'space-between',
+  marginTop:5,marginBottom:5
+},
+  prevView:{flex:0.25,height:30,justifyContent:'center',marginLeft:10},
+  nextView:{flex:0.2,height:30,justifyContent:'center',marginRight:10},
+  relatedText:{ color: '#000', fontSize: 22, fontFamily: 'RobotoCondensed-Regular' }
+
 })

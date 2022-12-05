@@ -11,6 +11,7 @@ export const WebstoriesUrl='webstories-api'
 export const RelatedUrl='article-related-api'
 export const Contact="contact-us-api"
 export const Next="article-next-prev-by-id-api"
+export const article ="article-data-by-id-api"
 
 // category Title
 export const TeluguVarthalu="వార్తలు"

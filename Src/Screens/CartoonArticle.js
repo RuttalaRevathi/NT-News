@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, StyleSheet, Alert, Dimensions, RefreshControl } from 'react-native'
+import { View, Text, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, StyleSheet, Linking, Dimensions, RefreshControl } from 'react-native'
 import { commonstyles, appThemeColor, graycode } from '../Styles/CommonStyles'
 import Header from '../Custom Components/Header/Header'
 // import { WebView } from "react-native-twitter-embed";
@@ -105,14 +105,38 @@ export default class CartoonArticle extends Component {
         return (
 
             <View style={commonstyles.container}>
-
-                
                 <View >
-                    <SubHeader isMenu={false} isBook={false} isShare={true}
-                        leftBtnClick={() => this.props.navigation.goBack()}
-                        ShareClick={() => { this.share() }}
-                        BookClick={() => { alert("BookMark   Clicked") }}
-                    />
+                    <View style={HeaderStyle.subHeadercustom}>
+                        <View style={{ flex: 0.3 }}>
+                            <TouchableOpacity onPress={() => {
+                                this.props.navigation.goBack()
+                            }} style={{ zIndex: 999, }}>
+                                <Image source={require('../Assets/Images/arrow.png')} style={{ width: 18, height: 18, top: 10 }} />
+                                {/* <MaterialIcons name="arrow-back" size={30} color={blackcolor} style={{  left: 10,zIndex: 999, }} /> */}
+                            </TouchableOpacity>
+                        </View>
+                        <View style={{ flex: 0.6, flexDirection: 'row', justifyContent: 'space-evenly', paddingTop: 5 }}>
+                            <TouchableOpacity onPress={() => { Linking.openURL('http://www.facebook.com/sharer.php?u=' + this.state.data.link + '%3Futm_source%3Dreferral%26utm_medium%3DFB%26utm_campaign%3Dsocial_share&app_id=369158533547966') }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/facebook_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('https://twitter.com/intent/tweet?url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/twitter_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { Linking.openURL('whatsapp://send?text=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            {/* <TouchableOpacity onPress={() => { Linking.openURL('http://www.linkedin.com/shareArticle?mini=true&url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity> */}
+                            <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
+                            </TouchableOpacity>
+                            {/* <TouchableOpacity onPress={() => { this.copyToClipboard() }} >
+                                <Image resizeMode='contain' source={require('../Assets/Images/link.png')} style={{ width: 35, height: 35 }} />
+                            </TouchableOpacity> */}
+
+                        </View>
+                    </View>
                 </View>
                 <ScrollView
                     ref={(c) => { this.scroll = c }}
@@ -187,11 +211,11 @@ export default class CartoonArticle extends Component {
 
                         {/* Related News */}
                         <View>
-                            <View style={{ marginLeft: 10, }}>
+                            {/* <View style={{ marginLeft: 10, }}>
                                 <Text style={{ color: '#000', fontSize: 20, fontFamily: 'Ramabhadra-Regular' }}>
                                     Related News
                                 </Text>
-                            </View>
+                            </View> */}
                             {/* Related news FlatList */}
 
                             <View style={{ position: 'relative' }}>
@@ -203,25 +227,25 @@ export default class CartoonArticle extends Component {
                                     // onEndReached={this.PullMe()}
                                     renderItem={({ item, index }) =>
 
-                                    <View >
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                        <View style={commonstyles.cardView}>
-                                            <View style={commonstyles.cateviewImg}>
-                                                <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                            </View>
-                                            <View style={commonstyles.cateviewText}>
-                                                <Text numberOfLines={2} ellipsizeMode='tail'
-                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                <View style={commonstyles.timeview}>
-                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                        <View >
+                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                <View style={commonstyles.cardView}>
+                                                    <View style={commonstyles.cateviewImg}>
+                                                        <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                    </View>
+                                                    <View style={commonstyles.cateviewText}>
+                                                        <Text numberOfLines={2} ellipsizeMode='tail'
+                                                            style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                        <View style={commonstyles.timeview}>
+                                                            <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                            <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                        </View>
+
+                                                    </View>
                                                 </View>
+                                            </TouchableOpacity>
 
-                                            </View>
                                         </View>
-                                    </TouchableOpacity>
-
-                                </View>
 
                                     }
                                 />

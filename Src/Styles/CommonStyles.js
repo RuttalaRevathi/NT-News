@@ -4,7 +4,7 @@ import { StyleSheet, Dimensions } from 'react-native';
 export const appThemeColor = "#262A85";
 export const whitecolor = "#FFFFFF"
 export const graycolor = "#e4e3e3"
-export const Dark_graycolor = "#808080"
+export const Dark_graycolor = "#63666A"
 export const blackcolor = "#000"
 // export const gallerycolor = "#FFC300"
 export const gallerycolor = "#696AAA"
@@ -16,6 +16,8 @@ export const TimeStamp = "#8D8D8D"
 export const Gary_Light = "#ecf1f5"
 export const shadow_color = "#ccc"
 export const grid_color = "#F2D7EE"
+// export const Dark_Gray ="#63666A"
+export const Dark_Gray ="#85929e"
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -49,13 +51,14 @@ export const commonstyles = StyleSheet.create({
   latestMainView: { width: Dimensions.get('window').width / 2.2, margin: 5 },
   latestsubView: {
     backgroundColor: whitecolor,
-    height: 170, borderRadius: 5,
+    height: 155, borderRadius: 5,
     borderBottomColor: shadow_color, borderBottomWidth: 2,
     borderLeftColor: shadow_color, borderLeftWidth: 1,
     borderRightColor: shadow_color, borderRightWidth: 1
   },
   latestimgTag: { width: '100%', height: 100, borderTopLeftRadius: 5, borderTopRightRadius: 5, borderRightColor: shadow_color, borderRightWidth: 1 },
-  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, left: 5, right: 2, paddingRight: 20 },
+  latestTxtTag: { color: blackcolor, fontFamily: 'Mandali-Regular', 
+  fontSize: 16, lineHeight: 25, left: 5, right: 2, paddingRight: 20 },
   slidercard: {
     height: 200,
     width: screenWidth - 10,
@@ -91,7 +94,7 @@ export const commonstyles = StyleSheet.create({
   photoview: {
     backgroundColor: gallerycolor,
     borderRadius: 10, margin: 5,
-    width: '97%', paddingBottom: 10, marginTop: 10
+    width: '97%', paddingBottom: 10, marginTop: 10,paddingTop:10
   },
   phototextview: {
     flexDirection: 'row', paddingLeft: 10,
@@ -167,7 +170,7 @@ export const commonstyles = StyleSheet.create({
   },
   cateView: { flexDirection: 'row', marginLeft: 5, width: '100%' },
   cateImage: { width: 120, height: 90, borderRadius: 10, },
-  latestText: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 20, lineHeight: 33, },
+  latestText: { color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 16, lineHeight: 25, },
   latesttime: { color: appThemeColor, fontSize: 16, fontFamily: 'JIMS', },
 
   cardViewFirst: {
@@ -197,6 +200,9 @@ export const commonstyles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.7,
     shadowRadius: 2,
+    borderBottomColor: shadow_color, borderBottomWidth: 2,
+    borderLeftColor: shadow_color, borderLeftWidth: 1,
+    borderRightColor: shadow_color, borderRightWidth: 1
   },
   latestViewcard: {
     backgroundColor: whitecolor,
@@ -346,7 +352,7 @@ export const commonstyles = StyleSheet.create({
     borderTopLeftRadius: 8, borderTopRightRadius: 8
   },
   prevText: {
-    borderBottomColor: appThemeColor, borderBottomWidth: 1, color: appThemeColor,
+     color: appThemeColor,
     textAlign: 'center', fontFamily: 'Mandali-Bold', fontSize: 18,
     fontFamily: 'RobotoCondensed-Regular'
   },
@@ -357,6 +363,24 @@ export const commonstyles = StyleSheet.create({
 },
   prevView:{flex:0.25,height:30,justifyContent:'center',marginLeft:10},
   nextView:{flex:0.2,height:30,justifyContent:'center',marginRight:10},
-  relatedText:{ color: '#000', fontSize: 22, fontFamily: 'RobotoCondensed-Regular' }
+  relatedText:{ color: '#000', fontSize: 20, fontFamily: 'RobotoCondensed-Regular' },
+  nextText:{ color: Dark_Gray, fontSize: 20, fontFamily: 'RobotoCondensed-Regular' },
+  flashView:{
+    backgroundColor: gallerycolor,
+    borderRadius: 10, margin: 5,
+    width: '97%', paddingBottom: 10, marginTop: 10,paddingTop:10
+  },
+  flashtext:{
+    color: whitecolor,
+    fontFamily: 'Mandali-Bold',
+    // fontWeight:'bold',
+    fontSize: 22,
+    // marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    lineHeight: 29,
+    position: 'relative',
+    top: 25
+  }
 
 })

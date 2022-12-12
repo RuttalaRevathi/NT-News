@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, CategoryUrl, National, ShareUrl, Videos } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 export default class VideosNews extends Component {
     constructor(props) {
@@ -61,15 +61,15 @@ export default class VideosNews extends Component {
 
                                             <View style={{ flex: 1, }}>
                                                 <View style={{}}>
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", {data: item}) }}  >
                                                     <View style={commonstyles.latestMainView}>
                                                             <View style={commonstyles.latestsubView}>
                                                                 <View>
-                                                                    <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                 </View>
                                                                 <View>
                                                                 <View style={{backgroundColor:'red',padding:5,bottom: 55, left:0, position:'absolute'}}>
-                                                                <FastImage style={{ height: 15, width: 25,borderRadius:10 }}
+                                                                <Image style={{ height: 15, width: 25,borderRadius:10 }}
                                                                 source={require('../../Assets/Images/videoicon.png')} />
                                                                 </View>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'

@@ -9,7 +9,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import { Article, BaseUrl, HomeSlider, RelatedUrl } from '../Utilities/Api/Urls';
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 import { ScrollView } from 'react-native-gesture-handler';
 // import SubHeader from '../Header/SubHeader';
 import { WebView } from 'react-native-webview';
@@ -193,7 +193,7 @@ export default class PhotoArticle extends Component {
 
                                 renderItem={({ item, index }) =>
                                 <View >
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
                                     <View style={commonstyles.cardView}>
                                         <View style={commonstyles.cateviewImg}>
                                             <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />

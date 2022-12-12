@@ -8,10 +8,10 @@ export const ContactStyles = StyleSheet.create({
         backgroundColor: whitecolor,
          height: '100%' 
         },
-        text1:{color:blackcolor,fontFamily:'Mandali-Regular',fontSize:20,fontWeight:'600'},
-        text2:{color:blackcolor,fontFamily:'Mandali-Regular',fontSize:16,fontWeight:'900'},
-        title:{fontFamily:'Mandali-Bold',fontSize:20,color:blackcolor,fontWeight:'bold',marginBottom:10,marginTop:10},
-        content:{fontFamily:'Mandali-Regular',fontSize:20,color:blackcolor,textAlign: 'justify',marginBottom:20},
+        text1:{color:blackcolor,fontFamily:'RobotoCondensed-Regular',fontSize:20,fontWeight:'600'},
+        text2:{color:blackcolor,fontFamily:'RobotoCondensed-Regular',fontSize:16,fontWeight:'900'},
+        title:{fontFamily:'RobotoCondensed-Regular',fontSize:20,color:blackcolor,fontWeight:'bold',marginBottom:10,marginTop:10},
+        content:{fontFamily:'RobotoCondensed-Regular',fontSize:20,color:blackcolor,textAlign: 'justify',marginBottom:20},
         heading: {
             color: blackcolor,
             // width: '90%',

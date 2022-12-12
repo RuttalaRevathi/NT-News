@@ -11,7 +11,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import { Article, BaseUrl, HomeSlider, RelatedUrl } from '../Utilities/Api/Urls';
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { ScrollView } from 'react-native-gesture-handler';
 // import SubHeader from '../Header/SubHeader';
@@ -149,7 +149,7 @@ export default class CartoonArticle extends Component {
                     <View>
 
                         {/* <View >
-                            <FastImage source={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard} />
+                            <Image source={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard} />
                         </View> */}
 
                         <View style={{ margin: 10, }}>
@@ -228,7 +228,7 @@ export default class CartoonArticle extends Component {
                                     renderItem={({ item, index }) =>
 
                                         <View >
-                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item }) }}  >
                                                 <View style={commonstyles.cardView}>
                                                     <View style={commonstyles.cateviewImg}>
                                                         <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />

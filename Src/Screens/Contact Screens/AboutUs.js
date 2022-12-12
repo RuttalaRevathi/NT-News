@@ -19,7 +19,7 @@ export default class AboutUs extends Component {
         return (
             <SafeAreaView styles={commonstyles.container}>
                 
-                <View style={[HeaderStyle.subHeaderviewHeight]}>
+                {/* <View style={[HeaderStyle.subHeaderviewHeight]}>
                     <View style={{ flex: 0.5 }}>
                         <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                             <MaterialIcons name="arrow-back" size={40} color={blackcolor} style={{ left: 8 }} />
@@ -28,12 +28,12 @@ export default class AboutUs extends Component {
                     <View style={{ flex: 1, marginLeft: -120 }}>
                         <Text style={[ContactStyles.heading]}>About Us</Text>
                     </View>
-                </View>
-                {/* <SubHeader title={"About Us "} isMenu={false} isBook={false} isShare={false}
+                </View> */}
+                <SubHeader title={"About Us "} isMenu={false} isBook={false} isShare={false}
                     leftBtnClick={() => this.props.navigation.goBack()}
                     ShareClick={() => { this.sharecall() }}
                     BookClick={() => { alert("BookMark   Clicked") }}
-                /> */}
+                />
                 <ScrollView>
                     <View style={ContactStyles.mainView}>
 

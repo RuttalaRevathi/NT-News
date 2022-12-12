@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, CategoryUrl, National, Photos, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 export default class PhotosNews extends Component {
     constructor(props) {
@@ -61,11 +61,11 @@ export default class PhotosNews extends Component {
 
                                             <View style={{ flex: 1, }}>
                                                 <View style={{}}>
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", {data: item}) }}  >
                                                         <View style={commonstyles.latestMainView}>
                                                             <View style={commonstyles.latestsubView}>
                                                                 <View>
-                                                                    <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                    <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                 </View>
                                                                 <View>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'

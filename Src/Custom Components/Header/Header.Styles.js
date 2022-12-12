@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { appThemeColor, blackcolor, graycolor, whitecolor,Header_BG_Color,Header_text } from "../../Styles/CommonStyles";
+import { Dimensions, StyleSheet } from "react-native";
+import { appThemeColor, blackcolor, graycolor, whitecolor, Header_BG_Color, Header_text } from "../../Styles/CommonStyles";
 
 export const HeaderStyle = StyleSheet.create({
     viewHeight: {
@@ -10,8 +10,8 @@ export const HeaderStyle = StyleSheet.create({
         padding: 10,
         justifyContent: 'center',
         alignContent: "center",
-        borderBottomColor:graycolor,
-        borderBottomWidth:2,
+        borderBottomColor: graycolor,
+        borderBottomWidth: 2,
         // position:"absolute",
         // top:0
     },
@@ -21,20 +21,22 @@ export const HeaderStyle = StyleSheet.create({
         // marginLeft: 6,
         // marginTop: 1,
     },
-    buttonView:{ flex: 0.4,backgroundColor:whitecolor,justifyContent:'center',
-    borderRadius:50,height:30 ,top:5},
+    buttonView: {
+        flex: 0.4, backgroundColor: whitecolor, justifyContent: 'center',
+        borderRadius: 50, height: 30, top: 5
+    },
     heading: {
         width: '70%',
         height: 45,
-      
+
     },
     customheading: {
         width: '70%',
         height: 45,
-        fontFamily:'Mandali-Bold',
-        textAlign:'center',
-        fontSize:33,
-        color:Header_text,
+        fontFamily: 'Mandali-Bold',
+        textAlign: 'center',
+        fontSize: 33,
+        color: Header_text,
         // fontWeight:'bold',
         // top:20
     },
@@ -46,9 +48,9 @@ export const HeaderStyle = StyleSheet.create({
         padding: 10,
         justifyContent: 'center',
         alignContent: "center",
-       
+
     },
-    subHeadercustom:{
+    subHeadercustom: {
         height: 50,
         width: "100%",
         backgroundColor: whitecolor,
@@ -70,8 +72,35 @@ export const HeaderStyle = StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'Mandali-Bold',
         fontSize: 30,
-      
-    }
+
+    },
+    HeadTitleView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: Dimensions.get("window").width - 120,
+    },
+    HeadTitleImg: {
+        height: 37, width: 170
+    },
+    headerLeftView: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: whitecolor,
+        borderRadius: 50, height: 30,
+        width: 30, marginLeft: 10
+    },
+    headerLeftImg: { height: 20, width: 20 },
+    HeadRightView:{
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        backgroundColor: whitecolor,
+        borderRadius: 50,
+         height: 30, width: 30,
+          marginRight: 10
+      },
+    HeadRightImg:{ height: 20, width: 20, left: 2 }
+
+
 
 
 })

@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles, Header_text } from "../../Styles/CommonStyles";
 import { BaseUrl, LatestUrl, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 import { HeaderStyle } from "../../Custom Components/Header/Header.Styles";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
@@ -77,7 +77,7 @@ export default class LatestNews extends Component {
                                     data={this.state.OnlyLatest}
                                     renderItem={({ item, index }) =>
                                         <View >
-                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.OnlyLatest }) }}  >
                                                 <View style={commonstyles.latestCard}>
                                                     <View style={{ marginRight: 5, flex: 1.2 }}>
                                                         <Image source={{ uri: item.web_featured_image }} style={commonstyles.latestImage} />

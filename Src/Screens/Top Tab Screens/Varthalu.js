@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, CategoryUrl, National, ShareUrl, Telangana, Varthalu } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 
 export default class VarthaluNews extends Component {
@@ -55,7 +55,7 @@ export default class VarthaluNews extends Component {
                         customSlide={({ index, item, style, width }) => (
                             // It's important to put style here because it's got offset inside
                             <View key={index} style={{}}>
-                                 <FastImage source={{ uri: item.web_featured_image }}
+                                 <Image source={{ uri: item.web_featured_image }}
                                                                 style={commonstyles.cateImage} />
                             </View>
                         )}
@@ -72,10 +72,10 @@ export default class VarthaluNews extends Component {
                                         renderItem={({ item, index }) =>
 
                                             <View >
-                                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
                                                     <View style={commonstyles.cardView}>
                                                         <View style={commonstyles.cateviewImg}>
-                                                            <FastImage source={{ uri: item.web_featured_image }}
+                                                            <Image source={{ uri: item.web_featured_image }}
                                                                 style={commonstyles.cateImage} />
                                                         </View>
                                                         <View style={commonstyles.cateviewText}>

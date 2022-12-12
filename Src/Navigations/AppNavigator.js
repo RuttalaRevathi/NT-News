@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { Dimensions, Image, Text, View, Linking, TouchableOpacity, Button } from 'react-native';
+import { Dimensions, Image, Text, View, Linking, TouchableOpacity, Button, } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 // import SideMenu from '../Sreens/SideMenu/SideMenu'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import AntDesign from 'react-native-vector-icons/AntDesign'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
-import { appThemeColor, graycode, whitecolor, Dark_garycolor, blackcolor, light_blue, graycolor } from '../Styles/CommonStyles';
+import { appThemeColor, graycode, whitecolor, Dark_garycolor, blackcolor, light_blue, graycolor, grid_color, Dark_Gray } from '../Styles/CommonStyles';
 import Home from '../Screens/Home';
 import SideMenu from '../Screens/SideMenu';
 import LatestNews from '../Screens/Bottom Tab Screens/LatestNews';
@@ -57,14 +57,15 @@ import Category from '../Screens/Top Tab Screens/Category';
 import CartoonArticle from '../Screens/CartoonArticle';
 import SplashScreen from '../Custom Components/Splash';
 import Header from '../Custom Components/Header/Header';
-import FastImage from 'react-native-fast-image';
-import { HeaderStyle } from '../Custom Components/Header/Header.Styles';
-import { sideMenuStyle } from '../Styles/SideMenuStyles'
 import {
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import { sideMenuStyle } from '../Styles/SideMenuStyles';
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import { HeaderStyle } from '../Custom Components/Header/Header.Styles';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -75,9 +76,12 @@ function BottomTab() {
     <Tab.Navigator
       screenOptions={({ focused }) => ({
         tabBarActiveTintColor: appThemeColor,
-        tabBarInactiveTintColor: 'black',
+        tabBarInactiveTintColor: Dark_Gray,
         style: { backgroundColor: 'rgba(52, 52, 52, 0.8)' },
-        tabBarLabelStyle: { fontSize: 12, fontWeight: '700', fontFamily: 'RobotoCondensed-Regular' },
+        tabBarLabelStyle: {
+          fontSize: 12, fontWeight: '700',
+          fontFamily: 'RobotoCondensed-Regular'
+        },
         tabBarItemStyle: { width: 100, },
         tabBarStyle: {
           backgroundColor: '#d8f3fc', height: 45
@@ -88,12 +92,15 @@ function BottomTab() {
           showLabel: true,
         }
       })}>
+
+
+
       <Tab.Screen
         name="TopTabs" component={TopTabs}
         options={{
           headerShown: false, tabBarLabel: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : Dark_Gray, top: 5 }}
               source={require('../Assets/Images/home.png')} />
           ),
         }} />
@@ -102,7 +109,9 @@ function BottomTab() {
         options={{
           headerShown: false, tabBarLabel: 'Latest News',
           tabBarIcon: ({ color, focused }) => (
-            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
+            // <Entypo name="open-book" size={20} color={appThemeColor} style={{ top: 5 }} />
+
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : Dark_Gray, top: 5 }}
               source={require('../Assets/Images/topnews.png')} />
           ),
         }} />
@@ -110,12 +119,14 @@ function BottomTab() {
         name="Photos" component={PhotosNews}
         options={{
           headerShown: false, tabBarLabel: 'Photo Gallery',
+
           tabBarIcon: ({ color, focused }) => (
-            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : Dark_Gray, top: 5 }}
               source={require('../Assets/Images/gallery.png')} />
           ),
         }} />
       <Tab.Screen name="Epaper" component={Epaper}
+
         options={{
           headerShown: false, tabBarLabel: 'e-Paper',
           tabBarButton: props => (
@@ -123,7 +134,7 @@ function BottomTab() {
           ),
 
           tabBarIcon: ({ color, focused }) => (
-            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : 'black', top: 5 }}
+            <Image style={{ height: 20, width: 20, tintColor: focused ? appThemeColor : Dark_Gray, top: 5 }}
               source={require('../Assets/Images/paper.png')} />
           ),
         }} />
@@ -131,7 +142,6 @@ function BottomTab() {
 
     </Tab.Navigator>
 
-    // </NavigationContainer>
 
 
   );
@@ -145,10 +155,35 @@ function MainStack({ }) {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
 
       {/* <Stack.Screen name="splash" component={SplashScreen} /> */}
-      <Stack.Screen name="appDrawer" component={AppDrawer} />
+      <Stack.Screen name="appDrawer" component={AppDrawer}
+      />
       {/* <Stack.Screen name="Category" component={Category} /> */}
       <Stack.Screen name="Details" component={NewsArticle} />
-      <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} />
+      <Stack.Screen name="PhotoGalleryArticle" component={PhotoArticle} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
       <Stack.Screen name="VideoArticle" component={VideoArticle} />
       <Stack.Screen name="CartoonArticle" component={CartoonArticle} />
 
@@ -163,51 +198,1032 @@ function AppDrawer() {
     <Drawer.Navigator drawerContent={(props) => <CustomSideMenu {...props} />}>
       <Drawer.Screen name='bottomTabs' component={BottomTab}
         options={({ navigation }) => ({
-          headerStyle: {
-            backgroundColor: appThemeColor,
-          },
+          headerStyle: { backgroundColor: appThemeColor },
           headerRight: () => (
-
-            <View style={{
-              justifyContent: 'center', alignItems: 'center', backgroundColor: whitecolor,
-              borderRadius: 50, height: 30, width: 30, marginRight: 10
-            }}>
-              <TouchableOpacity onPress={() => {
-                navigation.navigate("LatestNews");
-              }} >
-                <Image
-                  style={{ height: 20, width: 20, left: 2 }}
-                  source={require('../Assets/Images/bell.png')}
-                />
+            <View style={HeaderStyle.HeadRightView}>
+              <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+                <Image style={HeaderStyle.HeadRightImg}
+                  source={require('../Assets/Images/bell.png')} />
               </TouchableOpacity>
             </View>
           ),
           headerLeft: () => (
-            <View style={{
-              justifyContent: 'center', alignItems: 'center', backgroundColor: whitecolor,
-              borderRadius: 50, height: 30, width: 30, marginLeft: 10
-            }}>
-              <TouchableOpacity onPress={() => {
-                navigation.toggleDrawer();
-              }} >
-                <Image
-                  style={{ height: 20, width: 20 }}
-                  source={require('../Assets/Images/menu.png')}
-                />
+            <View style={HeaderStyle.headerLeftView}>
+              <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+                <Image style={HeaderStyle.headerLeftImg}
+                  source={require('../Assets/Images/menu.png')} />
               </TouchableOpacity>
             </View>
-
           ),
           headerTitle: () => (
-
-            <View style={{ justifyContent: 'center', alignItems: 'center', width: Dimensions.get("window").width - 120, }}>
-              <Image
-                style={{ height: 40, width: 160 }}
-                source={require('../Assets/Images/logo.png')}
-              />
+            <View style={HeaderStyle.HeadTitleView}>
+              <Image style={HeaderStyle.HeadTitleImg}
+                source={require('../Assets/Images/logo.png')} />
             </View>
           )
         })} />
+      <Drawer.Screen name="Details" component={NewsArticle}
+        options={({ navigation }) => ({
+          headerStyle: { backgroundColor: appThemeColor },
+          headerRight: () => (
+            <View style={HeaderStyle.HeadRightView}>
+              <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+                <Image style={HeaderStyle.HeadRightImg}
+                  source={require('../Assets/Images/bell.png')} />
+              </TouchableOpacity>
+            </View>
+          ),
+          headerLeft: () => (
+            <View style={HeaderStyle.headerLeftView}>
+              <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+                <Image style={HeaderStyle.headerLeftImg}
+                  source={require('../Assets/Images/menu.png')} />
+              </TouchableOpacity>
+            </View>
+          ),
+          headerTitle: () => (
+            <View style={HeaderStyle.HeadTitleView}>
+              <Image style={HeaderStyle.HeadTitleImg}
+                source={require('../Assets/Images/logo.png')} />
+            </View>
+          )
+        })} />
+      <Drawer.Screen name="PhotoGalleryArticle" component={PhotoArticle} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="VideoArticle" component={VideoArticle} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="CartoonArticle" component={CartoonArticle} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Varthalu" component={VarthaluNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Hyderabad" component={HyderabadNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="National" component={NationalNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="InterNational" component={InternationalNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Telangana" component={TelanganaNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Ap" component={ApNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Cinema" component={CinemaNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Sports" component={SportsNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Chinthana" component={ChinthanaNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Education" component={EducationNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Business" component={BusinessNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Special" component={SpecialNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Nri" component={NriNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="LifeStyle" component={LifestyleNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Photos" component={PhotosNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Videos" component={VideosNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="More" component={MoreNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Science" component={ScienceNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Cartoon" component={CartoonNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="EverGreen" component={EvergreenNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Crime" component={CrimeNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Zindagi" component={ZindagiNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Bathukamma" component={BathukammaNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Tourism" component={TourismNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Agriculture" component={AgricultureNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="EditPage" component={EditpageNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Sampadha" component={SampadhaNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Cooking" component={CookingNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Kathalu" component={KathaluNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Health" component={HealthNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Vaasthu" component={VaasthuNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Sahithyam" component={SahithyamNews} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Contact" component={ContactUs} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="About" component={AboutUs} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Privacy" component={PrivacyPolicy} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+      <Drawer.Screen name="Terms" component={Terms} options={({ navigation }) => ({
+        headerStyle: { backgroundColor: appThemeColor },
+        headerRight: () => (
+          <View style={HeaderStyle.HeadRightView}>
+            <TouchableOpacity onPress={() => { navigation.navigate("LatestNews"); }}>
+              <Image style={HeaderStyle.HeadRightImg}
+                source={require('../Assets/Images/bell.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerLeft: () => (
+          <View style={HeaderStyle.headerLeftView}>
+            <TouchableOpacity onPress={() => { navigation.toggleDrawer(); }} >
+              <Image style={HeaderStyle.headerLeftImg}
+                source={require('../Assets/Images/menu.png')} />
+            </TouchableOpacity>
+          </View>
+        ),
+        headerTitle: () => (
+          <View style={HeaderStyle.HeadTitleView}>
+            <Image style={HeaderStyle.HeadTitleImg}
+              source={require('../Assets/Images/logo.png')} />
+          </View>
+        )
+      })} />
+
     </Drawer.Navigator>
 
   )
@@ -215,463 +1231,446 @@ function AppDrawer() {
 const CustomSideMenu = (props) => {
   return (
     <DrawerContentScrollView {...props} style={{ flex: 1, paddingTop: 20, backgroundColor: graycolor, }}>
-    {/* <DrawerItemList {...props} /> */}
-    {/* <DrawerItem
-      label="Close drawer"
-      onPress={() => props.navigation.closeDrawer()}
-    />
-    <DrawerItem
-      label="Toggle drawer"
-      onPress={() => props.navigation.toggleDrawer()}
-    /> */}
- <View style={{ backgroundColor: appThemeColor, flexDirection: 'row' }}>
-          <View style={{ width: '90%' }}>
-            <Text style={sideMenuStyle.sectionsText}>Sections</Text>
-          </View>
-          <View >
-            <TouchableOpacity onPress={() => {
-              props.navigation.closeDrawer()
-            }}>
-              <AntDesign name="close" size={23} color={whitecolor} style={{ top: 5, alignSelf: 'flex-end', justifyContent: 'center' }} />
-            </TouchableOpacity>
-          </View>
+
+      <View style={{ backgroundColor: appThemeColor, flexDirection: 'row' }}>
+        <View style={{ width: '90%' }}>
+          <Text style={sideMenuStyle.sectionsText}>Sections</Text>
         </View>
-    <DrawerItem style={sideMenuStyle.item}
-
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/homeblack.png')} style={sideMenuStyle.icon} />
-      }
-      label="హోమ్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Home")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/varthalu.png')} style={sideMenuStyle.icon} />
-      }
-      label={({ color }) => (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-
-          <View>
-            <Text style={sideMenuStyle.text}>వార్తలు</Text>
-          </View>
-
+        <View >
+          <TouchableOpacity onPress={() => {
+            props.navigation.closeDrawer()
+          }}>
+            <AntDesign name="close" size={23} color={whitecolor} style={{ top: 5, alignSelf: 'flex-end', justifyContent: 'center' }} />
+          </TouchableOpacity>
         </View>
-      )}
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Varthalu")
-      }}
-
-    />
+      </View>
 
 
-    <DrawerItem style={sideMenuStyle.item}
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/varthalu.png')} style={sideMenuStyle.icon} />
+        }
+        label={({ color }) => (
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/hyderabad.png')} style={sideMenuStyle.icon} />
-      }
-      label="హైదరాబాద్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Hyderabad")
-      }}
-    />
+            <View>
+              <Text style={sideMenuStyle.text}>వార్తలు</Text>
+            </View>
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/national.png')} style={sideMenuStyle.icon} />
-      }
-      label="జాతీయం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("National")
-      }}
-    />
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/international.png')} style={sideMenuStyle.icon} />
-      }
-      label="అంతర్జాతీయం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("InterNational")
-      }}
-    />
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/telangana.png')} style={sideMenuStyle.icon} />
-      }
-      label="తెలంగాణ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Telangana")
-      }}
-    />
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/ap.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఏపీ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Ap")
-      }}
-    />
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/cinema.png')} style={sideMenuStyle.icon} />
-      }
-      label="సినిమా"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Cinema")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/sports.png')} style={sideMenuStyle.icon} />
-      }
-      label="స్పోర్ట్స్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Sports")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/chinthana.png')} style={sideMenuStyle.icon} />
-      }
-      label="చింతన"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Chinthana")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/education.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఎడ్యుకేషన్ & కెరీర్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Education")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/business.png')} style={sideMenuStyle.icon} />
-      }
-      label="బిజినెస్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Business")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/special.png')} style={sideMenuStyle.icon} />
-      }
-      label="ప్రత్యేకం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Special")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/nri.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఎన్‌ఆర్‌ఐ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Nri")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/lifestyle.png')} style={sideMenuStyle.icon} />
-      }
-      label="లైఫ్‌స్టైల్"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("LifeStyle")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/photos.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఫొటోలు"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Photos")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/video.png')} style={sideMenuStyle.icon} />
-      }
-      label="వీడియోలు"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Videos")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/more.png')} style={sideMenuStyle.icon} />
-      }
-
-      label={({ color }) => (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-
-          <View>
-            <Text style={sideMenuStyle.text}>మరిన్ని</Text>
           </View>
-          {/* <TouchableOpacity onPress={() => {
+        )}
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Varthalu")
+        }}
+
+      />
+
+
+      <DrawerItem style={sideMenuStyle.item}
+
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/hyderabad.png')} style={sideMenuStyle.icon} />
+        }
+        label="హైదరాబాద్"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Hyderabad")
+        }}
+      />
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/national.png')} style={sideMenuStyle.icon} />
+        }
+        label="జాతీయం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("National")
+        }}
+      />
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/international.png')} style={sideMenuStyle.icon} />
+        }
+        label="అంతర్జాతీయం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("InterNational")
+        }}
+      />
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/telangana.png')} style={sideMenuStyle.icon} />
+        }
+        label="తెలంగాణ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Telangana")
+        }}
+      />
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/ap.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఏపీ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Ap")
+        }}
+      />
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/cinema.png')} style={sideMenuStyle.icon} />
+        }
+        label="సినిమా"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Cinema")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/sports.png')} style={sideMenuStyle.icon} />
+        }
+        label="స్పోర్ట్స్"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Sports")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/chinthana.png')} style={sideMenuStyle.icon} />
+        }
+        label="చింతన"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Chinthana")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/education.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఎడ్యుకేషన్ & కెరీర్"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Education")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/business.png')} style={sideMenuStyle.icon} />
+        }
+        label="బిజినెస్"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Business")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/special.png')} style={sideMenuStyle.icon} />
+        }
+        label="ప్రత్యేకం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Special")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/nri.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఎన్‌ఆర్‌ఐ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Nri")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/lifestyle.png')} style={sideMenuStyle.icon} />
+        }
+        label="లైఫ్‌స్టైల్"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("LifeStyle")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/photos.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఫొటోలు"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Photos")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/video.png')} style={sideMenuStyle.icon} />
+        }
+        label="వీడియోలు"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Videos")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/more.png')} style={sideMenuStyle.icon} />
+        }
+
+        label={({ color }) => (
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+
+            <View>
+              <Text style={sideMenuStyle.text}>మరిన్ని</Text>
+            </View>
+            {/* <TouchableOpacity onPress={() => {
                                       this.NestedDrawerItem()
                                   }}>
                                       <AntDesign name="caretdown" size={15} color={blackcolor} style={{ top: 5 }} />
                                   </TouchableOpacity> */}
-        </View>
-      )}
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("More")
-      }}
-    />
+          </View>
+        )}
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("More")
+        }}
+      />
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/science.png')} style={sideMenuStyle.icon} />
-      }
-      label="సైన్స్‌ అండ్‌ టెక్నాలజీ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Science")
-      }}
-    />
-
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/cartoon.png')} style={sideMenuStyle.icon} />
-      }
-      label="కార్టూన్‌"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Cartoon")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/science.png')} style={sideMenuStyle.icon} />
+        }
+        label="సైన్స్‌ అండ్‌ టెక్నాలజీ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Science")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/evergreen.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఎవర్‌గ్రీన్‌"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("EverGreen")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/cartoon.png')} style={sideMenuStyle.icon} />
+        }
+        label="కార్టూన్‌"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Cartoon")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/crime.png')} style={sideMenuStyle.icon} />
-      }
-      label="క్రైమ్‌"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Crime")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/evergreen.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఎవర్‌గ్రీన్‌"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("EverGreen")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/zindagi.png')} style={sideMenuStyle.icon} />
-      }
-      label="జిందగీ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Zindagi")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/crime.png')} style={sideMenuStyle.icon} />
+        }
+        label="క్రైమ్‌"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Crime")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/bathukamma.png')} style={sideMenuStyle.icon} />
-      }
-      label="బతుకమ్మ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Bathukamma")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/zindagi.png')} style={sideMenuStyle.icon} />
+        }
+        label="జిందగీ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Zindagi")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/tourism.png')} style={sideMenuStyle.icon} />
-      }
-      label="టూరిజం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Tourism")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/bathukamma.png')} style={sideMenuStyle.icon} />
+        }
+        label="బతుకమ్మ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Bathukamma")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/agriculture.png')} style={sideMenuStyle.icon} />
-      }
-      label="వ్యవసాయం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Agriculture")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/tourism.png')} style={sideMenuStyle.icon} />
+        }
+        label="టూరిజం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Tourism")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/editpage.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఎడిట్‌ పేజీ"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("EditPage")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/agriculture.png')} style={sideMenuStyle.icon} />
+        }
+        label="వ్యవసాయం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Agriculture")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/sampadha.png')} style={sideMenuStyle.icon} />
-      }
-      label="సంపద"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Sampadha")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/editpage.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఎడిట్‌ పేజీ"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("EditPage")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/cooking.png')} style={sideMenuStyle.icon} />
-      }
-      label="వంటలు"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Cooking")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/sampadha.png')} style={sideMenuStyle.icon} />
+        }
+        label="సంపద"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Sampadha")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/kathalu.png')} style={sideMenuStyle.icon} />
-      }
-      label="కథలు"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Kathalu")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/cooking.png')} style={sideMenuStyle.icon} />
+        }
+        label="వంటలు"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Cooking")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/health.png')} style={sideMenuStyle.icon} />
-      }
-      label="ఆరోగ్యం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Health")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/kathalu.png')} style={sideMenuStyle.icon} />
+        }
+        label="కథలు"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Kathalu")
+        }}
+      />
 
 
-    <DrawerItem style={sideMenuStyle.item}
-
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/vaasthu.png')} style={sideMenuStyle.icon} />
-      }
-      label="వాస్తు"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Vaasthu")
-      }}
-    />
-
-
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/sahithyam.png')} style={sideMenuStyle.icon} />
-      }
-      label="సాహిత్యం"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Sahithyam")
-      }}
-    />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/health.png')} style={sideMenuStyle.icon} />
+        }
+        label="ఆరోగ్యం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Health")
+        }}
+      />
 
 
+      <DrawerItem style={sideMenuStyle.item}
 
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/contact.png')} style={sideMenuStyle.icon} />
-      }
-      label="Contact Us"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Contact")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/about.png')} style={sideMenuStyle.icon} />
-      }
-      label="About Us"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("About")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/privacy.png')} style={sideMenuStyle.icon} />
-      }
-      label="Privacy Policy"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Privacy")
-      }}
-    />
-    <DrawerItem style={sideMenuStyle.item}
-      icon={({ color, size }) =>
-        <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
-      }
-      label="Terms and Conditions"
-      labelStyle={sideMenuStyle.text}
-      onPress={() => {
-        props.navigation.navigate("Terms")
-      }}
-    />
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/vaasthu.png')} style={sideMenuStyle.icon} />
+        }
+        label="వాస్తు"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Vaasthu")
+        }}
+      />
 
-  </DrawerContentScrollView>
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/sahithyam.png')} style={sideMenuStyle.icon} />
+        }
+        label="సాహిత్యం"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Sahithyam")
+        }}
+      />
+
+
+
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/contact.png')} style={sideMenuStyle.icon} />
+        }
+        label="Contact Us"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Contact")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/about.png')} style={sideMenuStyle.icon} />
+        }
+        label="About Us"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("About")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/privacy.png')} style={sideMenuStyle.icon} />
+        }
+        label="Privacy Policy"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Privacy")
+        }}
+      />
+      <DrawerItem style={sideMenuStyle.item}
+        icon={({ color, size }) =>
+          <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
+        }
+        label="Terms and Conditions"
+        labelStyle={sideMenuStyle.text}
+        onPress={() => {
+          props.navigation.navigate("Terms")
+        }}
+      />
+
+    </DrawerContentScrollView>
   )
 }
 const TopTab = createMaterialTopTabNavigator();

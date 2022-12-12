@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, Cartoon, CategoryUrl, National, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 export default class CartoonNews extends Component {
     constructor(props) {
@@ -60,8 +60,8 @@ export default class CartoonNews extends Component {
                                         renderItem={({ item, index }) =>
                                         <View style={{ flex: 1, marginRight:5 }}>
                                         <View style={commonstyles.CartoonCard}>
-                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("CartoonArticle", { data: item }) }}  >
-                                                <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} resizeMode="contain" />
+                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("CartoonArticle", {data: item}) }}  >
+                                                <Image source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} resizeMode="contain" />
                                                 {/* <View >
                                                     <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
                                                 </View> */}

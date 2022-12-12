@@ -18,7 +18,7 @@ import {
     TeluguSahithyam, TeluguSampadha, TeluguScience, TeluguSpecial, TeluguSports, TeluguTelangana, TeluguTourism, TeluguVaasthu, TeluguVideos, TeluguZindagi, Tourism, Vaasthu, Vantalu, Videos, Varthalu, TeluguVarthalu,
 } from '../Utilities/Api/Urls';
 import moment from 'moment';
-import FastImage from 'react-native-fast-image'
+
 import { DarkTheme } from '@react-navigation/native';
 const screenWidth = Dimensions.get('window').width;
 
@@ -26,7 +26,6 @@ const screenWidth = Dimensions.get('window').width;
 export default class HomeScreen extends Component {
     constructor(props) {
         super(props);
-        //    this.mySectionListRef = useRef()
         this.state = {
             LatestData: [],
             isLoading: false,
@@ -144,6 +143,25 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
+
+        //    Api integration for  Photogallery
+        fetch(BaseUrl + CategoryUrl + Photos).then((response) =>
+            response.json())
+
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+
+                this.setState({ Gallery: responseJson, isLoading: true }, () => {
+                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
+                    // console.log(" data=========================================================" + (this.state.Gallery))
+
+                });
+
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
         //    Api integration for  Telangana News
         fetch(BaseUrl + CategoryUrl + Telangana).then((response) => response.json())
             .then(responseJson => {
@@ -161,6 +179,18 @@ export default class HomeScreen extends Component {
                 // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
                 this.setState({ ApData: responseJson, isLoading: true }, () => {
                     // console.log("ApData================================" + JSON.stringify(this.state.ApData.data))
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        //    Api integration for  Videos News
+        fetch(BaseUrl + CategoryUrl + Videos).then((response) => response.json())
+            .then(responseJson => {
+                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
+                this.setState({ VideosData: responseJson, isLoading: true }, () => {
+                    // console.log("VideosData=========================================================" + JSON.stringify(this.state.VideosData.data))
                 });
             })
             .catch((error) => {
@@ -284,36 +314,7 @@ export default class HomeScreen extends Component {
             .catch((error) => {
                 console.error(error);
             });
-        //    Api integration for  Photogallery
-        fetch(BaseUrl + CategoryUrl + Photos).then((response) =>
-            response.json())
 
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-
-                this.setState({ Gallery: responseJson, isLoading: true }, () => {
-                    // console.log("WebStoriesData data=========================================================" + JSON.stringify(this.state.WebStoriesData.data))
-                    // console.log(" data=========================================================" + (this.state.Gallery))
-
-                });
-
-            })
-
-            .catch((error) => {
-                console.error(error);
-            });
-
-        //    Api integration for  Videos News
-        fetch(BaseUrl + CategoryUrl + Videos).then((response) => response.json())
-            .then(responseJson => {
-                // console.log("Latest News Responce Json" + JSON.stringify(responseJson))
-                this.setState({ VideosData: responseJson, isLoading: true }, () => {
-                    // console.log("VideosData=========================================================" + JSON.stringify(this.state.VideosData.data))
-                });
-            })
-            .catch((error) => {
-                console.error(error);
-            });
 
         //    Api integration for  More News
         fetch(BaseUrl + CategoryUrl + More).then((response) => response.json())
@@ -514,7 +515,7 @@ export default class HomeScreen extends Component {
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refresh}
-                            
+
                         />
                     }
                 >
@@ -526,11 +527,11 @@ export default class HomeScreen extends Component {
                             horizontal={true}
                             renderItem={({ item, index }) =>
                                 <View style={{ marginRight: 5, marginLeft: 5, marginTop: 10 }} >
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SliderData.data }) }}  >
                                         <View style={commonstyles.sliderView}>
-                                            <FastImage source={{ uri: item.web_featured_image }}
+                                            <Image source={{ uri: item.web_featured_image }}
                                                 style={commonstyles.slidercard}  >
-                                            </FastImage>
+                                            </Image>
                                             <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
                                                 style={commonstyles.sliderGradient}>
                                                 <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
@@ -549,7 +550,7 @@ export default class HomeScreen extends Component {
                     <View>
                         {/* LatestNews  text*/}
 
-                        <View style={{ flexDirection: 'row',  top: 5, bottom: 5, flex: 1, }}>
+                        <View style={{ flexDirection: 'row', top: 5, bottom: 5, flex: 1, }}>
                             <View style={commonstyles.categoryView}>
                                 <View>
                                     <Text style={commonstyles.Category}>
@@ -581,11 +582,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -608,10 +609,10 @@ export default class HomeScreen extends Component {
                                                 data={this.state.OnlyLatest.slice(2, 8)}
                                                 renderItem={({ item, index }) =>
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -671,6 +672,7 @@ export default class HomeScreen extends Component {
                                 this.state.VarthaluData.length != 0 && { isLoading: true } ?
                                     <View style={commonstyles.flatView}>
                                         <FlatList
+                                            style={commonstyles.bgDarkGrey}
                                             showsHorizontalScrollIndicator={false}
                                             persistentScrollbar={false}
                                             numColumns={2}
@@ -678,11 +680,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -705,10 +707,10 @@ export default class HomeScreen extends Component {
                                                 data={this.state.OnlyLatest.slice(2, 8)}
                                                 renderItem={({ item, index }) =>
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -774,11 +776,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.HyderabadData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -802,10 +804,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.HyderabadData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -869,11 +871,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.NationalData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -897,10 +899,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.NationalData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -966,11 +968,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.InterNationalData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -994,10 +996,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.InterNationalData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1025,6 +1027,65 @@ export default class HomeScreen extends Component {
                                     </View>
                             }
                         </View>
+                    </View>
+                    {/* Photo Gallery */}
+                    <View>
+                        {/*photo gallery  text*/}
+
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
+                                <View style={{ flex: 1.7 }}>
+                                    <Text style={commonstyles.ptext}>
+                                        ఫోటో గ్యాలరీ
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 0.3 }}>
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
+                                        <Ionicons name="arrow-forward" size={25} color={"#111"} style={{ justifyContent: 'center', }} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            {/* photo gallery  Cards*/}
+                            <View>
+                                {
+
+                                    this.state.Gallery.length != 0 && { isLoading: true } ?
+
+                                        <View >
+
+                                            <FlatList
+                                                data={this.state.Gallery.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+                                                                <Image source={{ uri: item.web_featured_image }}
+                                                                    style={commonstyles.photocard}  >
+                                                                </Image>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+                                                }
+
+                                            />
+                                        </View>
+                                        :
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                        </View>
+                                }
+                            </View>
+                        </View>
+
                     </View>
 
                     {/* Telangana News */}
@@ -1062,11 +1123,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.TelanganaData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1090,10 +1151,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.TelanganaData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1159,11 +1220,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ApData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1187,10 +1248,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ApData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1219,6 +1280,68 @@ export default class HomeScreen extends Component {
                             }
                         </View>
                     </View>
+                    {/* videos Gallery */}
+                    <View>
+                        {/*videos  text*/}
+
+                        <View style={commonstyles.photoview}>
+                            <View style={commonstyles.phototextview}>
+                                <View style={{ flex: 1.7 }}>
+                                    <Text style={commonstyles.ptext}>
+                                        వీడియోలు
+                                    </Text>
+                                </View>
+                                <View style={{ flex: 0.3 }}>
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Videos") }}  >
+                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            {/* videos  Cards*/}
+                            <View>
+                                {
+
+                                    this.state.VideosData.length != 0 && { isLoading: true } ?
+                                        <View >
+
+                                            <FlatList
+                                                data={this.state.VideosData.data}
+                                                showsHorizontalScrollIndicator={false}
+                                                horizontal={true}
+                                                renderItem={({ item, index }) =>
+                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
+                                                            <View style={commonstyles.sliderView}>
+
+                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
+                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
+                                                                        <Image style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
+                                                                    </View>
+                                                                </ImageBackground>
+                                                                <LinearGradient colors={['transparent', 'white']}
+                                                                    style={commonstyles.linearGradient}
+                                                                    start={{ x: 0.5, y: 0.2 }}
+                                                                    locations={[0.2, 0.8]}>
+                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
+                                                                </LinearGradient>
+                                                            </View>
+                                                        </TouchableOpacity>
+
+                                                    </View>
+                                                }
+
+                                            />
+                                        </View>
+                                        :
+                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                        </View>
+                                }
+                            </View>
+                        </View>
+
+                    </View>
+
                     {/* Cinema News */}
                     <View>
                         {/* Cinema   text*/}
@@ -1256,11 +1379,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CinemaData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1284,10 +1407,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CinemaData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1351,11 +1474,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SportsData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1379,10 +1502,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SportsData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1447,11 +1570,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ChinthanaData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1475,10 +1598,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ChinthanaData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1541,11 +1664,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EducationData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1569,10 +1692,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EducationData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1637,11 +1760,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.BusinessData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1665,10 +1788,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.BusinessData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1734,11 +1857,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SpecialData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1762,10 +1885,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SpecialData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1831,11 +1954,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.NriData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1859,10 +1982,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.NriData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1927,11 +2050,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.LifeStyleData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1955,10 +2078,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.LifeStyleData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -1988,68 +2111,9 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
-                    {/* Photo Gallery */}
+
+                    {/* More News */}
                     <View>
-                        {/*photo gallery  text*/}
-
-                        <View style={commonstyles.photoview}>
-                            <View style={commonstyles.phototextview}>
-                                <View style={{ flex: 1.7 }}>
-                                    <Text style={commonstyles.ptext}>
-                                        ఫోటో గ్యాలరీ
-                                    </Text>
-                                </View>
-                                <View style={{ flex: 0.3 }}>
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Photos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#111"} style={{ justifyContent: 'center', }} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            {/* photo gallery  Cards*/}
-                            <View>
-                                {
-
-                                    this.state.Gallery.length != 0 && { isLoading: true } ?
-
-                                        <View >
-
-                                            <FlatList
-                                                data={this.state.Gallery.data}
-                                                showsHorizontalScrollIndicator={false}
-                                                horizontal={true}
-                                                renderItem={({ item, index }) =>
-                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
-                                                            <View style={commonstyles.sliderView}>
-                                                                <FastImage source={{ uri: item.web_featured_image }}
-                                                                    style={commonstyles.photocard}  >
-                                                                </FastImage>
-                                                                <LinearGradient colors={['transparent', 'white']}
-                                                                    style={commonstyles.linearGradient}
-                                                                    start={{ x: 0.5, y: 0.2 }}
-                                                                    locations={[0.2, 0.8]}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
-                                                                </LinearGradient>
-                                                            </View>
-                                                        </TouchableOpacity>
-
-                                                    </View>
-                                                }
-
-                                            />
-                                        </View>
-                                        :
-                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                        </View>
-                                }
-                            </View>
-                        </View>
-
-                    </View>
-
-                     {/* More News */}
-                     <View>
                         {/* More   text*/}
                         <View style={{ flexDirection: 'row', left: 10, marginRight: 10, flex: 2 }}>
                             <View style={{ flex: 1.7, flexDirection: 'row' }}>
@@ -2084,11 +2148,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.MoreData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2112,10 +2176,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.MoreData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2180,11 +2244,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ScienceData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2208,10 +2272,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ScienceData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2241,68 +2305,8 @@ export default class HomeScreen extends Component {
                         </View>
                     </View>
 
-                    {/* videos Gallery */}
-                    <View>
-                        {/*videos  text*/}
 
-                        <View style={commonstyles.photoview}>
-                            <View style={commonstyles.phototextview}>
-                                <View style={{ flex: 1.7 }}>
-                                    <Text style={commonstyles.ptext}>
-                                        వీడియోలు
-                                    </Text>
-                                </View>
-                                <View style={{ flex: 0.3 }}>
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Videos") }}  >
-                                        <Ionicons name="arrow-forward" size={25} color={"#fff"} style={{ justifyContent: 'center', }} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            {/* videos  Cards*/}
-                            <View>
-                                {
 
-                                    this.state.VideosData.length != 0 && { isLoading: true } ?
-                                        <View >
-
-                                            <FlatList
-                                                data={this.state.VideosData.data}
-                                                showsHorizontalScrollIndicator={false}
-                                                horizontal={true}
-                                                renderItem={({ item, index }) =>
-                                                    <View style={{ marginRight: 5, marginLeft: 10, }} >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
-                                                            <View style={commonstyles.sliderView}>
-
-                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
-                                                                    <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
-                                                                        <FastImage style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
-                                                                    </View>
-                                                                </ImageBackground>
-                                                                <LinearGradient colors={['transparent', 'white']}
-                                                                    style={commonstyles.linearGradient}
-                                                                    start={{ x: 0.5, y: 0.2 }}
-                                                                    locations={[0.2, 0.8]}>
-                                                                    <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.phototext}>{item.title.rendered}</Text>
-                                                                </LinearGradient>
-                                                            </View>
-                                                        </TouchableOpacity>
-
-                                                    </View>
-                                                }
-
-                                            />
-                                        </View>
-                                        :
-                                        <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
-                                            <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
-                                        </View>
-                                }
-                            </View>
-                        </View>
-
-                    </View>
-                   
                     {/* Cartoon News */}
                     <View>
                         {/* Cartoon   text*/}
@@ -2341,7 +2345,7 @@ export default class HomeScreen extends Component {
                                                 <View style={{ flex: 1, }}>
                                                     <View style={commonstyles.CartoonCard}>
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("CartoonArticle", { data: item }) }}  >
-                                                            <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} />
+                                                            <Image source={{ uri: item.web_featured_image }} style={commonstyles.cartoonimg} />
                                                             <View >
                                                                 <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.SportText}>{item.title.rendered}</Text>
                                                             </View>
@@ -2396,11 +2400,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EverGreenData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2424,10 +2428,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EverGreenData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2493,11 +2497,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CrimeData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2521,10 +2525,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CrimeData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2589,11 +2593,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ZindagiData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2617,10 +2621,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.ZindagiData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2685,11 +2689,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.BathukammaData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2713,10 +2717,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.BathukammaData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2782,11 +2786,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.TourismData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2810,10 +2814,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.TourismData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2878,11 +2882,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.AgricultureData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2906,10 +2910,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.AgricultureData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -2974,11 +2978,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EditpageData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3002,10 +3006,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.EditpageData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3050,7 +3054,7 @@ export default class HomeScreen extends Component {
                                 </View>
                             </View>
                             <View style={{ flex: 0.3, top: 10 }}>
-                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("EditPage") }}  >
+                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Sampadha") }}  >
                                     <Ionicons name="arrow-forward" size={25} color={blackcolor} style={{ justifyContent: 'center', }} />
                                 </TouchableOpacity>
                             </View>
@@ -3071,11 +3075,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SampadhaData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3099,10 +3103,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SampadhaData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3167,11 +3171,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CookingData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3195,10 +3199,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.CookingData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3264,11 +3268,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.StoriesData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3292,10 +3296,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.StoriesData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3361,11 +3365,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.HealthData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3389,10 +3393,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.HealthData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3458,11 +3462,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VaasthuData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3486,10 +3490,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VaasthuData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3555,11 +3559,11 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SahithyamData.data }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
-                                                                        <FastImage style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
+                                                                        <Image style={commonstyles.latestimgTag} source={{ uri: item.web_featured_image }} />
                                                                     </View>
                                                                     <View>
                                                                         <Text numberOfLines={2} ellipsizeMode='tail'
@@ -3583,10 +3587,10 @@ export default class HomeScreen extends Component {
                                                 renderItem={({ item, index }) =>
 
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.SahithyamData.data }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
-                                                                    <FastImage source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'

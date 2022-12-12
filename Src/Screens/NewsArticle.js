@@ -1,18 +1,15 @@
 
 import React, { Component } from 'react';
 import { View, Text, ClipboardStatic, Image, TouchableOpacity, FlatList, Share, ActivityIndicator, StyleSheet, Alert, Dimensions, RefreshControl, Linking, Button } from 'react-native'
-import { commonstyles, appThemeColor, light_blue, dark_blue, Header_text, blackcolor, whitecolor } from '../Styles/CommonStyles'
+import { commonstyles, appThemeColor, light_blue, dark_blue, Header_text, blackcolor, whitecolor, Dark_Gray } from '../Styles/CommonStyles'
 import Header from '../Custom Components/Header/Header'
 // import { WebView } from "react-native-twitter-embed";
 import { WebView } from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview'
-
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-
+import LinearGradient from 'react-native-linear-gradient';
+import Feather from 'react-native-vector-icons/Feather'
 import { Article, BaseUrl, HomeSlider, RelatedUrl, MenuUrl, LatestUrl, Next, article } from '../Utilities/Api/Urls';
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { ScrollView, Swipeable } from 'react-native-gesture-handler';
 // import SubHeader from '../Header/SubHeader';
 import HTMLView from 'react-native-htmlview';
@@ -31,6 +28,7 @@ export default class CinemaDetailsScreen extends Component {
         super(props);
         this.state = {
             data: this.props.route.params.data,
+            DetailsData: this.props.route.params.DetailsData,
             RelatedData: [],
             isLoading: false,
             ArticleData: [],
@@ -42,23 +40,25 @@ export default class CinemaDetailsScreen extends Component {
             // ArticleData: [],
             OnlyLatest: [],
             LatestData: [],
-            PrevData:[],
-            NextData:[]
+            PrevData: [],
+            NextData: []
 
 
 
         }
     };
     componentDidMount() {
+        // console.log(this.state.DetailsData, "============data");
         var Related_id = this.state.data.id
-        var article_id=this.state.ArticleData.prev_id
+        var article_id = this.state.ArticleData.prev_id
+
+       
         console.log(this.state.data.id,"id===========================");
-        //    Api integration for  Latest News
         fetch(BaseUrl + Next + '?id=' + Related_id)
             .then((response) => response.json())
             .then(responseJson => {
                 this.setState({ ArticleData: responseJson, isLoading: true }, () => {
-                    console.log(this.state.ArticleData, "==================================");
+                    console.log(this.state.ArticleData, "==================================Prev and next id");
 
                 });
             });
@@ -67,15 +67,34 @@ export default class CinemaDetailsScreen extends Component {
             .then((response) => response.json())
             .then(responseJson => {
                 this.setState({ PrevData: responseJson, isLoading: true }, () => {
-                    console.log(this.state.PrevData, "==================================");
+                    console.log(this.state.PrevData, "==================================>");
 
                 });
+            });
+        //    Api integration for  Latest News
+        fetch(BaseUrl + LatestUrl)
+            .then((response) => response.json())
+
+            .then(responseJson => {
+                this.setState({ LatestData: responseJson, isLoading: true }, () => {
+                    // console.log("LatestDataList data===========" + JSON.stringify(this.state.LatestData))                    
+                    var onlyStandard = this.state.LatestData.data.filter((obj) => {
+                        return (obj.format == 'standard')
+                    })
+                    this.setState({ OnlyLatest: onlyStandard, }, () => {
+
+                    })
+                });
+            })
+            .catch((error) => {
+                console.error(error);
             });
 
     }
 
     componentDidUpdate() {
-        if (this.state.data != this.props.route.params.data) {
+        this.state.DetailsData = this.props.route.params.DetailsData
+        if (this.state.data != this.props.route.params.data ) {
             this.fetchData()
             this.goToTop()
         }
@@ -107,33 +126,13 @@ export default class CinemaDetailsScreen extends Component {
             });
     }
 
-    // share function
-    share = () => {
-        Share.share({
-            message: this.state.data.link
-        })
-            .then((result) => console.log(result))
-            .then((error) => console.log(error))
-    }
-    PullMe = () => {
-        this.setState({ refresh: true })
-        setTimeout(() => {
-            this.setState({ refresh: false })
-
-        }, 100)
-    }
     goToTop = () => {
 
         this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     }
-    onFabPress = () => {
-        this.scrollRef.current?.scrollTo({
-            y: 0,
-            animated: true
-        });
-    }
 
     render() {
+        // let source= this.state.DetailsData.content.rendered
 
         let source1 = this.state.data.content.rendered.replace('lazyload', 'text/javascript')
         const regex = /(<([^>#&'';;]+)>)/ig;
@@ -142,9 +141,6 @@ export default class CinemaDetailsScreen extends Component {
         return (
 
             <View style={commonstyles.container}>
-
-
-
                 <View >
                     <View style={HeaderStyle.subHeadercustom}>
                         <View style={{ flex: 0.3 }}>
@@ -186,7 +182,7 @@ export default class CinemaDetailsScreen extends Component {
                     <View>
 
                         <View >
-                            <FastImage source={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard} />
+                            <Image source={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard} />
                         </View>
 
                         <View style={{ margin: 10, }}>
@@ -237,64 +233,187 @@ export default class CinemaDetailsScreen extends Component {
 
                             />
                         </View>
-                        {/* Previous and Next Buttons */}
-                        <View style={commonstyles.prevNextMainView}>
 
-                            <View style={commonstyles.prevView}>
-                                <TouchableOpacity onPress={()=>{}}>
-                                    <Text style={commonstyles.prevText}>Previous</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={commonstyles.nextView}>
-                                <TouchableOpacity onPress={()=>{}}>
-                                <Text style={commonstyles.prevText}>Next</Text>
-                                </TouchableOpacity>
-                            </View>
-
-                        </View>
 
                         {/* Related News */}
                         <View>
-                            <View style={{ marginLeft: 10, }}>
+                            <View style={{ marginLeft: 10,marginTop:10 }}>
                                 <Text style={commonstyles.relatedText}>
                                     Related News
                                 </Text>
                             </View>
                             {/* Related news FlatList */}
+                            {
+                                this.state.onlyRelated.length != 0 && { isLoading: true } ?
+                                    <View style={{ position: 'relative' }}>
+                                        {/* <CustomLoader visible={this.state.spinner}/> */}
+                                        <FlatList
+                                            showsHorizontalScrollIndicator={false}
+                                            persistentScrollbar={false}
+                                            data={this.state.onlyRelated}
+                                            renderItem={({ item, index }) =>
 
-                            <View style={{ position: 'relative' }}>
-                                {/* <CustomLoader visible={this.state.spinner}/> */}
-                                <FlatList
-                                    showsHorizontalScrollIndicator={false}
-                                    persistentScrollbar={false}
-                                    data={this.state.onlyRelated}
-                                    // onEndReached={this.PullMe()}
-                                    renderItem={({ item, index }) =>
+                                                <View >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.onlyRelated }) }}  >
+                                                        <View style={commonstyles.cardView}>
+                                                            <View style={commonstyles.cateviewImg}>
+                                                                <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
+                                                            </View>
+                                                            <View style={commonstyles.cateviewText}>
+                                                                <Text numberOfLines={2} ellipsizeMode='tail'
+                                                                    style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                <View style={commonstyles.timeview}>
+                                                                    <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
+                                                                    <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                                </View>
 
-                                        <View >
-                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
-                                                <View style={commonstyles.cardView}>
-                                                    <View style={commonstyles.cateviewImg}>
-                                                        <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
-                                                    </View>
-                                                    <View style={commonstyles.cateviewText}>
-                                                        <Text numberOfLines={2} ellipsizeMode='tail'
-                                                            style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
-                                                        <View style={commonstyles.timeview}>
-                                                            <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
-                                                            <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
+                                                            </View>
                                                         </View>
+                                                    </TouchableOpacity>
 
-                                                    </View>
                                                 </View>
-                                            </TouchableOpacity>
 
-                                        </View>
-
-                                    }
-                                />
-                            </View>
+                                            }
+                                        />
+                                    </View>
+                                    :
+                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                        <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                    </View>
+                            }
                         </View>
+
+                        {/* Next Article  */}
+
+                        {
+                            this.state.DetailsData.length != 0 && { isLoading: true } ?
+                                <View>
+                                    <FlatList
+                                        showsHorizontalScrollIndicator={false}
+                                        persistentScrollbar={false}
+                                        data={this.state.DetailsData.slice(0, 10)}
+                                        renderItem={({ item, index }) =>
+                                            <View>
+                                                <View style={{ padding: 10, flexDirection: 'row' }}>
+                                                    <View style={{}}>
+                                                    <Feather name="chevrons-down" size={25} color={Dark_Gray} style={{ marginTop: 3}} />
+
+                                                        {/* <Image source={require('../Assets/Images/down-arrow.png')} style={{ width: 20, height: 20, right: 10, top: 2, marginLeft: 10 }} /> */}
+                                                    </View>
+                                                    <View>
+                                                        <Text style={commonstyles.nextText}>
+                                                            Next Article
+                                                        </Text>
+                                                    </View>
+
+                                                </View>
+                                                <View >
+                                                    <Image source={{ uri: item.web_featured_image }} style={commonstyles.Detailslargecard} />
+                                                </View>
+
+                                                <View style={{ margin: 10, }}>
+                                                    <HTMLView
+                                                        value={"<p>" + item.title.rendered + "</p>"}
+                                                        stylesheet={headerStyles}
+                                                    />
+
+                                                </View>
+
+                                                <View style={{ flexDirection: 'row', start: 10 }}>
+                                                    <Text style={commonstyles.detailTime}>{(moment(this.state.data.date_gmt).format('MMMM DD , YYYY'))} / </Text>
+                                                    <Text style={commonstyles.detailTime}>{(moment(this.state.data.modified).utcOffset('+05:30').format('hh.mm a'))} IST  </Text>
+                                                </View>
+
+                                                <View style={{ width: screenWidth - 10, justifyContent: 'center', pointerEvents: "none" }}>
+
+                                                    <AutoHeightWebView
+                                                        androidHardwareAccelerationDisabled // update here androidLayerType="software"
+                                                        customStyle={`
+                              * {
+                                font-family: 'Mandali-Bold';
+                                line-height: 1.5;
+                                -webkit-user-select: none;
+                                  -webkit-touch-callout: none; 
+                                 }
+                              p {
+                                font-size: 16px;
+                                text-align:left;
+                                margin:10;
+                                font-family:'Mandali-Regular';
+                                line-height:35px
+                                                              }
+                                                              p img{
+                                                                width:100%;
+                                                                height:inherit
+                                                              }
+                                                              p iframe{
+                                                                width:100%;
+                                                                height:inherit
+                                                              }
+                            `}
+                                                        source={{ html: item.content.rendered+= "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}</style>", baseUrl: 'https://twitter.com' }}
+                                                        scalesPageToFit={false}
+                                                        viewportContent={'width=device-width, user-scalable=no'}
+
+                                                    />
+                                                </View>
+                                            </View>
+                                        }
+                                    />
+                                </View>
+                                :
+                                <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                    <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                </View>
+                        }
+                        {/* Flash News */}
+                        <View>
+                            <View style={{ marginLeft: 10, }}>
+                                <Text style={commonstyles.relatedText}>
+                                    Flash News
+                                </Text>
+                            </View>
+                            <View style={commonstyles.photoview}>
+
+                                <View>
+                                    {
+                                        this.state.OnlyLatest.length != 0 && { isLoading: true } ?
+                                            <View >
+                                                <FlatList
+                                                    data={this.state.OnlyLatest}
+                                                    showsHorizontalScrollIndicator={false}
+                                                    horizontal={true}
+                                                    renderItem={({ item, index }) =>
+                                                        <View style={{ marginRight: 5, marginLeft: 10, }} >
+                                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.OnlyLatest}) }}  >
+                                                                <View style={commonstyles.sliderView}>
+                                                                    <Image source={{ uri: item.web_featured_image }}
+                                                                        style={commonstyles.photocard}  >
+                                                                    </Image>
+                                                                    <LinearGradient colors={['transparent', 'black']}
+                                                                        style={commonstyles.linearGradient}
+                                                                        start={{ x: 0.5, y: 0.2 }}
+                                                                        locations={[0.2, 0.8]}>
+                                                                        <Text numberOfLines={2} ellipsizeMode='tail' style={commonstyles.flashtext}>{item.title.rendered}</Text>
+                                                                    </LinearGradient>
+                                                                </View>
+                                                            </TouchableOpacity>
+
+                                                        </View>
+                                                    }
+
+                                                />
+                                            </View>
+                                            :
+                                            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 100 }}>
+                                                <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
+                                            </View>
+                                    }
+                                </View>
+                            </View>
+
+                        </View>
+
                     </View>
                 </ScrollView>
                 {
@@ -304,9 +423,7 @@ export default class CinemaDetailsScreen extends Component {
                         <ActivityIndicator color={appThemeColor} size='large' />
                     </View>
                 }
-                {/* <TouchableOpacity onPress={() => { this.onFabPress }} style={{ position: 'absolute', right: 10, bottom: 10 }}>
-                    <Image resizeMode='contain' source={require('../Assets/Images/top_arrow.png')} style={{ width: 35, height: 35 }} />
-                </TouchableOpacity> */}
+
             </View>
         )
     }

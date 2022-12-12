@@ -19,16 +19,11 @@ export default class Terms extends Component {
         return (
             <SafeAreaView styles={commonstyles.container}>
                 
-                <View style={[HeaderStyle.subHeaderviewHeight]}>
-                    <View style={{ flex: 0.5 }}>
-                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                            <MaterialIcons name="arrow-back" size={40} color={blackcolor} style={{ left: 8 }} />
-                        </TouchableOpacity >
-                    </View>
-                    <View style={{ flex: 1, marginLeft: -120 }}>
-                        <Text style={[ContactStyles.heading]}>Terms & Conditions</Text>
-                    </View>
-                </View>
+                <SubHeader title={"Terms & Conditions "} isMenu={false} isBook={false} isShare={false}
+                    leftBtnClick={() => this.props.navigation.goBack()}
+                    ShareClick={() => { this.sharecall() }}
+                    BookClick={() => { alert("BookMark   Clicked") }}
+                />
 
                 <ScrollView>
                     <View style={ContactStyles.mainView}>

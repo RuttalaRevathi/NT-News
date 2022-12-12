@@ -5,7 +5,7 @@ import SubHeader from "../../Custom Components/SubHeader/SubHeader";
 import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import { BaseUrl, CategoryUrl,ShareUrl} from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 
 export default class Category extends Component {
@@ -62,10 +62,10 @@ export default class Category extends Component {
                                         renderItem={({ item, index }) =>
 
                                         <View >
-                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
                                             <View style={commonstyles.cardView}>
                                                 <View style={commonstyles.cateviewImg}>
-                                                    <FastImage source={{ uri: item.web_featured_image }}
+                                                    <Image source={{ uri: item.web_featured_image }}
                                                         style={commonstyles.cateImage} />
                                                 </View>
                                                 <View style={commonstyles.cateviewText}>

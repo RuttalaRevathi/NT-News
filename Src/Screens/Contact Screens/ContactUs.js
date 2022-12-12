@@ -33,16 +33,11 @@ export default class ContactUs extends Component {
         return (
             <SafeAreaView styles={commonstyles.container}>
                 
-                <View style={[HeaderStyle.subHeaderviewHeight]}>
-                    <View style={{ flex: 0.5 }}>
-                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                            <MaterialIcons name="arrow-back" size={40} color={blackcolor} style={{ left: 8 }} />
-                        </TouchableOpacity >
-                    </View>
-                    <View style={{ flex: 1, marginLeft: -130 }}>
-                        <Text style={[ContactStyles.heading]}>Contact Us</Text>
-                    </View>
-                </View>
+                <SubHeader title={"Contact Us "} isMenu={false} isBook={false} isShare={false}
+                    leftBtnClick={() => this.props.navigation.goBack()}
+                    ShareClick={() => { this.sharecall() }}
+                    BookClick={() => { alert("BookMark   Clicked") }}
+                />
                 <View style={ContactStyles.mainView}>
                     <View style={{ left: 20, top: 10 }}>
 

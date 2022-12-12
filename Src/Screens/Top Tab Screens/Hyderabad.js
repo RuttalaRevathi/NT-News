@@ -6,7 +6,7 @@ import { appThemeColor, commonstyles } from "../../Styles/CommonStyles";
 import LinearGradient from 'react-native-linear-gradient';
 import { BaseUrl, CategoryUrl, Hyderabad, LatestUrl, ShareUrl } from "../../Utilities/Api/Urls";
 import moment from 'moment'
-import FastImage from 'react-native-fast-image'
+
 
 
 export default class HyderabadNews extends Component {
@@ -66,11 +66,11 @@ export default class HyderabadNews extends Component {
                             data={this.state.HyderabadData.data.slice(0, 1)}
                             renderItem={({ item, index }) =>
                                 <View style={{ marginRight: 5, marginLeft: 5, marginTop: 10 }} >
-                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
                                         <View style={commonstyles.sliderView}>
-                                            <FastImage source={{ uri: item.web_featured_image }}
+                                            <Image source={{ uri: item.web_featured_image }}
                                                 style={commonstyles.slidercard}  >
-                                            </FastImage>
+                                            </Image>
                                             <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,.8)', 'rgba(0,0,0,1)']}
                                                 style={commonstyles.sliderGradient}>
                                                 <Text style={commonstyles.slidertext}>{item.title.rendered}</Text>
@@ -88,10 +88,10 @@ export default class HyderabadNews extends Component {
                                         renderItem={({ item, index }) =>
 
                                             <View >
-                                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item }) }}  >
+                                                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
                                                     <View style={commonstyles.cardView}>
                                                         <View style={commonstyles.cateviewImg}>
-                                                            <FastImage source={{ uri: item.web_featured_image }}
+                                                            <Image source={{ uri: item.web_featured_image }}
                                                                 style={commonstyles.cateImage} />
                                                         </View>
                                                         <View style={commonstyles.cateviewText}>

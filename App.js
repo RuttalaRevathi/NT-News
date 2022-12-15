@@ -25,6 +25,7 @@ export default class App extends Component {
     setTimeout(() => {
       this.setState({ showSplash: false })
     }, 2000)
+    
   }
 
 

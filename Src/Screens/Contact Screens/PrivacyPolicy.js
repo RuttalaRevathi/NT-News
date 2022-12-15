@@ -52,31 +52,31 @@ export default class PrivacyPolicy extends Component {
                             <Text style={ContactStyles.content}>We use the information we collect in various ways, including to: </Text>
 
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Provide, operate, and maintain our website</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Improve, personalize, and expand our website</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Understand and analyze how you use our website</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Develop new products, services, features, and functionality</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Send you emails</Text>
                             </View>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Find and prevent fraud</Text>
                             </View>
                             <Text style={ContactStyles.title}>Log Files</Text>
@@ -89,7 +89,7 @@ export default class PrivacyPolicy extends Component {
                             <Text style={ContactStyles.title}>Our Advertising Partners</Text>
                             <Text style={ContactStyles.content}>Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has their own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.</Text>
                             <View style={{ flexDirection: 'row' }}>
-                                <MaterialIcons name="circle" size={10} color={blackcolor} style={ContactStyles.bulleticon} />
+                                <MaterialIcons name="circle" size={8} color={blackcolor} style={ContactStyles.bulleticon} />
                                 <Text style={ContactStyles.bullettext}>Google https://policies.google.com/technologies/ads</Text>
                             </View>
                             <Text style={ContactStyles.title}>Advertising Partners Privacy Policies</Text>

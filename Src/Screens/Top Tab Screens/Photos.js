@@ -10,7 +10,6 @@ import moment from 'moment'
 export default class PhotosNews extends Component {
     constructor(props) {
         super(props);
-        console.log(props, "props")
         this.state = {
             HyderabadData: [],
             isLoading: false
@@ -54,14 +53,14 @@ export default class PhotosNews extends Component {
 
                                 <View >
                                     <FlatList
-                                        style={commonstyles.cateflist}
+                                        style={commonstyles.photoflist}
                                         data={this.state.HyderabadData.data}
                                         numColumns={2}
                                         renderItem={({ item, index }) =>
 
                                             <View style={{ flex: 1, }}>
                                                 <View style={{}}>
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", {data: item}) }}  >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", {data: item,DetailsData:this.state.HyderabadData.data}) }}  >
                                                         <View style={commonstyles.latestMainView}>
                                                             <View style={commonstyles.latestsubView}>
                                                                 <View>

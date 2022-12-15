@@ -16,13 +16,13 @@ export const ContactStyles = StyleSheet.create({
             color: blackcolor,
             // width: '90%',
             textAlign: 'center',
-            fontFamily: 'Mandali-Regular',
-            fontSize: 30,
+            fontFamily: 'RobotoCondensed-Regular',
+            fontSize: 25,
           
         },
          subView:{  paddingBottom: 120, margin: 10},
-         bulleticon:{ top: 6 },
-         bullettext:{ color: blackcolor, fontFamily: 'Mandali-Regular', fontSize: 18, left: 10 },
+         bulleticon:{ top:9 },
+         bullettext:{ color: blackcolor, fontFamily: 'RobotoCondensed-Regular', fontSize: 18, left: 10 },
          call:{color:appThemeColor,fontFamily:'bold',fontSize:16,fontWeight:'600'},
 
 

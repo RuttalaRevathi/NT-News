@@ -74,6 +74,20 @@ export const commonstyles = StyleSheet.create({
     // marginLeft: 5,
     // marginRight: 5,
     resizeMode: "contain",
+    aspectRatio: 9 / 9,
+    borderRadius: 5,
+    // padding:10
+
+  },
+  videocard: {
+    height: Dimensions.get('window').height * 0.32,
+    // width: screenWidth - 50,
+    // width: '100%',
+    // flex: 1,
+    // margin: 5,
+    // marginLeft: 5,
+    // marginRight: 5,
+    resizeMode: "contain",
     aspectRatio: 10 / 9,
     borderRadius: 5,
     // padding:10
@@ -338,6 +352,7 @@ export const commonstyles = StyleSheet.create({
   cateviewImg: { marginRight: 5 },
   cateflist: { paddingBottom: 150, top: 10, margin: 5 },
   cateflist: { paddingBottom: 50, top: 10, margin: 5 },
+  photoflist:{ paddingBottom: 150, top: 10, margin: 5 },
 
   videoImg: {
     width: Dimensions.get('window').width * 0.3,
@@ -364,6 +379,7 @@ export const commonstyles = StyleSheet.create({
   prevView:{flex:0.25,height:30,justifyContent:'center',marginLeft:10},
   nextView:{flex:0.2,height:30,justifyContent:'center',marginRight:10},
   relatedText:{ color: '#000', fontSize: 20, fontFamily: 'RobotoCondensed-Regular' },
+  photoflash:{ color: whitecolor, fontSize: 20, fontFamily: 'RobotoCondensed-Regular' },
   nextText:{ color: Dark_Gray, fontSize: 20, fontFamily: 'RobotoCondensed-Regular' },
   flashView:{
     backgroundColor: gallerycolor,

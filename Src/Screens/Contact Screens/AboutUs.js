@@ -29,7 +29,7 @@ export default class AboutUs extends Component {
                         <Text style={[ContactStyles.heading]}>About Us</Text>
                     </View>
                 </View> */}
-                <SubHeader title={"About Us "} isMenu={false} isBook={false} isShare={false}
+                <SubHeader title={"About Us "}  isMenu={false} isBook={false} isShare={false}
                     leftBtnClick={() => this.props.navigation.goBack()}
                     ShareClick={() => { this.sharecall() }}
                     BookClick={() => { alert("BookMark   Clicked") }}

@@ -187,13 +187,13 @@ export default class VideoArticle extends Component {
                             />
                         </View> */}
                         {/* Related News */}
-                        {/* <View>
+                        <View>
                             <View style={{ marginLeft: 10, marginBottom: 20 }}>
                                 <Text style={{ color: '#000', fontSize: 20, fontFamily: 'Ramabhadra-Regular' }}>
                                     Related News
                                 </Text>
                             </View>
-                            Related news FlatList
+                            {/* // Related news FlatList */}
                             {
 
                                 this.state.onlyRelated.length != 0 && { isLoading: true } ?
@@ -205,7 +205,7 @@ export default class VideoArticle extends Component {
 
                                             renderItem={({ item, index }) =>
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.HyderabadData.data }) }}  >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", {data: item}) }}  >
                                                         <View style={commonstyles.cardView}>
                                                             <View style={commonstyles.cateviewImg}>
                                                                 <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
@@ -232,7 +232,7 @@ export default class VideoArticle extends Component {
                                 <Text style={{ fontSize: 16, textAlign: "center", color: "#000000" }}>. . . Loading . . .</Text>
                             </View>
     }
-                        </View> */}
+                        </View>
                     </View>
                 </ScrollView>
                 {

@@ -34,9 +34,9 @@ export default class SideMenu extends Component {
     }
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1}}>
 
-                <View style={{ flex: 1, paddingTop: 20, backgroundColor: graycolor, }}>
+                <View style={{ flex: 1, paddingTop: 20, backgroundColor: graycolor }}>
                     <View style={{ backgroundColor: appThemeColor, flexDirection: 'row' }}>
                         <View style={{width:'90%'}}>
                             <Text style={sideMenuStyle.sectionsText}>Sections</Text>
@@ -49,7 +49,7 @@ export default class SideMenu extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <ScrollView>
+                    <ScrollView style={{paddingBottom:50}}>
                         <DrawerItem style={sideMenuStyle.item}
 
                             icon={({ color, size }) =>
@@ -486,12 +486,24 @@ export default class SideMenu extends Component {
                                 this.props.navigation.navigate("Privacy")
                             }}
                         />
-                        <DrawerItem style={sideMenuStyle.item}
+                        {/* <DrawerItem style={[sideMenuStyle.item,{paddingBottom:40}]}
                             icon={({ color, size }) =>
                                 <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
                             }
                             label="Terms and Conditions"
                             labelStyle={sideMenuStyle.text}
+                            onPress={() => {
+                                this.props.navigation.navigate("Terms")
+                            }}
+                        /> */}
+                         <DrawerItem style={[sideMenuStyle.item]}
+                            icon={({ color, size }) =>
+                                <Image source={require('../Assets/Images/sidemenuIcons/conditions.png')} style={sideMenuStyle.icon} />
+                            }
+                            label={({focused, color}) => (
+                                <Text style={{color}}>Terms & Conditions</Text>
+                              )}
+                            labelStyle={[sideMenuStyle.text]}
                             onPress={() => {
                                 this.props.navigation.navigate("Terms")
                             }}

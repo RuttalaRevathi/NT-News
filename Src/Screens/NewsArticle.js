@@ -8,6 +8,7 @@ import { WebView } from 'react-native-webview';
 import AutoHeightWebView from 'react-native-autoheight-webview'
 import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { Article, BaseUrl, HomeSlider, RelatedUrl, MenuUrl, LatestUrl, Next, article } from '../Utilities/Api/Urls';
 import moment from 'moment'
 import { ScrollView, Swipeable } from 'react-native-gesture-handler';
@@ -29,6 +30,7 @@ export default class CinemaDetailsScreen extends Component {
         this.state = {
             data: this.props.route.params.data,
             DetailsData: this.props.route.params.DetailsData,
+            index: this.props.route.params.index,
             RelatedData: [],
             isLoading: false,
             ArticleData: [],
@@ -48,22 +50,23 @@ export default class CinemaDetailsScreen extends Component {
         }
     };
     componentDidMount() {
-        // console.log(this.state.DetailsData, "============data");
+
+        console.log(this.state.DetailsData.length, "============data");
         var Related_id = this.state.data.id
         var article_id = this.state.ArticleData.prev_id
 
-       
-        console.log(this.state.data.id,"id===========================");
+
+        // console.log(this.state.data.id,"id===========================");
         fetch(BaseUrl + Next + '?id=' + Related_id)
             .then((response) => response.json())
             .then(responseJson => {
                 this.setState({ ArticleData: responseJson, isLoading: true }, () => {
-                    console.log(this.state.ArticleData, "==================================Prev and next id");
+                    // console.log(this.state.ArticleData, "==================================Prev and next id");
 
                 });
             });
 
-            fetch(BaseUrl + article + '?id=' + article_id)
+        fetch(BaseUrl + article + '?id=' + article_id)
             .then((response) => response.json())
             .then(responseJson => {
                 this.setState({ PrevData: responseJson, isLoading: true }, () => {
@@ -94,7 +97,7 @@ export default class CinemaDetailsScreen extends Component {
 
     componentDidUpdate() {
         this.state.DetailsData = this.props.route.params.DetailsData
-        if (this.state.data != this.props.route.params.data ) {
+        if (this.state.data != this.props.route.params.data) {
             this.fetchData()
             this.goToTop()
         }
@@ -130,8 +133,13 @@ export default class CinemaDetailsScreen extends Component {
 
         this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     }
-
+       getIndex = () => {
+        var index = this.state.DetailsData.findIndex(x => x.id == this.state.data.id)
+        console.log("findIndex==============", index);
+        return index + 1;
+    }
     render() {
+        console.log(this.state.index);
         // let source= this.state.DetailsData.content.rendered
 
         let source1 = this.state.data.content.rendered.replace('lazyload', 'text/javascript')
@@ -161,9 +169,6 @@ export default class CinemaDetailsScreen extends Component {
                             <TouchableOpacity onPress={() => { Linking.openURL('whatsapp://send?text=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/whatsapp_share.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
-                            {/* <TouchableOpacity onPress={() => { Linking.openURL('http://www.linkedin.com/shareArticle?mini=true&url=' + this.state.data.link) }} >
-                                <Image resizeMode='contain' source={require('../Assets/Images/linkedin_icon.png')} style={{ width: 30, height: 30 }} />
-                            </TouchableOpacity> */}
                             <TouchableOpacity onPress={() => { Linking.openURL('https://t.me/share?url=' + this.state.data.link) }} >
                                 <Image resizeMode='contain' source={require('../Assets/Images/telegram_icon.png')} style={{ width: 30, height: 30 }} />
                             </TouchableOpacity>
@@ -176,12 +181,12 @@ export default class CinemaDetailsScreen extends Component {
                 </View>
 
                 <ScrollView
-                    ref={(c,) => { this.scroll = c }}
-                    stickyHeaderIndices={[1]}
-                    showsVerticalScrollIndicator={false}>
+                    ref={(c,) => { this.scroll = c }}>
+                   
                     <View>
 
                         <View >
+                            {/* <CustomIconImage image={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard}/> */}
                             <Image source={{ uri: this.state.data.web_featured_image }} style={commonstyles.Detailslargecard} />
                         </View>
 
@@ -199,7 +204,7 @@ export default class CinemaDetailsScreen extends Component {
                         </View>
                         {/* description */}
 
-                        <View style={{ width: screenWidth - 10, justifyContent: 'center', pointerEvents: "none" }}>
+                        <View style={{ width: screenWidth - 10, justifyContent: 'center', pointerEvents: "none",paddingLeft:10 }}>
 
                             {/* <Text>{source1}</Text> */}
                             <AutoHeightWebView
@@ -226,6 +231,7 @@ export default class CinemaDetailsScreen extends Component {
                                                                     width:100%;
                                                                     height:inherit
                                                                   }
+                                                                 
                                 `}
                                 source={{ html: source1 += "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}</style>", baseUrl: 'https://twitter.com' }}
                                 scalesPageToFit={false}
@@ -234,10 +240,39 @@ export default class CinemaDetailsScreen extends Component {
                             />
                         </View>
 
+                        {/* Previous and Next Buttons */}
+                        {/* <View style={commonstyles.prevNextMainView}>
+
+                            <View style={commonstyles.prevView}>
+                                <TouchableOpacity onPress={() => { }}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <View>
+                                            <MaterialIcons name="chevron-left" size={25} color={appThemeColor} style={{}} />
+                                        </View>
+                                        <View>
+                                            <Text style={commonstyles.prevText}>Previous</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={commonstyles.nextView}>
+                                <TouchableOpacity onPress={() => { }}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <View>
+                                            <Text style={commonstyles.prevText}>Next</Text>
+                                        </View>
+                                        <View>
+                                            <MaterialIcons name="chevron-right" size={25} color={appThemeColor} style={{}} />
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+
+                        </View> */}
 
                         {/* Related News */}
                         <View>
-                            <View style={{ marginLeft: 10,marginTop:10 }}>
+                            <View style={{ marginLeft: 10, marginTop: 10 }}>
                                 <Text style={commonstyles.relatedText}>
                                     Related News
                                 </Text>
@@ -254,7 +289,7 @@ export default class CinemaDetailsScreen extends Component {
                                             renderItem={({ item, index }) =>
 
                                                 <View >
-                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.onlyRelated }) }}  >
+                                                    <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.onlyRelated }) }}  >
                                                         <View style={commonstyles.cardView}>
                                                             <View style={commonstyles.cateviewImg}>
                                                                 <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
@@ -291,12 +326,12 @@ export default class CinemaDetailsScreen extends Component {
                                     <FlatList
                                         showsHorizontalScrollIndicator={false}
                                         persistentScrollbar={false}
-                                        data={this.state.DetailsData.slice(0, 10)}
+                                        data={this.state.DetailsData.slice(this.getIndex(), this.getIndex() + 10)}
                                         renderItem={({ item, index }) =>
                                             <View>
                                                 <View style={{ padding: 10, flexDirection: 'row' }}>
                                                     <View style={{}}>
-                                                    <Feather name="chevrons-down" size={25} color={Dark_Gray} style={{ marginTop: 3}} />
+                                                        <Feather name="chevrons-down" size={25} color={Dark_Gray} style={{ marginTop: 3 }} />
 
                                                         {/* <Image source={require('../Assets/Images/down-arrow.png')} style={{ width: 20, height: 20, right: 10, top: 2, marginLeft: 10 }} /> */}
                                                     </View>
@@ -324,7 +359,7 @@ export default class CinemaDetailsScreen extends Component {
                                                     <Text style={commonstyles.detailTime}>{(moment(this.state.data.modified).utcOffset('+05:30').format('hh.mm a'))} IST  </Text>
                                                 </View>
 
-                                                <View style={{ width: screenWidth - 10, justifyContent: 'center', pointerEvents: "none" }}>
+                                                <View style={{ width: screenWidth - 10, justifyContent: 'center', pointerEvents: "none",paddingLeft:10 }}>
 
                                                     <AutoHeightWebView
                                                         androidHardwareAccelerationDisabled // update here androidLayerType="software"
@@ -338,7 +373,7 @@ export default class CinemaDetailsScreen extends Component {
                               p {
                                 font-size: 16px;
                                 text-align:left;
-                                margin:10;
+                              
                                 font-family:'Mandali-Regular';
                                 line-height:35px
                                                               }
@@ -350,8 +385,13 @@ export default class CinemaDetailsScreen extends Component {
                                                                 width:100%;
                                                                 height:inherit
                                                               }
+                                                              img{
+                                                                width:100%;
+                                                                height:inherit
+                                                              }
+                                                                                                                          
                             `}
-                                                        source={{ html: item.content.rendered+= "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;padding:0px 8px;color:#000;font-weight:500;font-size:18px}</style>", baseUrl: 'https://twitter.com' }}
+                                                        source={{ html: item.content.rendered += "<style>@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');p strong, span, p span{font-family: 'Mandali', sans-serif;}p,li{font-family: 'Mandali', sans-serif;line-height:1.6;color:#000;font-weight:500;font-size:18px}</style>", baseUrl: 'https://twitter.com' }}
                                                         scalesPageToFit={false}
                                                         viewportContent={'width=device-width, user-scalable=no'}
 
@@ -385,7 +425,7 @@ export default class CinemaDetailsScreen extends Component {
                                                     horizontal={true}
                                                     renderItem={({ item, index }) =>
                                                         <View style={{ marginRight: 5, marginLeft: 10, }} >
-                                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", {data: item,DetailsData:this.state.OnlyLatest}) }}  >
+                                                            <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest }) }}  >
                                                                 <View style={commonstyles.sliderView}>
                                                                     <Image source={{ uri: item.web_featured_image }}
                                                                         style={commonstyles.photocard}  >

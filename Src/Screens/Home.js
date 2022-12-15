@@ -581,8 +581,9 @@ export default class HomeScreen extends Component {
                                             data={this.state.OnlyLatest.slice(0, 2)}
                                             renderItem={({ item, index }) =>
                                                 <View >
+
                                                     <View>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest, index: index }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
@@ -609,7 +610,7 @@ export default class HomeScreen extends Component {
                                                 data={this.state.OnlyLatest.slice(2, 8)}
                                                 renderItem={({ item, index }) =>
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.OnlyLatest, index: index }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
                                                                     <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
@@ -680,7 +681,7 @@ export default class HomeScreen extends Component {
                                             renderItem={({ item, index }) =>
                                                 <View >
                                                     <View style={commonstyles.gridView}>
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data, index: index }) }}  >
                                                             <View style={commonstyles.latestMainView}>
                                                                 <View style={commonstyles.latestsubView}>
                                                                     <View>
@@ -707,14 +708,14 @@ export default class HomeScreen extends Component {
                                                 data={this.state.OnlyLatest.slice(2, 8)}
                                                 renderItem={({ item, index }) =>
                                                     <View >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("Details", { data: item, DetailsData: this.state.VarthaluData.data, index: index }) }}  >
                                                             <View style={commonstyles.cardViewHome}>
                                                                 <View style={commonstyles.cateviewImg}>
                                                                     <Image source={{ uri: item.web_featured_image }} style={commonstyles.cateImage} />
                                                                 </View>
                                                                 <View style={commonstyles.cateviewText}>
                                                                     <Text numberOfLines={2} ellipsizeMode='tail'
-                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}</Text>
+                                                                        style={commonstyles.latestText}>{decode(item.title.rendered)}-{index}</Text>
                                                                     <View style={commonstyles.timeview}>
                                                                         <Text style={commonstyles.latesttime}>{(moment(item.date_gmt).format('DD-MMM-YYYY'))} , </Text>
                                                                         <Text style={commonstyles.latesttime}>{(moment(item.modified).utcOffset('+05:30').format('hh.mm a'))}  </Text>
@@ -1059,7 +1060,7 @@ export default class HomeScreen extends Component {
                                                 horizontal={true}
                                                 renderItem={({ item, index }) =>
                                                     <View style={{ marginRight: 5, marginLeft: 10, }} >
-                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item }) }}  >
+                                                        <TouchableOpacity onPress={() => { this.props.navigation.navigate("PhotoGalleryArticle", { data: item, DetailsData: this.state.Gallery.data }) }}  >
                                                             <View style={commonstyles.sliderView}>
                                                                 <Image source={{ uri: item.web_featured_image }}
                                                                     style={commonstyles.photocard}  >
@@ -1313,7 +1314,7 @@ export default class HomeScreen extends Component {
                                                         <TouchableOpacity onPress={() => { this.props.navigation.navigate("VideoArticle", { data: item }) }}  >
                                                             <View style={commonstyles.sliderView}>
 
-                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.photocard} >
+                                                                <ImageBackground imageStyle={{ borderRadius: 6 }} source={{ uri: item.web_featured_image }} style={commonstyles.videocard} >
                                                                     <View style={{ justifyContent: 'center', alignContent: 'center', alignSelf: 'center', marginVertical: 100 }}>
                                                                         <Image style={{ width: 30, height: 20 }} source={require('../Assets/Images/videoicon.png')} />
                                                                     </View>
